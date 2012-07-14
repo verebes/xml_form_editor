@@ -37,17 +37,6 @@ namespace XMLFormEditor
             }
         }
 
-        private bool _suspendOverlay = true;
-        public bool SuspendOverlay
-        {
-            get { return _suspendOverlay; }
-            set {
-                _suspendOverlay = value;
-                if (!_suspendOverlay)
-                    RefreshOverlay();                       
-            }
-        }
-
         private bool snapToGrid = true;
         public bool SnapToGrid
         {
@@ -242,11 +231,26 @@ namespace XMLFormEditor
         }
 
 
+        private bool refreshOverlayNeeded = false;
         private void RefreshOverlay ()
         {
+            if ( !refreshOverlayNeeded ) {
+                refreshOverlayNeeded = true;
+                Invalidate();
+            }
+            refreshOverlayNeeded = true;           
+        }
+
+        private bool paintingOverlay = false;
+        private void doRefreshOverlay() 
+        {
+            refreshOverlayNeeded = false;
+
             if (_editorOverlay == null)
                 return;
-          
+
+            paintingOverlay = true;
+
             _editorOverlay.SuspendLayout();
             _editorOverlay.Left = 0;
             _editorOverlay.Top = 0;
@@ -254,19 +258,18 @@ namespace XMLFormEditor
             _editorOverlay.Height = ClientRectangle.Height;
             _editorOverlay.ResumeLayout(false);            
 
-            if (!_suspendOverlay)
-            {
-                updateVisibleControls();
-                if (!_refreshing)
-                    Update();
-                _editorOverlay.StoreBmp();
-                _editorOverlay.BringToFront();
-                _editorOverlay.Focus(); // after adding new control the now control gets the focus so we focus back the overlay control
-            }
+            if (!_refreshing)
+                Update();
+
+            _editorOverlay.StoreBmp();
+            _editorOverlay.BringToFront();
+            _editorOverlay.Focus(); // after adding new control the now control gets the focus so we focus back the overlay control
+
             _editorOverlay.Invalidate();
-            
+
+            paintingOverlay = false;
         }
-       
+        
         public override void recreateControls()
         {
             base.recreateControls();
@@ -283,8 +286,22 @@ namespace XMLFormEditor
             //System.Diagnostics.Debug.WriteLine("Stack:\n" + Environment.StackTrace.ToString());
         }
 
+
+        protected bool updateVisibleControlsNeeded = false;
         public void updateVisibleControls()
         {
+            if ( updateVisibleControlsNeeded == false ) {
+                updateVisibleControlsNeeded = true;
+                Invalidate();
+            }
+            updateVisibleControlsNeeded = true;
+            refreshOverlayNeeded = true;
+        }
+
+        protected void doUpdateVisibleControls()
+        {
+            updateVisibleControlsNeeded = false;
+
             if (_documentLayout == null)
                 return;
 
@@ -293,8 +310,9 @@ namespace XMLFormEditor
                 if (XMLControl2ControlDictionary.ContainsKey(ctr))
                     ctr.UpdateEditorControl(XMLControl2ControlDictionary[ctr]);
             }
-
         }
+
+
 
         protected bool _refreshing = false;
         public override void Refresh()
@@ -305,10 +323,26 @@ namespace XMLFormEditor
             _refreshing = false;            
         }
 
+
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (!_refreshing)
+            if (updateVisibleControlsNeeded)
+            {
+                doUpdateVisibleControls();
+            }
+
+            if (refreshOverlayNeeded)
+            {
+                doRefreshOverlay();
+            }
+
+            //if (!_refreshing)
+            //{
+            if (_editorOverlay._storingBmp)
+            {
                 base.OnPaint(e);
+            }
+            //}
             else
                 System.Diagnostics.Debug.WriteLine("Skip");
         }
@@ -321,7 +355,6 @@ namespace XMLFormEditor
 
         protected override void OnEnter(EventArgs e)
         {
-            //base.OnEnter(e);
             if (_editorOverlay != null)
                 _editorOverlay.Focus();
         }

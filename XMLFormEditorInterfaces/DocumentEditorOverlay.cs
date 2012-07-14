@@ -368,19 +368,13 @@ namespace XMLFormEditor
         }
 
 
-        protected bool _storingBmp = false;
+        public bool _storingBmp = false;
         protected Bitmap _storedBmp;
         public void StoreBmp(Rectangle r)
         {
             // return if window is minimized
             if (Parent.ClientRectangle.Width <= 0 || Parent.ClientRectangle.Height <= 0)
                 return;
-
-            if (_documentEditor.SuspendOverlay)
-            {
-                System.Diagnostics.Debug.WriteLine("StoreBmp: S");
-                return;
-            }
 
             System.Diagnostics.Debug.WriteLine("StoreBmp: " + DateTime.Now + " (" + System.DateTime.Now.Millisecond.ToString() + ")" + ": " + r.ToString());
 //            System.Diagnostics.Debug.WriteLine("Stack:\n" + Environment.StackTrace.ToString());

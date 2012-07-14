@@ -174,7 +174,7 @@ namespace XMLFormEditor
         private void clearControls()
         {
             foreach (KeyValuePair<XMLControl, Control> pair in XMLControl2ControlDictionary)
-            {
+            {                
                 pair.Value.Dispose();
             }
 

@@ -137,7 +137,6 @@ namespace XMLFormEditor
             editor.documentLayout = documentLayouts[tabIndex];
             editor.documentEditorVisualizer.PropertyWindowPlace = panel4;
             editor.Parent = tabControl1.TabPages[tabIndex];
-            editor.documentEditorVisualizer.SuspendOverlay = false;
             editor.Enter += delegate { 
                 //editor.Parent.Focus();
                 editor.documentEditorVisualizer.Focus();

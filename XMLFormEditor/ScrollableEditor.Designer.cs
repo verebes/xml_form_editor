@@ -68,8 +68,7 @@ namespace XMLFormEditor
             this.documentEditor.PropertyWindowPlace = null;
             this.documentEditor.PropertyWindowVisible = false;
             this.documentEditor.Size = new System.Drawing.Size(388, 424);
-            this.documentEditor.SnapToGrid = true;
-            this.documentEditor.SuspendOverlay = true;
+            this.documentEditor.SnapToGrid = true;            
             this.documentEditor.TabIndex = 12;
             this.documentEditor.ViewLocation = new System.Drawing.Point(0, 0);
             this.documentEditor.ViewRectangle = new System.Drawing.Rectangle(0, 0, 388, 424);
