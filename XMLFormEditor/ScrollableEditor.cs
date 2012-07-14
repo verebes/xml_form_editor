@@ -26,9 +26,8 @@ namespace XMLFormEditor
         }
 
         protected override void OnResize(EventArgs e)
-        {            
-            documentEditor.Width = Width - vScrollBar.Width;
-            documentEditor.Height = Height - hScrollBar.Height;
+        {                       
+            documentEditor.ClientSize = new Size(Width - vScrollBar.Width, Height - hScrollBar.Height);
             documentEditor.Left = 0;
             documentEditor.Top = 0;
 
