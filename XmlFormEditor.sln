@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLFormEditor", "XMLFormEditor\XMLFormEditor.csproj", "{8ECA965E-5570-4877-8AE1-62BBB50C1691}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLFormEditorCore", "XMLFormEditorInterfaces\XMLFormEditorCore.csproj", "{C80E87C3-D1D2-4AFB-A6D3-3E75D729C2AF}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "XMLFormEditorSetup", "XMLFormEditorSetup\XMLFormEditorSetup.vdproj", "{30324636-0671-444F-B7EB-6DC93B3A4570}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLDefaultControlLibrary", "XMLToolboxItems\XMLDefaultControlLibrary.csproj", "{C9B475A2-CB16-472C-A9EC-63CCAE3317D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8ECA965E-5570-4877-8AE1-62BBB50C1691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ECA965E-5570-4877-8AE1-62BBB50C1691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ECA965E-5570-4877-8AE1-62BBB50C1691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ECA965E-5570-4877-8AE1-62BBB50C1691}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C80E87C3-D1D2-4AFB-A6D3-3E75D729C2AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C80E87C3-D1D2-4AFB-A6D3-3E75D729C2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C80E87C3-D1D2-4AFB-A6D3-3E75D729C2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80E87C3-D1D2-4AFB-A6D3-3E75D729C2AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30324636-0671-444F-B7EB-6DC93B3A4570}.Debug|Any CPU.ActiveCfg = Debug
+		{30324636-0671-444F-B7EB-6DC93B3A4570}.Debug|Any CPU.Build.0 = Debug
+		{30324636-0671-444F-B7EB-6DC93B3A4570}.Release|Any CPU.ActiveCfg = Release
+		{30324636-0671-444F-B7EB-6DC93B3A4570}.Release|Any CPU.Build.0 = Release
+		{C9B475A2-CB16-472C-A9EC-63CCAE3317D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B475A2-CB16-472C-A9EC-63CCAE3317D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B475A2-CB16-472C-A9EC-63CCAE3317D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B475A2-CB16-472C-A9EC-63CCAE3317D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

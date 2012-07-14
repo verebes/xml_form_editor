@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Interface Name="XMLFormEditor.IDataSourceBase" Collapsed="true">
+    <Position X="2.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XMLFormEditor.ISingleDataSource">
+    <Position X="5.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <FileName>DataSourceInterfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.IDataSourceBase" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="3.009" />
+        <Point X="4.25" Y="3.503" />
+        <Point X="5.25" Y="3.503" />
+      </Path>
+    </InheritanceLine>
+  </Interface>
+  <Interface Name="XMLFormEditor.IPagerDataSource">
+    <Position X="0.75" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>DataSourceInterfaces.cs</FileName>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAABACAAACAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.IDataSourceBase" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.062" Y="3.009" />
+        <Point X="3.062" Y="4.541" />
+        <Point X="2.75" Y="4.541" />
+      </Path>
+    </InheritanceLine>
+  </Interface>
+  <Interface Name="XMLFormEditor.IListDataSource">
+    <Position X="5.5" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>DataSourceInterfaces.cs</FileName>
+      <HashCode>AAAAARAAAAAAAAAAAABAAAAAAAAAAABASAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.IDataSourceBase" FixedFromPoint="true">
+      <Path>
+        <Point X="3.875" Y="3.009" />
+        <Point X="3.875" Y="4.377" />
+        <Point X="6.625" Y="4.377" />
+        <Point X="6.625" Y="4.5" />
+      </Path>
+    </InheritanceLine>
+  </Interface>
+  <Interface Name="XMLFormEditor.ISchemaControlDataSource">
+    <Position X="3" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>DataSourceInterfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAABACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.IDataSourceBase" FixedToPoint="true">
+      <Path>
+        <Point X="3.625" Y="3.009" />
+        <Point X="3.625" Y="6" />
+      </Path>
+    </InheritanceLine>
+  </Interface>
+  <Interface Name="XMLFormEditor.IButtonDataSource">
+    <Position X="0.75" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>DataSourceInterfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACABACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.IDataSourceBase" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.375" Y="3.009" />
+        <Point X="3.375" Y="5.784" />
+        <Point X="2.5" Y="5.784" />
+      </Path>
+    </InheritanceLine>
+  </Interface>
+</ClassDiagram>

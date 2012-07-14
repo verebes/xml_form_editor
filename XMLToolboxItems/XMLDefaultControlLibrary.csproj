@@ -1,0 +1,162 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C9B475A2-CB16-472C-A9EC-63CCAE3317D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XMLToolboxItems</RootNamespace>
+    <AssemblyName>XMLToolboxItems</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataSourceInterfaces.cs" />
+    <Compile Include="MultiControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MultiControl.Designer.cs">
+      <DependentUpon>MultiControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PagerPropertyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PagerPropertyControl.Designer.cs">
+      <DependentUpon>PagerPropertyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SchemaPropertyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SchemaPropertyControl.Designer.cs">
+      <DependentUpon>SchemaPropertyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaticLabel.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StaticLabelPropertyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StaticLabelPropertyControl.Designer.cs">
+      <DependentUpon>StaticLabelPropertyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMLButtonDataSourcePropertyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XMLButtonDataSourcePropertyControl.Designer.cs">
+      <DependentUpon>XMLButtonDataSourcePropertyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMLInsertButton.cs" />
+    <Compile Include="XMLLargeTextBox.cs" />
+    <Compile Include="XMLList.cs" />
+    <Compile Include="DefaultControlFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XMLCombo.cs" />
+    <Compile Include="XMLLabel.cs" />
+    <Compile Include="SingleDataSourcePropertyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SingleDataSourcePropertyControl.Designer.cs">
+      <DependentUpon>SingleDataSourcePropertyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMLListDataSourcePropertyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XMLListDataSourcePropertyControl.Designer.cs">
+      <DependentUpon>XMLListDataSourcePropertyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMLPager.cs" />
+    <Compile Include="XMLSchemaControl.cs" />
+    <Compile Include="XMLTextBox.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SingleDataSourcePropertyControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SingleDataSourcePropertyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMLListDataSourcePropertyControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XMLListDataSourcePropertyControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram_XMLControls.cd" />
+    <None Include="ClassDiagram_Interfaces.cd" />
+    <None Include="ClassDiagram_PropertyControls.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MultiControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MultiControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagerPropertyControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PagerPropertyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SchemaPropertyControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SchemaPropertyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaticLabelPropertyControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>StaticLabelPropertyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMLButtonDataSourcePropertyControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XMLButtonDataSourcePropertyControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="button.ico" />
+    <Content Include="combo.ico" />
+    <Content Include="label.ico" />
+    <Content Include="listbox.ico" />
+    <Content Include="pager.ico" />
+    <Content Include="textbox.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XMLFormEditorInterfaces\XMLFormEditorCore.csproj">
+      <Project>{C80E87C3-D1D2-4AFB-A6D3-3E75D729C2AF}</Project>
+      <Name>XMLFormEditorCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

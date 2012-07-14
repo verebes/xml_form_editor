@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="XMLFormEditor.XmlEditorToolBox">
+    <Position X="0.5" Y="1.25" Width="3.75" />
+    <TypeIdentifier>
+      <FileName>ToolBoxControl.cs</FileName>
+      <HashCode>AQDAAAAAAGgAAAgAQAiCAAECgEAAAAAAMAAgAAAAAAE=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Editor" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="items" />
+    </ShowAsCollectionAssociation>
+    <AssociationLine Name="items" Type="XMLFormEditor.IToolBoxItem" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="1.77" />
+        <Point X="4.625" Y="1.77" />
+        <Point X="4.625" Y="1.125" />
+        <Point X="6" Y="1.125" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.695" Y="0.12" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Editor" Type="XMLFormEditor.DocumentEditorVisualizer" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="2.289" />
+        <Point X="4.625" Y="2.289" />
+        <Point X="4.625" Y="2.992" />
+        <Point X="5.75" Y="2.992" />
+      </Path>
+    </AssociationLine>
+  </Class>
+  <Class Name="XMLFormEditor.DocumentEditorVisualizer">
+    <Position X="5.75" Y="2.25" Width="6" />
+    <TypeIdentifier>
+      <FileName>DocumentEditor.cs</FileName>
+      <HashCode>AACAEAAKAIhCAAQASkAAIBBCCAAAARBEAIAIDAgAAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="_currentPropertyWindow" Hidden="true" />
+      <Field Name="_editorOverlay" Hidden="true" />
+      <Field Name="_propertyWindowPlace" Hidden="true" />
+      <Field Name="_refreshing" Hidden="true" />
+      <Field Name="_suspendOverlay" Hidden="true" />
+      <Method Name="ApplyDataSource" Hidden="true" />
+      <Method Name="ApplyEditorSettings" Hidden="true" />
+      <Method Name="CreateControlPropertyWindow" Hidden="true" />
+      <Method Name="CreateEditorPropertyWindow" Hidden="true" />
+      <Method Name="DestroyPropertyWindow" Hidden="true" />
+      <Method Name="DocumentEditorVisualizer" Hidden="true" />
+      <Property Name="DocumentLayout" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Method Name="MoveControl" Hidden="true" />
+      <Method Name="OnInvalidated" Hidden="true" />
+      <Method Name="OnPaint" Hidden="true" />
+      <Method Name="OnResize" Hidden="true" />
+      <Property Name="PropertyWindowPlace" Hidden="true" />
+      <Property Name="PropertyWindowVisible" Hidden="true" />
+      <Method Name="recreateControls" Hidden="true" />
+      <Method Name="Refresh" Hidden="true" />
+      <Method Name="RefreshOverlay" Hidden="true" />
+      <Method Name="RemoveSelectedControls" Hidden="true" />
+      <Method Name="ResizeControl" Hidden="true" />
+      <Field Name="snapToGrid" Hidden="true" />
+      <Property Name="SnapToGrid" Hidden="true" />
+      <Property Name="SuspendOverlay" Hidden="true" />
+      <Method Name="updateVisibleControls" Hidden="true" />
+      <Property Name="ViewRectangle" Hidden="true" />
+    </Members>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="XMLFormEditor.IToolBoxItem">
+    <Position X="6" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>IToolBoxItem.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAAAAAAAAACAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+</ClassDiagram>

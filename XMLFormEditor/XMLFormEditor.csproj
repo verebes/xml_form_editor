@@ -1,0 +1,176 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8ECA965E-5570-4877-8AE1-62BBB50C1691}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XMLFormEditor</RootNamespace>
+    <AssemblyName>XMLFormEditor</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRules>
+    </CodeAnalysisRules>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FillForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FillForm.Designer.cs">
+      <DependentUpon>FillForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputTextDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputTextDialog.Designer.cs">
+      <DependentUpon>InputTextDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionsForm.Designer.cs">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EditForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FillForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FillForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputTextDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>InputTextDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScrollableEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ScrollableEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScrollablePage.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ScrollablePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TextView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ValidationResultDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ValidationResultDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="ClassDiagram_Editor.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ScrollableEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScrollableEditor.Designer.cs">
+      <DependentUpon>ScrollableEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScrollablePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScrollablePage.Designer.cs">
+      <DependentUpon>ScrollablePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextView.Designer.cs">
+      <DependentUpon>TextView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolBoxInitializer.cs" />
+    <Compile Include="ValidationResultDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ValidationResultDialog.Designer.cs">
+      <DependentUpon>ValidationResultDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsApiMethods.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XMLFormEditorInterfaces\XMLFormEditorCore.csproj">
+      <Project>{C80E87C3-D1D2-4AFB-A6D3-3E75D729C2AF}</Project>
+      <Name>XMLFormEditorCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XMLToolboxItems\XMLDefaultControlLibrary.csproj">
+      <Project>{C9B475A2-CB16-472C-A9EC-63CCAE3317D7}</Project>
+      <Name>XMLDefaultControlLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

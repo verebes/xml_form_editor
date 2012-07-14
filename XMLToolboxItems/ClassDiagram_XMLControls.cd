@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="XMLFormEditor.XMLTextBox" Collapsed="true">
+    <Position X="1" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>XMLTextBox.cs</FileName>
+      <HashCode>iAQAwAgAAQAAAAAAAAAEAABCQAAAIAAAAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.XMLControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="5.125" />
+        <Point X="3.875" Y="5.125" />
+        <Point X="3.875" Y="5.312" />
+        <Point X="3.25" Y="5.312" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.XMLCombo" Collapsed="true">
+    <Position X="7" Y="7.5" Width="1.25" />
+    <TypeIdentifier>
+      <FileName>XMLCombo.cs</FileName>
+      <HashCode>iAQAwAgBAQAQAAAAAEAEAABCYAAAIAAAhAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.XMLControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.5" Y="7.25" />
+        <Point X="6.8" Y="7.25" />
+        <Point X="6.8" Y="7.75" />
+        <Point X="7" Y="7.75" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.XMLInsertButton" Collapsed="true">
+    <Position X="1.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>XMLInsertButton.cs</FileName>
+      <HashCode>iAQAwAgAAQAAAAAAAAAEAABCQAAAIAAAAAAAQABAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.XMLControl" FixedFromPoint="true">
+      <Path>
+        <Point X="4.25" Y="6.437" />
+        <Point X="3.875" Y="6.437" />
+        <Point X="3.875" Y="6.815" />
+        <Point X="2.75" Y="6.815" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.XMLLabel" Collapsed="true">
+    <Position X="1.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>XMLLabel.cs</FileName>
+      <HashCode>iAQAwAgAAAAAAAAAAAAEAABCQAAAIAAAAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.XMLControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="3.875" />
+        <Point X="3.875" Y="3.875" />
+        <Point X="3.875" Y="4.062" />
+        <Point X="2.75" Y="4.062" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.XMLLargeTextBox" Collapsed="true">
+    <Position X="7.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>XMLLargeTextBox.cs</FileName>
+      <HashCode>iAQAwAgAAQAAAAAAAAAEAABCQAAAIAAAAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.XMLControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.5" Y="3.75" />
+        <Point X="6.875" Y="3.75" />
+        <Point X="6.875" Y="3.875" />
+        <Point X="7.25" Y="3.875" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.XMLList" Collapsed="true">
+    <Position X="1.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>XMLList.cs</FileName>
+      <HashCode>iAQAwAgBAQAQAAAAAEAEAABCYAAAIAAAhAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.XMLControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="7.313" />
+        <Point X="3.875" Y="7.313" />
+        <Point X="3.875" Y="7.812" />
+        <Point X="3.25" Y="7.812" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.XMLPager" Collapsed="true">
+    <Position X="7.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>XMLPager.cs</FileName>
+      <HashCode>jAQAwAgAAQAAAAAAAAAEAABSQAAAIAAAAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.XMLControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.5" Y="4.812" />
+        <Point X="6.875" Y="4.812" />
+        <Point X="6.875" Y="5.312" />
+        <Point X="7.75" Y="5.312" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.XMLSchemaControl" Collapsed="true">
+    <Position X="7.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>XMLSchemaControl.cs</FileName>
+      <HashCode>iAQAwAgAQQAAAAAAAABEAABCQAAAIAAEAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.XMLControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.5" Y="6.187" />
+        <Point X="6.875" Y="6.187" />
+        <Point X="6.875" Y="6.687" />
+        <Point X="7.5" Y="6.687" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.StaticLabel" Collapsed="true">
+    <Position X="2.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>StaticLabel.cs</FileName>
+      <HashCode>iAQAgAgAAAAAAAAAAAAEAABCQAAAIAAIAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.XMLControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="2.75" />
+        <Point X="4.01" Y="2.75" />
+        <Point X="4.01" Y="3" />
+        <Point X="3.75" Y="3" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.DefaultControlFactory">
+    <Position X="8.25" Y="1" Width="2" />
+    <TypeIdentifier>
+      <FileName>DefaultControlFactory.cs</FileName>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XMLFormEditor.MultiControl" Collapsed="true">
+    <Position X="10.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>MultiControl.cs</FileName>
+      <HashCode>AAAAAAAAACEAABASQACAAAACAAAAAAAAAQAACAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+  </Class>
+  <Class Name="System.Windows.Forms.UserControl" Collapsed="true">
+    <Position X="10.5" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="XMLFormEditor.XMLControl">
+    <Position X="4.25" Y="2" Width="2.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+</ClassDiagram>

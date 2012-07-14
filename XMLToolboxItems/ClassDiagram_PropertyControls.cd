@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="XMLFormEditor.SingleDataSourcePropertyControl" Collapsed="true">
+    <Position X="1.75" Y="4.75" Width="3.25" />
+    <TypeIdentifier>
+      <FileName>SingleDataSourcePropertyControl.cs</FileName>
+      <HashCode>AgAgAAAAACAAABAAAICAAAACgAAAAYBASAAACAAAAAI=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XMLFormEditor.XMLPropertyControlBase" Collapsed="true">
+    <Position X="5.5" Y="2.75" Width="2.75" />
+    <TypeIdentifier />
+    <InheritanceLine Type="System.Windows.Forms.UserControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7" Y="1.38" />
+        <Point X="7" Y="2.75" />
+      </Path>
+    </InheritanceLine>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XMLFormEditor.XMLListDataSourcePropertyControl" Collapsed="true">
+    <Position X="3.25" Y="6.25" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>XMLListDataSourcePropertyControl.cs</FileName>
+      <HashCode>AAIgARAAACAAABAAAADAAAACAQAAAAAAQABAAAACAAI=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.SingleDataSourcePropertyControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.438" Y="5.38" />
+        <Point X="3.438" Y="5.875" />
+        <Point X="4.688" Y="5.875" />
+        <Point X="4.688" Y="6.25" />
+      </Path>
+    </InheritanceLine>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Windows.Forms.UserControl" Collapsed="true">
+    <Position X="5.75" Y="0.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="XMLFormEditor.StaticLabelPropertyControl" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>StaticLabelPropertyControl.cs</FileName>
+      <HashCode>AAAAAAgAACAAABAAAICAAAACAAAIAAAAAEAAAAACAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XMLFormEditor.SchemaPropertyControl" Collapsed="true">
+    <Position X="6.25" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>SchemaPropertyControl.cs</FileName>
+      <HashCode>AAAgAQAAACAAAEAAAACAAAACAAACAAAAAAAAAAAAAAI=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.SingleDataSourcePropertyControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.438" Y="5.38" />
+        <Point X="3.438" Y="5.875" />
+        <Point X="8.25" Y="5.875" />
+        <Point X="8.25" Y="6.25" />
+      </Path>
+    </InheritanceLine>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XMLFormEditor.PagerPropertyControl" Collapsed="true">
+    <Position X="0.75" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <FileName>PagerPropertyControl.cs</FileName>
+      <HashCode>AAAgAAAAAGAAABAAQACAAAACAAAAAAAAAAAICAAAAAI=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.SingleDataSourcePropertyControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.438" Y="5.38" />
+        <Point X="3.438" Y="5.875" />
+        <Point X="2.188" Y="5.875" />
+        <Point X="2.188" Y="6.25" />
+      </Path>
+    </InheritanceLine>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XMLFormEditor.XMLButtonDataSourcePropertyControl" Collapsed="true">
+    <Position X="9" Y="6.25" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>XMLButtonDataSourcePropertyControl.cs</FileName>
+      <HashCode>AAAAAAAAACAAAAAAABCAAAACAAAACAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.SingleDataSourcePropertyControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.438" Y="5.38" />
+        <Point X="3.438" Y="5.875" />
+        <Point X="10.688" Y="5.875" />
+        <Point X="10.688" Y="6.25" />
+      </Path>
+    </InheritanceLine>
+    <Lollipop Position="0.2" />
+  </Class>
+</ClassDiagram>

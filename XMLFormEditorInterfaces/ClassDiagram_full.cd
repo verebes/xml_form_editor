@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="XMLFormEditor.XmlEditorToolBox">
+    <Position X="1" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>ToolBoxControl.cs</FileName>
+      <HashCode>AQDAAAAAAGgAAAgAQAiCAAECgEAAAAAAMAAgAAAAAAE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XMLFormEditor.XMLControl">
+    <Position X="22" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <FileName>XMLControl.cs</FileName>
+      <HashCode>jAQAIAgEAAAQABMAAEAEAABCAAAAoAGAAADAAAECCCI=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ParentLayout" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XMLFormEditor.DocumentVisualizer">
+    <Position X="10.25" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>DocumentVisualizer.cs</FileName>
+      <HashCode>AQCAEAAgACAAAAAQwgCACBACAAAAABAAAgAIAAIIAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DocumentLayout" />
+    </ShowAsAssociation>
+    <InheritanceLine Type="System.Windows.Forms.UserControl" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="1.63" />
+        <Point X="7.75" Y="7.875" />
+        <Point X="11.456" Y="7.875" />
+        <Point X="11.456" Y="8.25" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.DocumentEditorVisualizer">
+    <Position X="7.5" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>DocumentEditor.cs</FileName>
+      <HashCode>AACAEAAKAIhCAAQASkAAIBBCCAAAARBEAAAIDAgAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="XMLFormEditor.DocumentFormVisualizer">
+    <Position X="10.25" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>DocumentForm.cs</FileName>
+      <HashCode>AAAAEAAAAIAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XMLFormEditor.DocumentEditorOverlay">
+    <Position X="3.5" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>DocumentEditorOverlay.cs</FileName>
+      <HashCode>AQSAAAAAAAACABIDIAhICJKCATIEAAAAIgBwAIIKAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DocumentEditor" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="XMLFormEditor.DocumentLayout">
+    <Position X="16.75" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>DocumentLayout.cs</FileName>
+      <HashCode>CEAAAiACSAABgAQAgAAAAABKIABCAgAAAAAkAACAAgA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="controlFactory" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_xmlControlList" />
+    </ShowAsCollectionAssociation>
+    <NestedTypes>
+      <Delegate Name="XMLFormEditor.DocumentLayout.SizeChangedDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DocumentLayout.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+  </Class>
+  <Class Name="XMLFormEditor.XmlSourceDocumentManager">
+    <Position X="30.5" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>XmlSourceDocumentManager.cs</FileName>
+      <HashCode>AAQgAAAgAACCAAAAiAAAAAAEAABEAQAEYAEAAABABAE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XMLFormEditor.DocumentLayoutCollection">
+    <Position X="11.75" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>DocumentLayoutCollection.cs</FileName>
+      <HashCode>BEAAgIgAAAAAACAQDAAAAgAAAAAAAAAAARAAAAAQAgA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="controlFactory" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_layouts" />
+    </ShowAsCollectionAssociation>
+    <AssociationLine Name="_layouts" Type="XMLFormEditor.DocumentLayout" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.5" Y="5.349" />
+        <Point X="14.875" Y="5.349" />
+        <Point X="14.875" Y="7.921" />
+        <Point X="16.75" Y="7.921" />
+      </Path>
+    </AssociationLine>
+  </Class>
+  <Class Name="System.Windows.Forms.UserControl" Collapsed="true">
+    <Position X="7" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="XMLFormEditor.XMLPropertyControlBase">
+    <Position X="27.5" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>XMLPropertyControlBase.cs</FileName>
+      <HashCode>AAAgAAAAQCAAAAAAAICAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="System.Windows.Forms.UserControl" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="1.63" />
+        <Point X="7.75" Y="2.838" />
+        <Point X="28.562" Y="2.838" />
+        <Point X="28.562" Y="9" />
+      </Path>
+    </InheritanceLine>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XMLFormEditor.XMLEditorPropertyControl">
+    <Position X="27.25" Y="13" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>XMLEditorPropertyControl.cs</FileName>
+      <HashCode>AgAAAAAAACAAEBAAAICEAAgCAAAIAAAIAEAAAAAAAAE=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="XMLFormEditor.XMLPropertyControlBase" FixedToPoint="true">
+      <Path>
+        <Point X="28.625" Y="11.522" />
+        <Point X="28.625" Y="13" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Interface Name="XMLFormEditor.IToolBoxItem">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IToolBoxItem.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAAAAAAAAACAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XMLFormEditor.IEditorControl">
+    <Position X="5.75" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>IEditorControl.cs</FileName>
+      <HashCode>gAQAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XMLFormEditor.IDataSourceBase">
+    <Position X="30.5" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>BaseDataSourceInterface.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XMLFormEditor.IControlFactory">
+    <Position X="16.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IControlFactory.cs</FileName>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Delegate Name="XMLFormEditor.DataSourceChangedEvent">
+    <Position X="33" Y="7.5" Width="3" />
+    <TypeIdentifier>
+      <FileName>XMLPropertyControlBase.cs</FileName>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Delegate>
+</ClassDiagram>

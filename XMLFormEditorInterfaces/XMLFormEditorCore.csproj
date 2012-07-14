@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C80E87C3-D1D2-4AFB-A6D3-3E75D729C2AF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XMLFormEditor</RootNamespace>
+    <AssemblyName>XMLFormEditorCore</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Compile Include="DocumentEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DocumentEditorOverlay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DocumentForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DocumentLayout.cs" />
+    <Compile Include="DocumentLayoutCollection.cs" />
+    <Compile Include="DocumentVisualizer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IControlFactory.cs" />
+    <Compile Include="BaseDataSourceInterface.cs" />
+    <Compile Include="IEditorControl.cs" />
+    <Compile Include="IToolBoxItem.cs" />
+    <Compile Include="IUpdateableWindow.cs" />
+    <Compile Include="ToolBoxControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ToolBoxControl.Designer.cs">
+      <DependentUpon>ToolBoxControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMLControl.cs" />
+    <Compile Include="XMLEditorPropertyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XMLEditorPropertyControl.Designer.cs">
+      <DependentUpon>XMLEditorPropertyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMLPropertyControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XMLPropertyControlBase.Designer.cs">
+      <DependentUpon>XMLPropertyControlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XmlSourceDocumentManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DocumentEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DocumentEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentVisualizer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DocumentVisualizer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolBoxControl.resx">
+      <DependentUpon>ToolBoxControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMLEditorPropertyControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XMLEditorPropertyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMLPropertyControlBase.resx">
+      <DependentUpon>XMLPropertyControlBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram_full.cd" />
+    <None Include="ClassDiagram_toolBox.cd" />
+    <None Include="ClassDiagram_collapsed.cd" />
+  </ItemGroup>
+</Project>

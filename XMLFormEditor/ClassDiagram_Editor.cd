@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="XMLFormEditor.EditorForm">
+    <Position X="2.75" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>EditForm.cs</FileName>
+      <HashCode>RySIAhUgCCAMAhYqEiGAiI+SYRgAQBgQAWCAEzBJhAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="scrollableEditors" />
+    </ShowAsCollectionAssociation>
+    <Members>
+      <Field Name="applyXSLTToolStripMenuItem" Hidden="true" />
+      <Method Name="applyXSLTToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="arrangeLeftToolStripMenuItem" Hidden="true" />
+      <Method Name="arrangeLeftToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="arrangeRightToolStripMenuItem" Hidden="true" />
+      <Method Name="arrangeRightToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="buttonAddDocument" Hidden="true" />
+      <Method Name="buttonAddDocument_Click" Hidden="true" />
+      <Field Name="buttonAddPage" Hidden="true" />
+      <Method Name="buttonAddPage_Click" Hidden="true" />
+      <Method Name="buttonDocumentSourceRemove_Click" Hidden="true" />
+      <Field Name="buttonNewDocument" Hidden="true" />
+      <Method Name="buttonNewDocument_Click" Hidden="true" />
+      <Field Name="buttonRemoveDocument" Hidden="true" />
+      <Field Name="buttonRemovePage" Hidden="true" />
+      <Method Name="buttonRemovePage_Click" Hidden="true" />
+      <Field Name="clearSelectionToolStripMenuItem" Hidden="true" />
+      <Method Name="clearSelectionToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="copyToolStripMenuItem" Hidden="true" />
+      <Method Name="copyToolStripMenuItem_Click" Hidden="true" />
+      <Method Name="cutToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="cutToolStripMenuItem1" Hidden="true" />
+      <Field Name="deleteToolStripMenuItem" Hidden="true" />
+      <Method Name="deleteToolStripMenuItem_Click" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="drawGridToolStripMenuItem" Hidden="true" />
+      <Method Name="drawGridToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="editToolStripMenuItem" Hidden="true" />
+      <Field Name="exitToolStripMenuItem" Hidden="true" />
+      <Method Name="exitToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="fileToolStripMenuItem" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Method Name="listBox1_KeyDown" Hidden="true" />
+      <Field Name="listBoxDocumentSources" Hidden="true" />
+      <Method Name="listBoxDocumentSources_DoubleClick" Hidden="true" />
+      <Field Name="listBoxPageNames" Hidden="true" />
+      <Method Name="listBoxPageNames_DoubleClick" Hidden="true" />
+      <Method Name="listBoxPageNames_SelectedIndexChanged" Hidden="true" />
+      <Field Name="loadLayoutToolStripMenuItem" Hidden="true" />
+      <Field Name="menuStrip1" Hidden="true" />
+      <Field Name="newToolStripMenuItem" Hidden="true" />
+      <Method Name="newToolStripMenuItem_Click" Hidden="true" />
+      <Method Name="openLayoutToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="panel3" Hidden="true" />
+      <Field Name="panel4" Hidden="true" />
+      <Field Name="panel5" Hidden="true" />
+      <Field Name="panel6" Hidden="true" />
+      <Method Name="pasteToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="saveAsToolStripMenuItem" Hidden="true" />
+      <Method Name="saveAsToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="saveLayoutToolStripMenuItem" Hidden="true" />
+      <Method Name="saveLayoutToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="selectAllToolStripMenuItem" Hidden="true" />
+      <Method Name="selectAllToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="setGridSizeToolStripMenuItem" Hidden="true" />
+      <Method Name="setGridSizeToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="snapToGridToolStripMenuItem" Hidden="true" />
+      <Method Name="snapToGridToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="splitter1" Hidden="true" />
+      <Field Name="splitter2" Hidden="true" />
+      <Field Name="splitter3" Hidden="true" />
+      <Field Name="splitter5" Hidden="true" />
+      <Method Name="splitter5_Paint" Hidden="true" />
+      <Field Name="tabControl1" Hidden="true" />
+      <Method Name="tabControl1_SelectedIndexChanged" Hidden="true" />
+      <Field Name="tabPage1" Hidden="true" />
+      <Field Name="tabPage2" Hidden="true" />
+      <Field Name="toolBoxControl1" Hidden="true" />
+      <Field Name="toolStripMenuItem1" Hidden="true" />
+      <Field Name="toolStripMenuItem2" Hidden="true" />
+      <Field Name="toolStripMenuItem3" Hidden="true" />
+      <Field Name="toolStripMenuItem4" Hidden="true" />
+      <Field Name="viewToolStripMenuItem" Hidden="true" />
+    </Members>
+    <InheritanceLine Type="System.Windows.Forms.Form" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="1.13" />
+        <Point X="6.25" Y="1.625" />
+        <Point X="3.625" Y="1.625" />
+        <Point X="3.625" Y="2" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.FillForm">
+    <Position X="5.25" Y="2" Width="2" />
+    <TypeIdentifier>
+      <FileName>FillForm.cs</FileName>
+      <HashCode>BQCBAgAACCAAAAQAECCAgAiCQAgAghAABkAgAQABBAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="scrollablePages" />
+    </ShowAsCollectionAssociation>
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="exitToolStripMenuItem" Hidden="true" />
+      <Method Name="exitToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="fileToolStripMenuItem" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="menuStrip1" Hidden="true" />
+      <Method Name="openLayoutToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="openToolStripMenuItem" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="reloadOriginalToolStripMenuItem" Hidden="true" />
+      <Method Name="reloadOriginalToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="saveToolStripMenuItem" Hidden="true" />
+      <Method Name="saveToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="strictValidateToolStripMenuItem" Hidden="true" />
+      <Method Name="strictValidateToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="tabControl1" Hidden="true" />
+      <Method Name="tabControl1_SelectedIndexChanged" Hidden="true" />
+      <Field Name="tabPage1" Hidden="true" />
+      <Field Name="tabPage2" Hidden="true" />
+      <Field Name="validateToolStripMenuItem" Hidden="true" />
+      <Method Name="validateToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="validationToolStripMenuItem" Hidden="true" />
+    </Members>
+  </Class>
+  <Class Name="XMLFormEditor.InputTextDialog">
+    <Position X="9.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>InputTextDialog.cs</FileName>
+      <HashCode>AAAAAAAAACAAAAAAAACABAACAAAAAAAAEQAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="buttonCancel" Hidden="true" />
+      <Field Name="buttonOk" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="textBox1" Hidden="true" />
+    </Members>
+    <InheritanceLine Type="System.Windows.Forms.Form" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="1.13" />
+        <Point X="6.25" Y="1.625" />
+        <Point X="10" Y="1.625" />
+        <Point X="10" Y="2" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.MainForm">
+    <Position X="0.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <FileName>MainForm.cs</FileName>
+      <HashCode>AAwACQUgACBAAhAAIBCBAwACAAAAAIAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="buttonEdit" Hidden="true" />
+      <Method Name="buttonEdit_Click" Hidden="true" />
+      <Field Name="buttonExit" Hidden="true" />
+      <Method Name="buttonExit_Click" Hidden="true" />
+      <Field Name="buttonFill" Hidden="true" />
+      <Method Name="buttonFill_Click" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="contextMenuStrip1" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="editToolStripMenuItem" Hidden="true" />
+      <Field Name="fillToolStripMenuItem" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="listBox1" Hidden="true" />
+      <Method Name="listBox1_DoubleClick" Hidden="true" />
+      <Method Name="listBox1_SelectedIndexChanged" Hidden="true" />
+    </Members>
+    <InheritanceLine Type="System.Windows.Forms.Form" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="1.13" />
+        <Point X="6.25" Y="1.625" />
+        <Point X="1.4" Y="1.625" />
+        <Point X="1.4" Y="2" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="XMLFormEditor.OptionsForm">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>OptionsForm.cs</FileName>
+      <HashCode>AgAAABAAACAAABAAAACABAASAAAAAAAIAAAAAAEAAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="buttonCancel" Hidden="true" />
+      <Field Name="buttonOK" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+    </Members>
+  </Class>
+  <Class Name="System.Windows.Forms.Form" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="XMLFormEditor.TextView">
+    <Position X="11.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>TextView.cs</FileName>
+      <HashCode>AAAAAAAAACBAAgEAAACAAAACAAAAAAAAIAAQAQAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="buttonEdit" Hidden="true" />
+      <Method Name="buttonEdit_Click" Hidden="true" />
+      <Field Name="buttonSave" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+    </Members>
+  </Class>
+  <Class Name="XMLFormEditor.ScrollableEditor">
+    <Position X="6" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>ScrollableEditor.cs</FileName>
+      <HashCode>AAAAAAAAACAAIQAAUACAAAgCAADAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="documentEditor" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Method Name="OnResize" Hidden="true" />
+      <Method Name="ScrollableEditor" Hidden="true" />
+      <Method Name="scrollBar_Scroll" Hidden="true" />
+    </Members>
+  </Class>
+  <Class Name="XMLFormEditor.ScrollablePage">
+    <Position X="8.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>ScrollablePage.cs</FileName>
+      <HashCode>AAAgAAAAACAAIQAAUACAAAASAABAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="documentForm" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Method Name="ScrollablePage" Hidden="true" />
+      <Method Name="scrollablePage_Resize" Hidden="true" />
+      <Method Name="scrollBar_Scroll" Hidden="true" />
+    </Members>
+  </Class>
+</ClassDiagram>
