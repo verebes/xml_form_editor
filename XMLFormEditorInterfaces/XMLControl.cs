@@ -72,6 +72,9 @@ namespace XMLFormEditor
         {
            _parentLayout = null;
            _resizeMode = ResizeMode.Both;
+
+           _instanceId = _instanceIdCounter;
+            ++_instanceIdCounter;            
         }
 
         ~XMLControl()
@@ -83,6 +86,14 @@ namespace XMLFormEditor
                 _newIcon = null;
             }
 
+        }
+
+        private static int _instanceIdCounter = 0;
+        private int _instanceId = 0;
+
+        public override int GetHashCode()
+        {
+            return _instanceId;
         }
 
         #region AbstractMethods

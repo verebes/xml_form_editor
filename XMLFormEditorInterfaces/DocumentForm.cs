@@ -18,9 +18,9 @@ namespace XMLFormEditor
             }
         }
 
-        public override void recreateControls()
+        public override void doRecreateControls()
         {            
-            base.recreateControls();
+            base.doRecreateControls();
             updateVisibleControls();
          
             foreach (KeyValuePair<Control, XMLControl> p in Control2XmlControlDictionary)
@@ -29,18 +29,5 @@ namespace XMLFormEditor
             }
 
         }
-
-        public void updateVisibleControls()
-        {
-            if (_documentLayout == null)
-                return;
-                        
-            foreach (XMLControl ctr in _documentLayout.Controls(ViewRectangle))
-            {                        
-                ctr.UpdateEditorControl(XMLControl2ControlDictionary[ctr]);
-            }
-        }
-
-
     }
 }

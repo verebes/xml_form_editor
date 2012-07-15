@@ -8,7 +8,7 @@ using System.Xml.XPath;
 namespace XMLFormEditor
 {
     public class XmlSourceDocumentManager
-    {
+    {        
         private Dictionary<XmlDocument, String> xmlDocument2Filename;
         private Dictionary<String, XmlDocument> fileName2XmlDocument;
 

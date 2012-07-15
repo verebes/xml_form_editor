@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.XPath;
+using System.Collections.Specialized;
 
 namespace XMLFormEditor
 {
@@ -22,8 +23,8 @@ namespace XMLFormEditor
         const int _defaultHeight = 20;
 
 
-        protected Dictionary<string, string> caption2ValueDictionary = new Dictionary<string,string>();
-        protected Dictionary<string, string> value2CaptionDictionary = new Dictionary<string, string>();
+        protected StringDictionary caption2ValueDictionary = new StringDictionary();
+        protected StringDictionary value2CaptionDictionary = new StringDictionary();
 
 
         public override Icon ListIcon

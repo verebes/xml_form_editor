@@ -14,9 +14,22 @@ namespace XMLFormEditor
 
     public class DocumentVisualizer : UserControl
     {
+       class ControlEqualityComparer : IEqualityComparer<Control>
+       {
+           public bool Equals(Control c1, Control c2)
+           {
+               return c1.Handle == c2.Handle;
+           }
+
+           public int GetHashCode(Control c) 
+           {
+               return c.Handle.ToInt32();               
+           }
+       }
+
 
         protected Dictionary<XMLControl, Control> XMLControl2ControlDictionary = new Dictionary<XMLControl, Control>();
-        protected Dictionary<Control, XMLControl> Control2XmlControlDictionary = new Dictionary<Control, XMLControl>();
+        protected Dictionary<Control, XMLControl> Control2XmlControlDictionary = new Dictionary<Control, XMLControl>( new ControlEqualityComparer() );
 
 
         protected DocumentLayout _documentLayout;
@@ -45,7 +58,6 @@ namespace XMLFormEditor
 
                 _viewRectangle = value;
                 recreateControls();
-                Invalidate();
             }
         }
 
@@ -142,6 +154,15 @@ namespace XMLFormEditor
         {
             System.Diagnostics.Debug.WriteLine("clipRect: "+ e.ClipRectangle.ToString() +  " client" + ClientRectangle.ToString() );
 
+            if (recreateControlsNeeded) {
+                doRecreateControls();
+            }
+
+            if (updateVisibleControlsNeeded) {
+                System.Diagnostics.Trace.WriteLine("calling doUpdateVisibleControls() from DocumentVisualizer's OnPaint()");
+                doUpdateVisibleControls();
+            }
+
             e.Graphics.FillRectangle(Brushes.White, e.ClipRectangle);
             if (DrawGrid)
             {
@@ -173,40 +194,105 @@ namespace XMLFormEditor
 
         private void clearControls()
         {
+
+            List<Control> l = new List<Control>();
+
+
             foreach (KeyValuePair<XMLControl, Control> pair in XMLControl2ControlDictionary)
-            {                
-                pair.Value.Dispose();
+            {
+                l.Add(pair.Value);                             
             }
 
+            System.Diagnostics.Trace.WriteLine("clearControls");
             XMLControl2ControlDictionary.Clear();
             Control2XmlControlDictionary.Clear();
+
+            foreach (Control c in l)
+            {
+                c.Parent = null;
+            }
         }
 
-        
+
+        protected bool recreateControlsNeeded = false;
         public virtual void recreateControls()
         {
+            if ( !recreateControlsNeeded ) {
+                recreateControlsNeeded = true;
+                Invalidate();
+            }
+            recreateControlsNeeded = true;
+        }
+
+        public virtual void doRecreateControls()
+        {
+            recreateControlsNeeded = false;
+            
+
             System.Diagnostics.Trace.WriteLine("XmlFormVisualizer:recreateControls: " + System.DateTime.Now.ToString() + " ("+ System.DateTime.Now.Millisecond.ToString()+")");
             if (DocumentLayout == null)
                 return;
 
-            clearControls();
-
             List<XMLControl> controls = DocumentLayout.Controls(ViewRectangle);
+            System.Diagnostics.Trace.WriteLine("calling clearControls()");
+            clearControls();
             foreach (XMLControl xmlControl in controls)
             {
+                System.Diagnostics.Trace.WriteLine("next loop: calling Create");
                 Control editControl = xmlControl.CreateEditorControl();                
                 editControl.SuspendLayout();
                 editControl.Location = new Point(xmlControl.ClientRect.Location.X - ViewLocation.X, xmlControl.ClientRect.Location.Y - ViewLocation.Y);
                 
-                editControl.Size = xmlControl.ClientRect.Size;
+                editControl.Size = xmlControl.ClientRect.Size;                
                 editControl.Parent = this;
+                System.Diagnostics.Trace.WriteLine("calling ResumeLayout");
                 editControl.ResumeLayout();
-                editControl.Visible = true;
 
-                XMLControl2ControlDictionary.Add(xmlControl, editControl);
-                Control2XmlControlDictionary.Add(editControl, xmlControl);
+                if (!XMLControl2ControlDictionary.ContainsKey(xmlControl))
+                {
+
+                    System.Diagnostics.Trace.WriteLine("XMLControl2ControlDictionary.ContainsKey:" + xmlControl.GetHashCode().ToString());
+                    XMLControl2ControlDictionary.Add(xmlControl, editControl);
+                    Control2XmlControlDictionary.Add(editControl, xmlControl);
+                } else {
+                    System.Diagnostics.Trace.WriteLine("how can this happen.ContainsKey:" + xmlControl.GetHashCode().ToString());                    
+                }
             }
         }
+
+        protected bool updateVisibleControlsNeeded = false;
+        public virtual void updateVisibleControls()
+        {
+            if (!updateVisibleControlsNeeded)
+            {
+                updateVisibleControlsNeeded = true;
+                Invalidate();
+            }
+            updateVisibleControlsNeeded = true;
+        }
+
+
+        public virtual void doUpdateVisibleControls()
+        {
+            System.Diagnostics.Trace.WriteLine("doUpdateVisibleControls() was called");
+            updateVisibleControlsNeeded = false;
+
+            if (_documentLayout == null)
+                return;
+
+            List<XMLControl> controls = _documentLayout.Controls(ViewRectangle);
+            foreach (XMLControl ctr in controls)
+            {
+                System.Diagnostics.Trace.WriteLine("next loop in doUpdateVisibleControls");
+
+                if (XMLControl2ControlDictionary.ContainsKey(ctr))
+                {
+                    System.Diagnostics.Trace.WriteLine("XMLControl2ControlDictionary.ContainsKey(ctr):" + ctr.GetHashCode().ToString());
+                    ctr.UpdateEditorControl(XMLControl2ControlDictionary[ctr]);                    
+                }
+            }
+        }
+
 
     }
 }

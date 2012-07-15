@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace XMLFormEditor
 {
@@ -55,8 +56,8 @@ namespace XMLFormEditor
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
+            Trace.WriteLine("DocumentEditorOverlay::OnMouseDown");
             base.OnMouseDown(e);
-            StoreBmp();
 
             HandlerType ht = _documentLayout.getResizeHandlerType( ViewPoint2LalyoutPoint(e.Location));
             if (ht != HandlerType.None)
@@ -85,6 +86,7 @@ namespace XMLFormEditor
 
         private void MouseDownOnHandler(MouseEventArgs e, HandlerType handlerType)
         {
+            Trace.WriteLine("DocumentEditorOverlay::MouseDownOnHandler");
             _resizingControls = true;
             _resizeMode = handlerType;
             _moved = false;
@@ -92,7 +94,8 @@ namespace XMLFormEditor
         }
 
         private void MouseDownOnControls(MouseEventArgs e)
-        {   
+        {
+            Trace.WriteLine("DocumentEditorOverlay::MouseDownOnControls");
             if (_documentLayout.SelectedControls(ViewPoint2LalyoutPoint(e.Location)).Count == 0 )
             {
                 if (ModifierKeys != Keys.Control)
@@ -114,6 +117,7 @@ namespace XMLFormEditor
 
         private void MouseDownOnBackground(MouseEventArgs e)
         {
+            Trace.WriteLine("DocumentEditorOverlay::MouseDownOnBackground");
             if (ModifierKeys != Keys.Control)
                 _documentLayout.ClearSelection();
 
@@ -125,6 +129,7 @@ namespace XMLFormEditor
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
+            Trace.WriteLine("DocumentEditorOverlay::OnMouseUp");
             base.OnMouseUp(e);
             
             // this was in because of clicking when more than one control is selected and we click on an allready selecet control
@@ -273,9 +278,8 @@ namespace XMLFormEditor
             {
                 _movingControls = false;
                 _resizingControls = false;
+                Trace.WriteLine("DocumentEditorOverlay::OnMouseCaptureChanged: Calling recreateControls");
                 _documentEditor.recreateControls();
-                Parent.Update();
-                StoreBmp();                
             }
 
             if (_selecting)
@@ -400,6 +404,7 @@ namespace XMLFormEditor
 
         public void StoreBmp()
         {
+            System.Diagnostics.Trace.WriteLine("StoreBmp() was called. Parent.ClientRectangle: " + Parent.ClientRectangle.ToString() );
             StoreBmp(Parent.ClientRectangle);
         }
 
@@ -421,7 +426,7 @@ namespace XMLFormEditor
 
             Bitmap tmpBmp = new Bitmap(_storedBmp);
             Graphics g = Graphics.FromImage(tmpBmp);
-            g.DrawImage(_storedBmp,-1,-1);
+            g.DrawImage(_storedBmp,0,0);
 //            g.DrawImage(_storedBmp, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
 
             if (_selecting)
@@ -433,7 +438,7 @@ namespace XMLFormEditor
 
             PaintSelection(g);
             g.Flush();
-            e.Graphics.DrawImage(tmpBmp, 0, 0);
+            e.Graphics.DrawImage(tmpBmp, -1, -1);
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
@@ -461,11 +466,6 @@ namespace XMLFormEditor
 
         protected override void OnVisibleChanged(EventArgs e)
         {
-            if (Visible)
-            {
-                StoreBmp();
-                Update();
-            }
             base.OnVisibleChanged(e);
         }
 

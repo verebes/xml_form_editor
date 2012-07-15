@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
@@ -28,8 +29,8 @@ namespace XMLFormEditor
         }
 
 
-        protected Dictionary<string, string> caption2ValueDictionary = new Dictionary<string,string>();
-        protected Dictionary<string, string> value2CaptionDictionary = new Dictionary<string, string>();
+        protected StringDictionary caption2ValueDictionary = new StringDictionary();
+        protected StringDictionary value2CaptionDictionary = new StringDictionary();
         
 
         public XMLList ()

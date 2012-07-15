@@ -4,6 +4,8 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 
+using System.Diagnostics;
+
 namespace XMLFormEditor
 {
     public class DocumentEditorVisualizer : DocumentVisualizer, IUpdatableWindow
@@ -60,6 +62,7 @@ namespace XMLFormEditor
                 _editorOverlay.DocumentLayout = value;
                 base.DocumentLayout = value;
 
+                Trace.WriteLine("DocumentEditor::DocumentLayout: Calling recreateControls");
                 recreateControls();
             }
         }
@@ -90,6 +93,8 @@ namespace XMLFormEditor
 
         public void MoveControl(XMLControl xmlControl,  int deltaX, int deltaY)
         {
+            System.Diagnostics.Trace.WriteLine("MoveControl 1: " + xmlControl.GetHashCode().ToString());
+            
             Control control = XMLControl2ControlDictionary[xmlControl];
             Point pos = control.Location;
             pos.X += deltaX;
@@ -99,6 +104,7 @@ namespace XMLFormEditor
 
         public void ResizeControl(XMLControl xmlControl, HandlerType handleType, int deltaX, int deltaY)
         {
+            System.Diagnostics.Trace.WriteLine("MoveControl 1: " + xmlControl.GetHashCode().ToString());
             Control control = XMLControl2ControlDictionary[xmlControl];
             Rectangle rect = new Rectangle(control.Location, control.Size);
             ResizeTool.ResizeRect(ref rect, handleType, deltaX, deltaY);
@@ -129,6 +135,7 @@ namespace XMLFormEditor
             editControl.Visible = true;
             editControl.TabStop = false;
 
+            System.Diagnostics.Trace.WriteLine("DropToolBoxItem 3");
             XMLControl2ControlDictionary.Add(xmlConrtol, editControl);
             Control2XmlControlDictionary.Add(editControl, xmlConrtol);
 
@@ -141,6 +148,7 @@ namespace XMLFormEditor
         public void RemoveSelectedControls()
         {
             DocumentLayout.RemoveSelectedControls();
+            Trace.WriteLine("DocumentEditor::RemoveSelectedControls: Calling recreateControls");
             recreateControls();
         }
 
@@ -153,6 +161,8 @@ namespace XMLFormEditor
 
             foreach (XMLControl ctr in _documentLayout.SelectedControls(ViewRectangle))
             {
+
+                System.Diagnostics.Trace.WriteLine("ApplyDataSource 4");
                 ctr.UpdateEditorControl(XMLControl2ControlDictionary[ctr]);
                 _editorOverlay.Invalidate(XMLControl2ControlDictionary[ctr].ClientRectangle);
             }
@@ -256,9 +266,9 @@ namespace XMLFormEditor
             _editorOverlay.Top = 0;
             _editorOverlay.Width = ClientRectangle.Width;
             _editorOverlay.Height = ClientRectangle.Height;
-            _editorOverlay.ResumeLayout(false);            
+            _editorOverlay.ResumeLayout(false);
 
-            if (!_refreshing)
+            if (!_refreshing)                
                 Update();
 
             _editorOverlay.StoreBmp();
@@ -270,9 +280,9 @@ namespace XMLFormEditor
             paintingOverlay = false;
         }
         
-        public override void recreateControls()
-        {
-            base.recreateControls();
+        public override void doRecreateControls()
+        {            
+            base.doRecreateControls();
 
             updateVisibleControls();            
             RefreshOverlay();
@@ -287,32 +297,11 @@ namespace XMLFormEditor
         }
 
 
-        protected bool updateVisibleControlsNeeded = false;
-        public void updateVisibleControls()
+        public override void updateVisibleControls()
         {
-            if ( updateVisibleControlsNeeded == false ) {
-                updateVisibleControlsNeeded = true;
-                Invalidate();
-            }
-            updateVisibleControlsNeeded = true;
+            base.updateVisibleControls();
             refreshOverlayNeeded = true;
         }
-
-        protected void doUpdateVisibleControls()
-        {
-            updateVisibleControlsNeeded = false;
-
-            if (_documentLayout == null)
-                return;
-
-            foreach (XMLControl ctr in _documentLayout.Controls(ViewRectangle))
-            {
-                if (XMLControl2ControlDictionary.ContainsKey(ctr))
-                    ctr.UpdateEditorControl(XMLControl2ControlDictionary[ctr]);
-            }
-        }
-
-
 
         protected bool _refreshing = false;
         public override void Refresh()
@@ -320,14 +309,20 @@ namespace XMLFormEditor
             base.Refresh();
             _refreshing = true;
             RefreshOverlay();
-            _refreshing = false;            
+            _refreshing = false;
         }
 
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            if (recreateControlsNeeded) 
+            {
+                doRecreateControls();
+            }
+
             if (updateVisibleControlsNeeded)
             {
+                System.Diagnostics.Trace.WriteLine("calling doUpdateVisibleControls() from DocumentEditor's OnPaint()");
                 doUpdateVisibleControls();
             }
 

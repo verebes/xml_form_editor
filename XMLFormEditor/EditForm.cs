@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,14 +20,13 @@ namespace XMLFormEditor
         {
             InitializeComponent();
 
-
             ToolBoxInitializer toolBoxInit = new ToolBoxInitializer(toolBoxControl1);
             toolBoxInit.InitializeToolBox();         
             
             documentLayouts = new DocumentLayoutCollection();
             documentLayouts.controlFactory = new DefaultControlFactory();
             documentLayouts.New();
-            createEditors();                                    
+            createEditors();
         }
 
         
@@ -416,7 +416,10 @@ namespace XMLFormEditor
         private void EditorForm_Shown(object sender, EventArgs e)
         {
             if (scrollableEditors.Count > 0)
+            {
+                Trace.WriteLine("EditForm::EditorForm_Shown: Calling recreateControls");
                 scrollableEditors[0].documentEditorVisualizer.recreateControls();
+            }
         }
 
         private void listBoxPageNames_SelectedIndexChanged(object sender, EventArgs e)
