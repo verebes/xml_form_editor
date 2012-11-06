@@ -139,6 +139,7 @@ namespace XMLFormEditor
             XMLControl2ControlDictionary.Add(xmlConrtol, editControl);
             Control2XmlControlDictionary.Add(editControl, xmlConrtol);
 
+            xmlConrtol.UpdateEditorControl(editControl);
 
             RefreshOverlay();
 

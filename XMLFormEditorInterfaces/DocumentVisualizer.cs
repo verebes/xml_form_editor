@@ -150,6 +150,7 @@ namespace XMLFormEditor
         {
         }
 
+        private Pen gridPen = new Pen(Color.LightGray, 1);
         protected override void OnPaint(PaintEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("clipRect: "+ e.ClipRectangle.ToString() +  " client" + ClientRectangle.ToString() );
@@ -165,21 +166,18 @@ namespace XMLFormEditor
 
             e.Graphics.FillRectangle(Brushes.White, e.ClipRectangle);
             if (DrawGrid)
-            {
-                Pen pen = new Pen(Color.LightGray, 1);
-                pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            {                
+                gridPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
 
                 
                 for (int i = gridSize - Math.Abs(ViewLocation.X % gridSize); i < Width; i += gridSize)
                 {
-                    //e.Graphics.DrawLine(pen, new Point(i, 0), new Point(i, Height));
-                    e.Graphics.DrawLine(pen, new Point(i, e.ClipRectangle.Top), new Point(i, e.ClipRectangle.Height));
+                    e.Graphics.DrawLine(gridPen, i, e.ClipRectangle.Top, i, e.ClipRectangle.Height);
                 }
 
                 for (int i = gridSize - Math.Abs(ViewLocation.Y % gridSize); i < Height; i += gridSize)
                 {
-                    //e.Graphics.DrawLine(pen, new Point(0, i), new Point(Width, i));
-                    e.Graphics.DrawLine(pen, new Point(e.ClipRectangle.Left, i), new Point(e.ClipRectangle.Width, i));
+                    e.Graphics.DrawLine(gridPen, e.ClipRectangle.Left, i, e.ClipRectangle.Width, i);
                 }
             }
             base.OnPaint(e);
