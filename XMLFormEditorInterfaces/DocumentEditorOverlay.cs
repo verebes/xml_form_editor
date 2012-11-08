@@ -144,7 +144,7 @@ namespace XMLFormEditor
                 
             //}
 
-            _moved = false;
+            //_moved = false;
             //Invalidate();
         }
 
@@ -159,7 +159,7 @@ namespace XMLFormEditor
                 return;
             }
 
-            if (_movingControls)            
+            if (_movingControls)
                 MovingControls(e);
 
             if (_resizingControls)
@@ -212,10 +212,11 @@ namespace XMLFormEditor
         {
             Point p = ViewPoint2LalyoutPoint(e.Location);
 
-            if (p.X != _dragStartPos.X || p.Y != _dragStartPos.Y)
-            {
-                _moved = true;
+            if (p.X == _dragStartPos.X && p.Y == _dragStartPos.Y)
+            {                
+                return;
             }
+            _moved = true;
 
             int deltaX = p.X - _dragStartPos.X;
             int deltaY = p.Y - _dragStartPos.Y;
@@ -274,12 +275,17 @@ namespace XMLFormEditor
                 return;
 
 
-            if (_movingControls || _resizingControls)
+            if (  _movingControls  || _resizingControls)
             {
                 _movingControls = false;
                 _resizingControls = false;
-                Trace.WriteLine("DocumentEditorOverlay::OnMouseCaptureChanged: Calling recreateControls");
-                _documentEditor.recreateControls();
+
+                if (_moved)
+                {
+                    Trace.WriteLine("DocumentEditorOverlay::OnMouseCaptureChanged: Calling recreateControls");
+                    _documentEditor.recreateControls();
+                    _moved = false;
+                }
             }
 
             if (_selecting)
