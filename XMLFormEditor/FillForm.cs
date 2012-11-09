@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace XMLFormEditor
 {
@@ -78,6 +79,9 @@ namespace XMLFormEditor
 
                 documentLayouts.Load(fileName);
                 Text = "Xml Form Editor - " + fileName;
+
+                String dir = Path.GetDirectoryName(fileName);
+                Directory.SetCurrentDirectory(dir);
             }            
             catch (Exception e)
             {                

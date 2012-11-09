@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Xsl;
+using System.IO;
 
 namespace XMLFormEditor
 {
@@ -87,9 +88,6 @@ namespace XMLFormEditor
             {
                 MessageBox.Show("Error: " + exc.Message);
             }
-
-
-
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,6 +103,9 @@ namespace XMLFormEditor
             {
                 documentLayouts.SaveAs(saveDialog.FileName);
                 MainForm.writeRecentFileToRegistry(saveDialog.FileName);
+
+                String dir = Path.GetDirectoryName(saveDialog.FileName);
+                Directory.SetCurrentDirectory(dir);
             }
         }
 
@@ -287,11 +288,14 @@ namespace XMLFormEditor
                 return;
             }
 
+            String dir = Path.GetDirectoryName(documentLayouts.LayoutFileName);
+
             SaveFileDialog dialog = new SaveFileDialog();
+            dialog.InitialDirectory = dir;
             dialog.RestoreDirectory = true;
             dialog.Filter = "Xml files (*.xml)|*.xml|All files (*.*)|*.*";
             dialog.FilterIndex = 0;
-            dialog.DefaultExt = "xml";
+            dialog.DefaultExt = "xml";            
             dialog.AddExtension = true;
 
             if (dialog.ShowDialog() != DialogResult.OK)
@@ -300,7 +304,7 @@ namespace XMLFormEditor
             try
             {
                 string relativeFileName = EvaluateRelativePath(documentLayouts.LayoutFileName, dialog.FileName);
-
+                
                 XmlSourceDocumentManager.Instance().NewDocument(relativeFileName);
                 listBoxDocumentSources.Items.Add(relativeFileName);
             }
