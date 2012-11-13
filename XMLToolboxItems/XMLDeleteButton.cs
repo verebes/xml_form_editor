@@ -7,13 +7,11 @@ using System.Xml;
 
 namespace XMLFormEditor
 {
-    public class XMLInsertButton : XMLControl
+    public class XMLDeleteButton : XMLControl
     {
 
         protected string _XPathExpression;
         protected string _documentName;
-        protected string _insertText;
-
 
         const int _defaultWidth = 200;
         const int _defaultHeight = 20;
@@ -24,11 +22,11 @@ namespace XMLFormEditor
         }
 
 
-        public XMLInsertButton()
+        public XMLDeleteButton()
         {
             _clientRect = new Rectangle(0, 0, _defaultWidth, _defaultHeight);
             ResizeMode = ResizeMode.Both;
-            _name = "XMLInsertButton";            
+            _name = "XMLDeleteButton";            
         }
 
         public override XmlElement serializeToXml(XmlDocument document)
@@ -43,10 +41,6 @@ namespace XMLFormEditor
             RowXPathElement.InnerText = _XPathExpression;
             element.AppendChild(RowXPathElement);
 
-            XmlElement InsertTextElement = document.CreateElement("InsertText");
-            InsertTextElement.InnerText = _insertText;
-            element.AppendChild(InsertTextElement);
-
             return element;
         }
 
@@ -54,13 +48,12 @@ namespace XMLFormEditor
         {
             _documentName = element.ChildNodes[0].InnerText;
             _XPathExpression = element.ChildNodes[1].InnerText;
-            _insertText = element.ChildNodes[2].InnerText;
         }
 
 
         public override XMLControl Duplicate(System.Drawing.Point position)
         {
-            XMLInsertButton newControl = new XMLInsertButton();
+            XMLDeleteButton newControl = new XMLDeleteButton();
             Rectangle r = ClientRect;
             r.Location = position;
             newControl.ClientRect = r;
@@ -86,8 +79,8 @@ namespace XMLFormEditor
                 XmlNode node = source.SelectSingleNode(_XPathExpression);
                 if (node == null)
                     return;
-                
-                node.InnerXml += _insertText;
+
+                node.ParentNode.RemoveChild(node);                
             }
             catch (System.Xml.XPath.XPathException)
             {
@@ -114,7 +107,7 @@ namespace XMLFormEditor
             Button button = EditorControl as Button;
             if (button == null)
             {
-                System.Diagnostics.Trace.WriteLine("XMLInsertButton::UpdateEditorControl: control type not Label");
+                System.Diagnostics.Trace.WriteLine("XMLDeleteButton::UpdateEditorControl: control type not Label");
                 return;
             }
 
@@ -129,7 +122,7 @@ namespace XMLFormEditor
                 if (node == null)
                     throw new Exception("Selected node was not found: " + _XPathExpression);
 
-                button.Text = "Insert";
+                button.Text = "Delete";
                 button.Enabled = true;
             }
             catch (System.Xml.XPath.XPathException)
@@ -146,12 +139,11 @@ namespace XMLFormEditor
 
 
         public override XMLPropertyControlBase GetPropertyWindow()
-        {
-            XMLButtonDataSourcePropertyControl wnd = new XMLButtonDataSourcePropertyControl();            
+        {            
+            SingleDataSourcePropertyControl wnd = new SingleDataSourcePropertyControl();
             wnd.Text = "Button properties";
             wnd.textBoxXPath.Text = _XPathExpression;
             wnd.cbSourceDocuments.Text = _documentName;
-            wnd.richTextBoxInsertXml.Text = _insertText;
             return wnd;
         }
 
@@ -163,7 +155,6 @@ namespace XMLFormEditor
 
             _XPathExpression = dS.getXPathExpression();
             _documentName = dS.getDocumentName();
-            _insertText = dS.getInsertText();
         }
     }
 }

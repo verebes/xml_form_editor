@@ -35,6 +35,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="XMLDeleteButton.cs" />
     <Compile Include="DataSourceInterfaces.cs" />
     <Compile Include="MultiControl.cs">
       <SubType>UserControl</SubType>

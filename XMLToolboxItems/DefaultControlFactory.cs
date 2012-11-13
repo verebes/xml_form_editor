@@ -24,6 +24,8 @@ namespace XMLFormEditor
                     return new XMLLargeTextBox();
                 case "XMLInsertButton":
                     return new XMLInsertButton();
+                case "XMLDeleteButton":
+                    return new XMLDeleteButton();
                 case "XMLPager":
                     return new XMLPager();
                 case "XMLSchemaControl":
