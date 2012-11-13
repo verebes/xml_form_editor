@@ -149,7 +149,7 @@ namespace XMLFormEditor
 
         public override void SetDataSource(IDataSourceBase dataSource)
         {
-            IButtonDataSource dS = dataSource as IButtonDataSource;
+            SingleDataSourcePropertyControl dS = dataSource as SingleDataSourcePropertyControl;
             if (dS == null)
                 return;
 
