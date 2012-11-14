@@ -54,5 +54,14 @@ namespace XMLFormEditor
                 cbSourceDocuments.Items.Add(s);
             }
         }
+
+        private void buttonShowXMLTree_Click(object sender, EventArgs e)
+        {
+            XMLTreeDialog xmlTree = new XMLTreeDialog();
+            xmlTree.Document = XmlSourceDocumentManager.Instance().GetDocument( cbSourceDocuments.Text );
+            if ( xmlTree.ShowDialog() == DialogResult.OK ) {
+                textBoxXPath.Text = xmlTree.Selection;
+            }
+        }
     }
 }

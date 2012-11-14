@@ -33,6 +33,7 @@ namespace XMLFormEditor
             this.bApply = new System.Windows.Forms.Button();
             this.cbSourceDocuments = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.buttonShowXMLTree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // title
@@ -45,7 +46,7 @@ namespace XMLFormEditor
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxXPath.Location = new System.Drawing.Point(6, 108);
             this.textBoxXPath.Name = "textBoxXPath";
-            this.textBoxXPath.Size = new System.Drawing.Size(227, 20);
+            this.textBoxXPath.Size = new System.Drawing.Size(202, 20);
             this.textBoxXPath.TabIndex = 2;
             // 
             // label2
@@ -88,10 +89,21 @@ namespace XMLFormEditor
             this.label3.TabIndex = 7;
             this.label3.Text = "Source document";
             // 
+            // buttonShowXMLTree
+            // 
+            this.buttonShowXMLTree.Location = new System.Drawing.Point(210, 105);
+            this.buttonShowXMLTree.Name = "buttonShowXMLTree";
+            this.buttonShowXMLTree.Size = new System.Drawing.Size(23, 23);
+            this.buttonShowXMLTree.TabIndex = 9;
+            this.buttonShowXMLTree.Text = "...";
+            this.buttonShowXMLTree.UseVisualStyleBackColor = true;
+            this.buttonShowXMLTree.Click += new System.EventHandler(this.buttonShowXMLTree_Click);
+            // 
             // SingleDataSourcePropertyControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonShowXMLTree);
             this.Controls.Add(this.cbSourceDocuments);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.bApply);
@@ -105,6 +117,7 @@ namespace XMLFormEditor
             this.Controls.SetChildIndex(this.bApply, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.cbSourceDocuments, 0);
+            this.Controls.SetChildIndex(this.buttonShowXMLTree, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,5 +130,6 @@ namespace XMLFormEditor
         internal System.Windows.Forms.ComboBox cbSourceDocuments;
         private System.Windows.Forms.Label label3;
         protected System.Windows.Forms.Button bApply;
+        private System.Windows.Forms.Button buttonShowXMLTree;
     }
 }

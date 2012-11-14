@@ -91,6 +91,15 @@ namespace XMLFormEditor
             OnDocumentListChanged(this, null);           
         }
 
+        public XmlDocument GetDocument( string sourceFileName ) 
+        {
+            if ( !fileName2XmlDocument.ContainsKey(sourceFileName) )  {
+                return null;
+            } else {
+                return fileName2XmlDocument[sourceFileName];
+            }
+        }
+
         public void LoadDocuments()
         {
             foreach ( KeyValuePair<string, XmlDocument> item in fileName2XmlDocument )

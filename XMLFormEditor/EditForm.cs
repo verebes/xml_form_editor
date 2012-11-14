@@ -516,6 +516,10 @@ namespace XMLFormEditor
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if ( !scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.Focused  ) {
+                return;
+            }
+
             documentLayouts[tabControl1.SelectedIndex].RemoveSelectedControls();
             scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.recreateControls();            
         }

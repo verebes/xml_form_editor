@@ -95,6 +95,12 @@
     <Compile Include="XMLPager.cs" />
     <Compile Include="XMLSchemaControl.cs" />
     <Compile Include="XMLTextBox.cs" />
+    <Compile Include="XMLTreeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMLTreeDialog.Designer.cs">
+      <DependentUpon>XMLTreeDialog.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SingleDataSourcePropertyControl.resx">
@@ -136,6 +142,10 @@
     <EmbeddedResource Include="XMLButtonDataSourcePropertyControl.resx">
       <SubType>Designer</SubType>
       <DependentUpon>XMLButtonDataSourcePropertyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMLTreeDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XMLTreeDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
