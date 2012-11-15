@@ -208,6 +208,15 @@ namespace XMLFormEditor
             }
         }
 
+        public void ToggleControlSelections(System.Drawing.Point selectionPoint)
+        {
+            foreach (XMLControl control in _xmlControlList) {
+                if (control.ClientRect.Contains(selectionPoint)) {
+                    control.Selected = !control.Selected;
+                }
+            }
+        }
+
         public void SelectControls(System.Drawing.Point selectionPoint)
         {
             foreach (XMLControl control in _xmlControlList)

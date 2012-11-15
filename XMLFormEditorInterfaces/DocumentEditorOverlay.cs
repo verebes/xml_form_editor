@@ -96,19 +96,18 @@ namespace XMLFormEditor
         private void MouseDownOnControls(MouseEventArgs e)
         {
             Trace.WriteLine("DocumentEditorOverlay::MouseDownOnControls");
-            if (_documentLayout.SelectedControls(ViewPoint2LalyoutPoint(e.Location)).Count == 0)
-            {
-                if (ModifierKeys != Keys.Control)
+                if (ModifierKeys == Keys.Control) {                    
+                    _documentLayout.ToggleControlSelections(ViewPoint2LalyoutPoint(e.Location));
+                } else {
                     _documentLayout.ClearSelection();
-
-                _documentLayout.SelectControls(ViewPoint2LalyoutPoint(e.Location));
+                    _documentLayout.SelectControls(ViewPoint2LalyoutPoint(e.Location));
+                }
 
                 List<XMLControl> selectedControls = _documentLayout.SelectedControls();
                 if (selectedControls.Count == 1)
                     _documentEditor.CreateControlPropertyWindow(selectedControls[0]);
                 else
                     _documentEditor.DestroyPropertyWindow();
-            }
 
             _movingControls = true;
             _moved = false;
@@ -132,7 +131,7 @@ namespace XMLFormEditor
             Trace.WriteLine("DocumentEditorOverlay::OnMouseUp");
             base.OnMouseUp(e);
 
-            // this was in because of clicking when more than one control is selected and we click on an allready selecet control
+            // this was in because of clicking when more than one control is selected and we click on an already selected control
             // in this case the selection should disappear from the other controls
 
             //if ( !_moved ) 
