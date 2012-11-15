@@ -441,8 +441,7 @@ namespace XMLFormEditor
                 g2.Dispose();
             }
             
-            Graphics g = Graphics.FromImage(tmpBmp);
-            g.DrawImageUnscaled(_storedBmp, 0, 0);
+            Graphics g = Graphics.FromImage(tmpBmp);            
 
             if (Focused)
                 g.DrawRectangle(Pens.Black, 1,1,Width-2, Height-2);
