@@ -7,8 +7,14 @@ using System.Xml;
 
 namespace XMLFormEditor
 {
-    public abstract class XMLControl : XMLFormEditor.IToolBoxItem, XMLFormEditor.IEditorControl
+
+    public abstract class XMLControl : XMLFormEditor.IToolBoxItem, XMLFormEditor.IEditorControl, IComparable
     {
+        public int CompareTo(Object o) {
+            return GetHashCode() - o.GetHashCode();
+
+        }
+
         private DocumentLayout _parentLayout = null;
         public DocumentLayout ParentLayout
         {
@@ -19,7 +25,9 @@ namespace XMLFormEditor
         private ResizeMode _resizeMode = ResizeMode.Both;
         public ResizeMode ResizeMode
         {
-            get { return _resizeMode; }
+            get {
+                return _resizeMode;
+            }
             set { _resizeMode = value; }
         }
 
