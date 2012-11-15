@@ -278,7 +278,7 @@ namespace XMLFormEditor
 
 
         private bool refreshOverlayNeeded = false;
-        private void RefreshOverlay ()
+        public void RefreshOverlay ()
         {
             if ( !refreshOverlayNeeded ) {
                 refreshOverlayNeeded = true;

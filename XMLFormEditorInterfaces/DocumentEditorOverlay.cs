@@ -159,12 +159,13 @@ namespace XMLFormEditor
                 return;
             }
 
-            if (_movingControls)
+            if (_movingControls)                
                 MovingControls(e);
 
             if (_resizingControls)
-                ResizingControls(e);
+                ResizingControls(e);            
 
+            _documentEditor.RefreshOverlay();
             Invalidate();
         }
 
