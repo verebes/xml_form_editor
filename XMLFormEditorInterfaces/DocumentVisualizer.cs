@@ -190,6 +190,7 @@ namespace XMLFormEditor
             ViewRectangle = new Rectangle(ViewRectangle.Location, Size);
         }
 
+
         private void clearControls()
         {
 
@@ -208,6 +209,7 @@ namespace XMLFormEditor
             foreach (Control c in l)
             {
                 c.Parent = null;
+                c.Dispose();
             }
         }
 
@@ -233,29 +235,93 @@ namespace XMLFormEditor
 
             List<XMLControl> controls = DocumentLayout.Controls(ViewRectangle);
             System.Diagnostics.Trace.WriteLine("calling clearControls()");
-            clearControls();
-            foreach (XMLControl xmlControl in controls)
-            {
-                System.Diagnostics.Trace.WriteLine("next loop: calling Create");
-                Control editControl = xmlControl.CreateEditorControl();                
-                editControl.SuspendLayout();
-                editControl.Location = new Point(xmlControl.ClientRect.Location.X - ViewLocation.X, xmlControl.ClientRect.Location.Y - ViewLocation.Y);
+
+            XMLControl[] oldControls = new XMLControl[XMLControl2ControlDictionary.Count];
+            XMLControl2ControlDictionary.Keys.CopyTo(oldControls,0);
+            Array.Sort(oldControls);
+            
+            XMLControl[] newControls = controls.ToArray();
+
+            Array.Sort(newControls);
+
+            
+
+            int iNew = 0;
+            int iOld = 0;
+            while ( iOld < oldControls.Length && iNew < newControls.Length ) {
+
+                int oldHash = oldControls[iOld].GetHashCode();
+                int newHash = newControls[iNew].GetHashCode();
+
+                if ( oldHash < newHash ) {
+                    DeleteControl(oldControls[iOld]);
+
+                    ++iOld;
+                    continue;
+                } 
                 
-                editControl.Size = xmlControl.ClientRect.Size;                
-                editControl.Parent = this;
-                System.Diagnostics.Trace.WriteLine("calling ResumeLayout");
-                editControl.ResumeLayout();
+                if ( oldHash == newHash ) {
+                    UpdateControl(oldControls[iOld]);
 
-                if (!XMLControl2ControlDictionary.ContainsKey(xmlControl))
-                {
+                    ++iOld;
+                    ++iNew;
+                    continue;
+                } 
+                                               
+                AddControl(newControls[iNew]);
+                ++iNew;
+            } 
 
-                    System.Diagnostics.Trace.WriteLine("XMLControl2ControlDictionary.ContainsKey:" + xmlControl.GetHashCode().ToString());
-                    XMLControl2ControlDictionary.Add(xmlControl, editControl);
-                    Control2XmlControlDictionary.Add(editControl, xmlControl);
-                } else {
-                    System.Diagnostics.Trace.WriteLine("how can this happen.ContainsKey:" + xmlControl.GetHashCode().ToString());                    
-                }
+            while ( iOld < oldControls.Length )
+            {
+                DeleteControl(oldControls[iOld]);                
+                ++iOld;
             }
+
+            while ( iNew < newControls.Length ) {
+                AddControl(newControls[iNew]);
+                ++iNew;
+            }
+            
+        }
+
+        private void AddControl(XMLControl xmlControl) {
+            System.Diagnostics.Trace.WriteLine("next loop: calling Create");
+            Control editControl = xmlControl.CreateEditorControl();
+            editControl.SuspendLayout();
+            editControl.Location = new Point(xmlControl.ClientRect.Location.X - ViewLocation.X, xmlControl.ClientRect.Location.Y - ViewLocation.Y);
+
+            editControl.Size = xmlControl.ClientRect.Size;
+            editControl.Parent = this;
+            System.Diagnostics.Trace.WriteLine("calling ResumeLayout");
+            editControl.ResumeLayout();
+
+            if (!XMLControl2ControlDictionary.ContainsKey(xmlControl)) {
+
+                System.Diagnostics.Trace.WriteLine("XMLControl2ControlDictionary.ContainsKey:" + xmlControl.GetHashCode().ToString());
+                XMLControl2ControlDictionary.Add(xmlControl, editControl);
+                Control2XmlControlDictionary.Add(editControl, xmlControl);
+            } else {
+                System.Diagnostics.Trace.WriteLine("how can this happen.ContainsKey:" + xmlControl.GetHashCode().ToString());
+            }
+        }
+
+        private void UpdateControl(XMLControl xmlControl) {
+            Control editControl = XMLControl2ControlDictionary[xmlControl];
+            editControl.Location = new Point(xmlControl.ClientRect.Location.X - ViewLocation.X, xmlControl.ClientRect.Location.Y - ViewLocation.Y);
+            editControl.Size = xmlControl.ClientRect.Size;
+
+        }
+
+        private void DeleteControl(XMLControl xmlControl)
+        {
+            Control c = XMLControl2ControlDictionary[xmlControl];
+            
+            XMLControl2ControlDictionary.Remove(xmlControl);
+            Control2XmlControlDictionary.Remove(c);
+
+            c.Parent = null;
+            c.Dispose();
         }
 
         protected bool updateVisibleControlsNeeded = false;
