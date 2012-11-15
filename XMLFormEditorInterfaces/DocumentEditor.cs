@@ -51,8 +51,10 @@ namespace XMLFormEditor
         {
             System.Diagnostics.Debug.WriteLine("OnResize: " + ClientRectangle);
 
-            base.OnResize(e);            
+            base.OnResize(e);
+            storeNeeded = true;
             RefreshOverlay();
+            
         }
 
         public override DocumentLayout DocumentLayout
@@ -76,6 +78,7 @@ namespace XMLFormEditor
             DoubleBuffered = false;
             
             _editorOverlay.Parent = this;
+            storeNeeded = true;
             RefreshOverlay();            
         }
 
@@ -140,7 +143,8 @@ namespace XMLFormEditor
             Control2XmlControlDictionary.Add(editControl, xmlConrtol);
 
             xmlConrtol.UpdateEditorControl(editControl);
-
+            
+            storeNeeded = true;
             RefreshOverlay();
 
             Cursor = Cursors.Arrow;
@@ -168,7 +172,9 @@ namespace XMLFormEditor
                 _editorOverlay.Invalidate(XMLControl2ControlDictionary[ctr].ClientRectangle);
             }
 
+            storeNeeded = true;
             RefreshOverlay();
+            
         }
 
         private void ApplyEditorSettings(XMLEditorPropertyControl propertyControl)
@@ -179,6 +185,8 @@ namespace XMLFormEditor
                 Convert.ToInt32(propertyControl.textBoxRight.Text) - Convert.ToInt32(propertyControl.textBoxLeft.Text),
                 Convert.ToInt32(propertyControl.textBoxBottom.Text) - Convert.ToInt32(propertyControl.textBoxTop.Text)
             );
+
+            storeNeeded = true;
         }
         
         public void CreateControlPropertyWindow(IEditorControl xmlControl)
@@ -252,9 +260,11 @@ namespace XMLFormEditor
             refreshOverlayNeeded = true;           
         }
 
+        private bool storeNeeded = false;
         private bool paintingOverlay = false;
         private void doRefreshOverlay() 
         {
+            Trace.TraceError("doRefreshOverlay");
             refreshOverlayNeeded = false;
 
             if (_editorOverlay == null)
@@ -272,12 +282,15 @@ namespace XMLFormEditor
             if (!_refreshing)                
                 Update();
 
-            _editorOverlay.StoreBmp();
-            _editorOverlay.BringToFront();
-            _editorOverlay.Focus(); // after adding new control the now control gets the focus so we focus back the overlay control
+            if (storeNeeded)
+            {
+                storeNeeded = false;
+                _editorOverlay.StoreBmp();
+            }
+//            _editorOverlay.BringToFront();
+//            _editorOverlay.Focus(); // after adding new control the now control gets the focus so we focus back the overlay control
 
             _editorOverlay.Invalidate();
-
             paintingOverlay = false;
         }
         
@@ -285,22 +298,23 @@ namespace XMLFormEditor
         {            
             base.doRecreateControls();
 
-            updateVisibleControls();            
+            updateVisibleControls();
+            storeNeeded = true;
             RefreshOverlay();
-
+            
             foreach (KeyValuePair<Control, XMLControl> p in Control2XmlControlDictionary) 
             { 
                 p.Key.TabStop = false;
             }
 
             System.Diagnostics.Trace.WriteLine("DocumentEditor:recreateControls (end): " + System.DateTime.Now.ToString() + " (" + System.DateTime.Now.Millisecond.ToString() + ")");
-            //System.Diagnostics.Debug.WriteLine("Stack:\n" + Environment.StackTrace.ToString());
         }
 
 
         public override void updateVisibleControls()
         {
             base.updateVisibleControls();
+            storeNeeded = true;
             refreshOverlayNeeded = true;
         }
 
@@ -309,6 +323,7 @@ namespace XMLFormEditor
         {
             base.Refresh();
             _refreshing = true;
+            storeNeeded = true;
             RefreshOverlay();
             _refreshing = false;
         }
@@ -325,6 +340,7 @@ namespace XMLFormEditor
             {
                 System.Diagnostics.Trace.WriteLine("calling doUpdateVisibleControls() from DocumentEditor's OnPaint()");
                 doUpdateVisibleControls();
+                storeNeeded = true;
             }
 
             if (refreshOverlayNeeded)
@@ -332,15 +348,18 @@ namespace XMLFormEditor
                 doRefreshOverlay();
             }
 
-            //if (!_refreshing)
-            //{
             if (_editorOverlay._storingBmp)
             {
                 base.OnPaint(e);
             }
-            //}
             else
+            {
                 System.Diagnostics.Debug.WriteLine("Skip");
+            }
+
+            if (_editorOverlay.Focused)
+                e.Graphics.DrawLine(Pens.Red, 0, 0, 200, 200);
+            
         }
 
         protected override void OnInvalidated(InvalidateEventArgs e)
@@ -353,6 +372,15 @@ namespace XMLFormEditor
         {
             if (_editorOverlay != null)
                 _editorOverlay.Focus();
+
+            RefreshOverlay();
+        }
+
+        protected override void OnLeave(EventArgs e)
+        {
+            RefreshOverlay();
+
+            base.OnLeave(e);
         }
 
     }

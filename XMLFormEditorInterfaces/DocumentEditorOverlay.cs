@@ -7,14 +7,14 @@ using System.Diagnostics;
 
 namespace XMLFormEditor
 {
-    public class DocumentEditorOverlay: UserControl
+    public class DocumentEditorOverlay : UserControl
     {
         private bool _selecting = false;
         private bool _movingControls = false;
         private bool _resizingControls = false;
         private HandlerType _resizeMode = HandlerType.None;
         private bool _moved = false; // moved since last 'mousedown' event
-        private Point _dragStartPos;        
+        private Point _dragStartPos;
 
         private DocumentLayout _documentLayout;
         public DocumentLayout DocumentLayout
@@ -32,7 +32,7 @@ namespace XMLFormEditor
 
 
         public DocumentEditorOverlay()
-		{
+        {
             InitializeComponent();
 
             _selecting = false;
@@ -59,10 +59,10 @@ namespace XMLFormEditor
             Trace.WriteLine("DocumentEditorOverlay::OnMouseDown");
             base.OnMouseDown(e);
 
-            HandlerType ht = _documentLayout.getResizeHandlerType( ViewPoint2LalyoutPoint(e.Location));
+            HandlerType ht = _documentLayout.getResizeHandlerType(ViewPoint2LalyoutPoint(e.Location));
             if (ht != HandlerType.None)
                 MouseDownOnHandler(e, ht);
-            else if ( _documentLayout.Controls( ViewPoint2LalyoutPoint(e.Location) ).Count == 0 )
+            else if (_documentLayout.Controls(ViewPoint2LalyoutPoint(e.Location)).Count == 0)
                 MouseDownOnBackground(e);
             else
                 MouseDownOnControls(e);
@@ -90,13 +90,13 @@ namespace XMLFormEditor
             _resizingControls = true;
             _resizeMode = handlerType;
             _moved = false;
-            _dragStartPos =  ViewPoint2LalyoutPoint(e.Location);
+            _dragStartPos = ViewPoint2LalyoutPoint(e.Location);
         }
 
         private void MouseDownOnControls(MouseEventArgs e)
         {
             Trace.WriteLine("DocumentEditorOverlay::MouseDownOnControls");
-            if (_documentLayout.SelectedControls(ViewPoint2LalyoutPoint(e.Location)).Count == 0 )
+            if (_documentLayout.SelectedControls(ViewPoint2LalyoutPoint(e.Location)).Count == 0)
             {
                 if (ModifierKeys != Keys.Control)
                     _documentLayout.ClearSelection();
@@ -131,7 +131,7 @@ namespace XMLFormEditor
         {
             Trace.WriteLine("DocumentEditorOverlay::OnMouseUp");
             base.OnMouseUp(e);
-            
+
             // this was in because of clicking when more than one control is selected and we click on an allready selecet control
             // in this case the selection should disappear from the other controls
 
@@ -141,7 +141,7 @@ namespace XMLFormEditor
             //        _documentLayout.ClearSelection();
 
             //    _documentLayout.SelectControls( ViewPoint2LalyoutPoint(e.Location));
-                
+
             //}
 
             //_moved = false;
@@ -170,7 +170,7 @@ namespace XMLFormEditor
 
         private void UpdateCurrentCursor(MouseEventArgs e)
         {
-            HandlerType handleType = _documentLayout.getResizeHandlerType( ViewPoint2LalyoutPoint(e.Location));
+            HandlerType handleType = _documentLayout.getResizeHandlerType(ViewPoint2LalyoutPoint(e.Location));
             if (handleType != HandlerType.None)
                 Cursor = ResizeTool.getCursor(handleType);
             else if (_documentLayout.Controls(ViewPoint2LalyoutPoint(e.Location)).Count != 0)
@@ -213,7 +213,7 @@ namespace XMLFormEditor
             Point p = ViewPoint2LalyoutPoint(e.Location);
 
             if (p.X == _dragStartPos.X && p.Y == _dragStartPos.Y)
-            {                
+            {
                 return;
             }
             _moved = true;
@@ -229,7 +229,7 @@ namespace XMLFormEditor
             foreach (XMLControl control in _documentLayout.SelectedControls())
             {
                 Point position = control.ClientRect.Location;
-                
+
 
                 System.Diagnostics.Trace.WriteLine("pos (1):" + position.X.ToString() + " ; " + position.Y.ToString());
                 if (_documentEditor.SnapToGrid)
@@ -240,7 +240,7 @@ namespace XMLFormEditor
                     if (Math.Abs(deltaY) >= gs)
                         position.Y += deltaY;
 
-                    position.X = ((position.X + (gs /2) *Math.Sign(position.X) ) / gs) * gs;
+                    position.X = ((position.X + (gs / 2) * Math.Sign(position.X)) / gs) * gs;
                     position.Y = ((position.Y + (gs / 2) * Math.Sign(position.Y)) / gs) * gs;
                 }
                 else
@@ -257,8 +257,8 @@ namespace XMLFormEditor
                 if (Math.Abs(deltaX) >= gs)
                     _dragStartPos.X = p.X - deltaX % gs;
 
-                if (Math.Abs(deltaY) >= gs )
-                    _dragStartPos.Y = p.Y - deltaY % gs;            
+                if (Math.Abs(deltaY) >= gs)
+                    _dragStartPos.Y = p.Y - deltaY % gs;
             }
             else
             {
@@ -271,11 +271,11 @@ namespace XMLFormEditor
         {
             base.OnMouseCaptureChanged(e);
 
-            if (! ( _selecting || _movingControls || _resizingControls ) )
+            if (!(_selecting || _movingControls || _resizingControls))
                 return;
 
 
-            if (  _movingControls  || _resizingControls)
+            if (_movingControls || _resizingControls)
             {
                 _movingControls = false;
                 _resizingControls = false;
@@ -290,12 +290,12 @@ namespace XMLFormEditor
 
             if (_selecting)
             {
-                _selecting = false;                
+                _selecting = false;
 
                 if (ModifierKeys != Keys.Control)
                     _documentLayout.ClearSelection();
 
-                _documentLayout.SelectControls( getCurrentSelectionRectangle());
+                _documentLayout.SelectControls(getCurrentSelectionRectangle());
 
                 if (_documentLayout.SelectedControls().Count > 1)
                 {
@@ -327,7 +327,7 @@ namespace XMLFormEditor
         }
 
         protected void PaintSelection(Graphics g)
-        {            
+        {
             if (_documentLayout == null)
                 return;
 
@@ -335,8 +335,8 @@ namespace XMLFormEditor
             selecttionPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
 
             int cntSelected = 0;
-            
-            foreach (XMLControl control in  _documentLayout.SelectedControls(_documentEditor.ViewRectangle))
+
+            foreach (XMLControl control in _documentLayout.SelectedControls(_documentEditor.ViewRectangle))
             {
                 cntSelected++;
                 Rectangle rect = control.ClientRect;
@@ -345,7 +345,7 @@ namespace XMLFormEditor
                 rect.Height += 6;
                 rect.X -= 3;
                 rect.Y -= 3;
-        
+
                 g.DrawRectangle(selecttionPen, rect);
                 if (!_moved)
                     PaintResizeHandler(g, rect, control.ResizeMode);
@@ -362,19 +362,19 @@ namespace XMLFormEditor
                 {
                     if (!(i == 1 && j == 1) && (resizeMode == ResizeMode.Both || (resizeMode == ResizeMode.Horizontal && j == 1) || (resizeMode == ResizeMode.Vertical && i == 1)))
                     {
-                        int x = (controlRect.Width /2) * i;
-                        int y = (controlRect.Height /2) * j;
-                        Rectangle r = new Rectangle(controlRect.Left + x -2 , controlRect.Top + y -2, 5, 5);
+                        int x = (controlRect.Width / 2) * i;
+                        int y = (controlRect.Height / 2) * j;
+                        Rectangle r = new Rectangle(controlRect.Left + x - 2, controlRect.Top + y - 2, 5, 5);
                         g.FillRectangle(brushWhite, r);
                         g.DrawRectangle(pen, r);
                     }
                 }
-            
+
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
-//            base.OnPaintBackground(e);           
+            //            base.OnPaintBackground(e);           
         }
 
 
@@ -387,13 +387,13 @@ namespace XMLFormEditor
                 return;
 
             System.Diagnostics.Debug.WriteLine("StoreBmp: " + DateTime.Now + " (" + System.DateTime.Now.Millisecond.ToString() + ")" + ": " + r.ToString());
-//            System.Diagnostics.Debug.WriteLine("Stack:\n" + Environment.StackTrace.ToString());
-            
+            //            System.Diagnostics.Debug.WriteLine("Stack:\n" + Environment.StackTrace.ToString());
+
 
             _storingBmp = true;
             if (_storedBmp == null || _storedBmp.Width != Parent.Width || _storedBmp.Height != Parent.Height)
-            {            
-                _storedBmp = new Bitmap(Parent.Width, Parent.Height);                
+            {
+                _storedBmp = new Bitmap(Parent.Width, Parent.Height);
                 Parent.DrawToBitmap(_storedBmp, Parent.ClientRectangle);
                 System.Diagnostics.Debug.WriteLine("StoreBmp: A");
             }
@@ -404,17 +404,19 @@ namespace XMLFormEditor
             }
 
             System.Diagnostics.Debug.WriteLine("StoreBmp (end): " + DateTime.Now + " (" + System.DateTime.Now.Millisecond.ToString() + ")" + ": " + r.ToString());
-            
+
             _storingBmp = false;
         }
 
         public void StoreBmp()
         {
-            System.Diagnostics.Trace.WriteLine("StoreBmp() was called. Parent.ClientRectangle: " + Parent.ClientRectangle.ToString() );
+            System.Diagnostics.Trace.WriteLine("StoreBmp() was called. Parent.ClientRectangle: " + Parent.ClientRectangle.ToString());
             StoreBmp(Parent.ClientRectangle);
         }
 
+        private int tmpCount = 0;
 
+        private Bitmap tmpBmp = null;
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -430,10 +432,17 @@ namespace XMLFormEditor
 
             System.Diagnostics.Debug.WriteLine("overlay: " + DateTime.Now + " (" + System.DateTime.Now.Millisecond.ToString() + ")" + " clipRect: " + e.ClipRectangle.ToString() + " client" + ClientRectangle.ToString());
 
-            Bitmap tmpBmp = new Bitmap(_storedBmp);
+            if ( tmpBmp == null || tmpBmp.Size != _storedBmp.Size ) {
+                tmpBmp = new Bitmap(_storedBmp);
+
+            } else {
+                Graphics g2 = Graphics.FromImage(tmpBmp);
+                g2.DrawImageUnscaled(_storedBmp, 0,0);
+                g2.Dispose();
+            }
+            
             Graphics g = Graphics.FromImage(tmpBmp);
-            g.DrawImage(_storedBmp,0,0);
-//            g.DrawImage(_storedBmp, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
+            g.DrawImageUnscaled(_storedBmp, 0, 0);
 
             if (_selecting)
             {
@@ -444,7 +453,14 @@ namespace XMLFormEditor
 
             PaintSelection(g);
             g.Flush();
-            e.Graphics.DrawImage(tmpBmp, -1, -1);
+            e.Graphics.DrawImageUnscaled(tmpBmp, -1, -1);
+            g.Dispose();
+            //tmpBmp.Save("e:\\GitHub\\tmp\\test_" + tmpCount.ToString() + ".bmp");
+            //System.IO.TextWriter tw = new System.IO.StreamWriter("e:\\GitHub\\tmp\\test_" + tmpCount.ToString() + ".txt");
+            //tw.WriteLine(System.Environment.StackTrace);
+            //tw.Close();
+
+            ++tmpCount;
         }
 
         protected override void OnKeyDown(KeyEventArgs e)

@@ -223,7 +223,7 @@ namespace XMLFormEditor
         }
 
         public virtual void doRecreateControls()
-        {
+        {           
             recreateControlsNeeded = false;
             
 
