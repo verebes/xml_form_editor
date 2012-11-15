@@ -93,11 +93,12 @@ namespace XMLFormEditor
             _dragStartPos = ViewPoint2LalyoutPoint(e.Location);
         }
 
+        private List<Point> positionList = new List<Point>();
         private void MouseDownOnControls(MouseEventArgs e)
         {
             Trace.WriteLine("DocumentEditorOverlay::MouseDownOnControls");
-            if (_documentLayout.SelectedControls(ViewPoint2LalyoutPoint(e.Location)).Count == 0 || ModifierKeys == Keys.Control)
-            {
+            List<XMLControl> selectedControls = null;
+            if (_documentLayout.SelectedControls(ViewPoint2LalyoutPoint(e.Location)).Count == 0 || ModifierKeys == Keys.Control) {
                 if (ModifierKeys == Keys.Control) {
                     _documentLayout.ToggleControlSelections(ViewPoint2LalyoutPoint(e.Location));
                 } else {
@@ -105,15 +106,27 @@ namespace XMLFormEditor
                     _documentLayout.SelectControls(ViewPoint2LalyoutPoint(e.Location));
                 }
 
-                List<XMLControl> selectedControls = _documentLayout.SelectedControls();
+
+                selectedControls = _documentLayout.SelectedControls();
                 if (selectedControls.Count == 1)
                     _documentEditor.CreateControlPropertyWindow(selectedControls[0]);
                 else
                     _documentEditor.DestroyPropertyWindow();
+            } else {
+                selectedControls = _documentLayout.SelectedControls();
+            }
+
+            positionList.Clear();
+
+
+
+            foreach (XMLControl control in selectedControls) {
+                positionList.Add(new Point(control.ClientRect.Location.X, control.ClientRect.Location.Y));
             }
 
             _movingControls = true;
             _moved = false;
+            
             _dragStartPos = ViewPoint2LalyoutPoint(e.Location);
         }
 
@@ -216,7 +229,7 @@ namespace XMLFormEditor
         {
             Point p = ViewPoint2LalyoutPoint(e.Location);
 
-            if (p.X == _dragStartPos.X && p.Y == _dragStartPos.Y)
+            if (! _moved && p.X == _dragStartPos.X && p.Y == _dragStartPos.Y)
             {
                 return;
             }
@@ -230,12 +243,15 @@ namespace XMLFormEditor
             if (_documentEditor.SnapToGrid && Math.Abs(deltaX) < gs && Math.Abs(deltaY) < gs)
                 return;
 
+
+            List<Point>.Enumerator it = positionList.GetEnumerator();
             foreach (XMLControl control in _documentLayout.SelectedControls())
             {
+                it.MoveNext();                
                 Point position = control.ClientRect.Location;
 
 
-                System.Diagnostics.Trace.WriteLine("pos (1):" + position.X.ToString() + " ; " + position.Y.ToString());
+                //System.Diagnostics.Trace.WriteLine("pos (1):" + position.X.ToString() + " ; " + position.Y.ToString());
                 if (_documentEditor.SnapToGrid)
                 {
                     if (Math.Abs(deltaX) >= gs)
@@ -249,25 +265,29 @@ namespace XMLFormEditor
                 }
                 else
                 {
-                    position.X += deltaX;
-                    position.Y += deltaY;
+                    
+                    //position.X += deltaX;
+                    //position.Y += deltaY;
                 }
                 System.Diagnostics.Trace.WriteLine("pos (2):" + position.X.ToString() + " ; " + position.Y.ToString());
-                control.MoveToAbsolutePos(position);
+                
+                Point newPos = new Point(it.Current.X + deltaX, it.Current.Y + deltaY);
+                //newPos.Offset(deltaX, deltaY);
+                control.MoveToAbsolutePos(newPos);
             }
 
             if (_documentEditor.SnapToGrid)
             {
-                if (Math.Abs(deltaX) >= gs)
-                    _dragStartPos.X = p.X - deltaX % gs;
+                //if (Math.Abs(deltaX) >= gs)
+                //    _dragStartPos.X = p.X - deltaX % gs;
 
-                if (Math.Abs(deltaY) >= gs)
-                    _dragStartPos.Y = p.Y - deltaY % gs;
+                //if (Math.Abs(deltaY) >= gs)
+                //    _dragStartPos.Y = p.Y - deltaY % gs;
             }
             else
             {
-                _dragStartPos.X = p.X;
-                _dragStartPos.Y = p.Y;
+                //_dragStartPos.X = p.X;
+                //_dragStartPos.Y = p.Y;
             }
         }
 
