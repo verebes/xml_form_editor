@@ -68,7 +68,7 @@ namespace XMLFormEditor
         }
 
         private int gridSize = 20; 
-        public int GridSize
+        public virtual int GridSize
         {
             get { return gridSize; }
             set {

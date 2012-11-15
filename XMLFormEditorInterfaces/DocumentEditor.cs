@@ -50,8 +50,27 @@ namespace XMLFormEditor
         public override bool DrawGrid {
             set {
                 base.DrawGrid = value;
-                
+                storeNeeded = true;
+                RefreshOverlay();
+
             }
+
+            get {
+                return base.DrawGrid;
+            }
+        }
+
+        public override int GridSize {
+            set {
+                base.GridSize = value;
+                storeNeeded = true;
+                RefreshOverlay();
+            }
+
+            get {
+                return base.GridSize;
+            }
+
         }
 
 
