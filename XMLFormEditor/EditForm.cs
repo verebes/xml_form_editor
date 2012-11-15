@@ -33,7 +33,8 @@ namespace XMLFormEditor
         
         private void UpdateMenuState()
         {
-            bool enabldMenus = documentLayouts.LayoutCount > tabControl1.SelectedIndex && tabControl1.SelectedIndex>=0;
+            bool enabldMenus = documentLayouts.LayoutCount > tabControl1.SelectedIndex && tabControl1.SelectedIndex>=0
+                && scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.Focused ;
 
             cutToolStripMenuItem1.Enabled = enabldMenus;
             copyToolStripMenuItem.Enabled = enabldMenus;
@@ -124,6 +125,7 @@ namespace XMLFormEditor
 
             listBoxPageNames.SelectedIndex = tabControl1.SelectedIndex;
 
+            UpdateMenuState();
         }
 
         private void addPage()
@@ -139,8 +141,13 @@ namespace XMLFormEditor
             editor.documentEditorVisualizer.PropertyWindowPlace = panel4;
             editor.Parent = tabControl1.TabPages[tabIndex];
             editor.Enter += delegate { 
-                //editor.Parent.Focus();
                 editor.documentEditorVisualizer.Focus();
+                UpdateMenuState();
+
+            };
+
+            editor.documentEditorVisualizer.Leave += delegate {
+                UpdateMenuState();
             };
 
             UpdateMenuState();
@@ -581,7 +588,9 @@ namespace XMLFormEditor
             {
                 editor.documentEditorVisualizer.DrawGrid = drawGridToolStripMenuItem.Checked;                
             }
-            scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.Update();
+
+            if (tabControl1.SelectedIndex >= 0)
+                scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.Invalidate();
         }
 
         private void applyXSLTToolStripMenuItem_Click(object sender, EventArgs e)

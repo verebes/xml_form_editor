@@ -444,6 +444,10 @@ namespace XMLFormEditor
             Graphics g = Graphics.FromImage(tmpBmp);
             g.DrawImageUnscaled(_storedBmp, 0, 0);
 
+            if (Focused)
+                g.DrawRectangle(Pens.Black, 1,1,Width-2, Height-2);
+
+
             if (_selecting)
             {
                 Rectangle layoutRect = getCurrentSelectionRectangle();
@@ -453,7 +457,7 @@ namespace XMLFormEditor
 
             PaintSelection(g);
             g.Flush();
-            e.Graphics.DrawImageUnscaled(tmpBmp, -1, -1);
+            e.Graphics.DrawImageUnscaled(tmpBmp, 0, 0);
             g.Dispose();
             //tmpBmp.Save("e:\\GitHub\\tmp\\test_" + tmpCount.ToString() + ".bmp");
             //System.IO.TextWriter tw = new System.IO.StreamWriter("e:\\GitHub\\tmp\\test_" + tmpCount.ToString() + ".txt");

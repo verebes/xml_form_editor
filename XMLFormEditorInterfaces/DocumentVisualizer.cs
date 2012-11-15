@@ -125,12 +125,12 @@ namespace XMLFormEditor
         }
         #endregion
 
-        bool _drawGrid = true;
+        protected bool _drawGrid = true;
         [Description("Determines whether the form has a grid background"),
          DefaultValue(true),
          Category("Appearance")]
 
-        public bool DrawGrid
+        public virtual bool DrawGrid
         {
             set
             {

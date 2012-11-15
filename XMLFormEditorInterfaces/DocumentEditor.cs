@@ -47,6 +47,14 @@ namespace XMLFormEditor
         }
 
 
+        public override bool DrawGrid {
+            set {
+                base.DrawGrid = value;
+                
+            }
+        }
+
+
         protected override void OnResize(EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("OnResize: " + ClientRectangle);
@@ -355,11 +363,7 @@ namespace XMLFormEditor
             else
             {
                 System.Diagnostics.Debug.WriteLine("Skip");
-            }
-
-            if (_editorOverlay.Focused)
-                e.Graphics.DrawLine(Pens.Red, 0, 0, 200, 200);
-            
+            }            
         }
 
         protected override void OnInvalidated(InvalidateEventArgs e)
@@ -381,6 +385,12 @@ namespace XMLFormEditor
             RefreshOverlay();
 
             base.OnLeave(e);
+        }
+
+        public override bool Focused {
+            get {
+                return _editorOverlay.Focused;
+            }
         }
 
     }
