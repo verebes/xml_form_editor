@@ -17,7 +17,7 @@ namespace XMLFormEditor
 
     public class ResizeTool
     {
-        public static void ResizeRect(ref Rectangle rect, HandlerType handleType, int deltaX, int deltaY)
+        public static void ResizeRect(ref Rectangle rect, HandlerType handleType, int deltaX, int deltaY, int gs)
         {
             Point position = rect.Location;
             Size size = rect.Size;
@@ -26,13 +26,26 @@ namespace XMLFormEditor
                 case HandlerType.Top:
                 case HandlerType.TopLeft:
                 case HandlerType.TopRight:
+                    int origPos = position.Y;
                     position.Y += deltaY;
-                    size.Height -= deltaY;
+                    if (gs > 1)
+                        position.Y = (position.Y / gs) * gs;
+
+                    if (position.Y > origPos + size.Height - 1) {
+                        position.Y = origPos + size.Height - 1;
+                    }
+
+
+                    size.Height -= position.Y - origPos;
                     break;
                 case HandlerType.Bottom:
                 case HandlerType.BottomLeft:
                 case HandlerType.BottomRight:
                     size.Height += deltaY;
+
+                    if ( gs >1 ) 
+                        size.Height -= ( position.Y + size.Height ) % gs;
+
                     break;
                 default:
                     break;
@@ -43,13 +56,25 @@ namespace XMLFormEditor
                 case HandlerType.Left:
                 case HandlerType.TopLeft:
                 case HandlerType.BottomLeft:
+
+                    int origPos = position.X;
                     position.X += deltaX;
-                    size.Width -= deltaX;
+                    if (position.X > origPos + size.Width - 1) {
+                        position.X = origPos + size.Width - 1;
+                    }
+
+                    if (gs > 1)
+                        position.X = (position.X / gs) * gs;
+
+                    size.Width -= position.X - origPos;
                     break;
                 case HandlerType.Right:
                 case HandlerType.TopRight:
                 case HandlerType.BottomRight:
                     size.Width += deltaX;
+                    if (gs > 1)
+                        size.Width -= (position.X + size.Width) % gs;
+
                     break;
                 default:
                     break;

@@ -44,7 +44,17 @@ namespace XMLFormEditor
         public Rectangle ClientRect
         {
             get { return _clientRect; }
-            set { _clientRect = value; }
+            set { 
+                if ( _clientRect == value ) 
+                    return;
+
+                _clientRect = value;
+                
+                if (ParentLayout == null)
+                    return;
+
+                ParentLayout.RefreshControlPosition(this);
+            }
         }
 
 
@@ -65,7 +75,7 @@ namespace XMLFormEditor
 
         public void Resize(HandlerType handleType, int deltaX, int deltaY)
         {
-            ResizeTool.ResizeRect(ref _clientRect, handleType, deltaX, deltaY);
+            ResizeTool.ResizeRect(ref _clientRect, handleType, deltaX, deltaY, 0);
             
             ParentLayout.RefreshControlPosition(this);
         }

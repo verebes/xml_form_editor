@@ -84,16 +84,26 @@ namespace XMLFormEditor
             return ret;
         }
 
+
+        private List<Rectangle> positionList = new List<Rectangle>();
+
         private void MouseDownOnHandler(MouseEventArgs e, HandlerType handlerType)
         {
             Trace.WriteLine("DocumentEditorOverlay::MouseDownOnHandler");
+
+            List<XMLControl> selectedControls = _documentLayout.SelectedControls(); 
+            positionList.Clear();
+            foreach (XMLControl control in selectedControls) {
+                positionList.Add(new Rectangle(control.ClientRect.Location, control.ClientRect.Size));
+            }
+
+
             _resizingControls = true;
             _resizeMode = handlerType;
             _moved = false;
             _dragStartPos = ViewPoint2LalyoutPoint(e.Location);
         }
-
-        private List<Point> positionList = new List<Point>();
+        
         private void MouseDownOnControls(MouseEventArgs e)
         {
             Trace.WriteLine("DocumentEditorOverlay::MouseDownOnControls");
@@ -118,10 +128,8 @@ namespace XMLFormEditor
 
             positionList.Clear();
 
-
-
             foreach (XMLControl control in selectedControls) {
-                positionList.Add(new Point(control.ClientRect.Location.X, control.ClientRect.Location.Y));
+                positionList.Add(new Rectangle(control.ClientRect.Location, control.ClientRect.Size));
             }
 
             _movingControls = true;
@@ -206,8 +214,11 @@ namespace XMLFormEditor
             int deltaX = e.X - _dragStartPos.X;
             int deltaY = e.Y - _dragStartPos.Y;
 
+            List<Rectangle>.Enumerator it = positionList.GetEnumerator();
             foreach (XMLControl control in _documentLayout.SelectedControls())
             {
+                it.MoveNext();
+
                 int dx = deltaX;
                 int dy = deltaY;
 
@@ -217,11 +228,17 @@ namespace XMLFormEditor
                 if (control.ResizeMode == ResizeMode.None || control.ResizeMode == ResizeMode.Vertical)
                     dx = 0;
 
-                control.Resize(_resizeMode, dx, dy);
-            }
 
-            _dragStartPos.X = e.X;
-            _dragStartPos.Y = e.Y;
+                Rectangle rect = new Rectangle(it.Current.Location, it.Current.Size);
+                int gs = _documentEditor.GridSize;
+
+                if (!_documentEditor.SnapToGrid)
+                    gs = 1;
+
+                ResizeTool.ResizeRect(ref rect, _resizeMode, dx, dy,gs);
+
+                control.ClientRect = rect;
+            }
         }
 
 
@@ -238,24 +255,22 @@ namespace XMLFormEditor
             int deltaX = p.X - _dragStartPos.X;
             int deltaY = p.Y - _dragStartPos.Y;
 
-            List<Point>.Enumerator it = positionList.GetEnumerator();
+            List<Rectangle>.Enumerator it = positionList.GetEnumerator();
             foreach (XMLControl control in _documentLayout.SelectedControls())
             {
                 it.MoveNext();                
                 Point position = control.ClientRect.Location;
 
-
                 Point newPos;
-
-                int gs = _documentEditor.GridSize;
-
+               
                 if (_documentEditor.SnapToGrid)
                 {
-                    newPos = new Point( ((it.Current.X + deltaX) / gs) * gs, ((it.Current.Y + deltaY) / gs) * gs );
+                    int gs = _documentEditor.GridSize;
+                    newPos = new Point( ((it.Current.Location.X + deltaX) / gs) * gs, ((it.Current.Location.Y + deltaY) / gs) * gs );
                 }
                 else
                 {
-                    newPos = new Point(it.Current.X + deltaX, it.Current.Y + deltaY);    
+                    newPos = new Point(it.Current.Location.X + deltaX, it.Current.Location.Y + deltaY);    
                 }
                 System.Diagnostics.Trace.WriteLine("pos (2):" + position.X.ToString() + " ; " + position.Y.ToString());
 

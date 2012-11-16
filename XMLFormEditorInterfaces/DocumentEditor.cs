@@ -132,19 +132,6 @@ namespace XMLFormEditor
             control.Location = pos;
         }
 
-        public void ResizeControl(XMLControl xmlControl, HandlerType handleType, int deltaX, int deltaY)
-        {
-            System.Diagnostics.Trace.WriteLine("MoveControl 1: " + xmlControl.GetHashCode().ToString());
-            Control control = XMLControl2ControlDictionary[xmlControl];
-            Rectangle rect = new Rectangle(control.Location, control.Size);
-            ResizeTool.ResizeRect(ref rect, handleType, deltaX, deltaY);
-
-            control.SuspendLayout();
-            control.Location = rect.Location;
-            control.Size = rect.Size;
-            control.ResumeLayout(false);
-        }
-
         public void DropToolBoxItem(IToolBoxItem toolBoxItem, Point position)
         {
             if (! ( toolBoxItem is IEditorControl ))
