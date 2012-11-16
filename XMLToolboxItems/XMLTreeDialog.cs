@@ -15,6 +15,14 @@ namespace XMLFormEditor
         {
             InitializeComponent();
             treeView1.AfterSelect += new TreeViewEventHandler(treeView1_AfterSelect);
+
+            ImageList iconList = new ImageList();
+            iconList.Images.Add(XMLToolboxItems.Properties.Resources.attribute);
+            iconList.Images.Add(XMLToolboxItems.Properties.Resources.node);
+            iconList.Images.Add(XMLToolboxItems.Properties.Resources.text);
+            iconList.Images.Add(XMLToolboxItems.Properties.Resources.document);
+
+            treeView1.ImageList = iconList;
             updateTree();
         }
 
@@ -24,7 +32,7 @@ namespace XMLFormEditor
             selection = "";
             while (node != null)
             {
-                selection = node.Text + "/" + selection;
+                selection = "/" + node.Text + selection;                
                 node = node.Parent;
             }            
         }
@@ -68,8 +76,20 @@ namespace XMLFormEditor
             stack.Clear();
             treeView1.Nodes.Clear();
 
-            TreeNode rootNode = treeView1.Nodes.Add("/");            
-            stack.Push(new StackItem( rootNode, document ));
+            if ( document.FirstChild == null) {
+                return;
+            }
+
+            TreeNode rootNode = treeView1.Nodes.Add(document.FirstChild.Name);
+
+            rootNode.Tag = document.FirstChild;
+            rootNode.ImageIndex = 3;
+            rootNode.SelectedImageIndex = 3;
+
+            foreach (XmlNode child in document.FirstChild)
+            {
+                stack.Push(new StackItem(rootNode, child));                
+            }
 
             while (stack.Count != 0 ) {
                 StackItem item = stack.Pop() as StackItem;
@@ -90,10 +110,23 @@ namespace XMLFormEditor
                         break;
                     case XmlNodeType.Attribute:
                         treeNode = item.treeNode.Nodes.Insert(0, item.xmlNode.Name);
-                        treeNode.Nodes.Add(item.xmlNode.Value);
+                        treeNode.ImageIndex = 0;
+                        treeNode.SelectedImageIndex = 0;
+                        treeNode.Tag = item.xmlNode;
+
+                        
+                        TreeNode value = treeNode.Nodes.Add(item.xmlNode.Value);
+                        
+                        value.ImageIndex = 2;
+                        value.SelectedImageIndex = 2;
+                        value.Tag = null;
+
                         break;
                     case XmlNodeType.Element:
                         treeNode = item.treeNode.Nodes.Insert(0,item.xmlNode.Name);
+                        treeNode.ImageIndex = 1;
+                        treeNode.SelectedImageIndex = 1;
+                        treeNode.Tag = item.xmlNode;
                         break;
                     default:
                         continue;
@@ -112,6 +145,76 @@ namespace XMLFormEditor
                     stack.Push(new StackItem(treeNode, attributes));
                 }
 
+            }
+        }
+
+        private void treeView1_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void treeView1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void treeView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ( e.KeyCode == Keys.Insert && e.Control) {
+                insertChildNode();
+                return;
+            }
+
+            if (e.KeyCode == Keys.Insert)
+            {
+                insertNode();
+            }
+
+        }
+
+        private void insertNode() {
+            TreeNode treeNode = treeView1.SelectedNode;
+            if (treeNode == null)
+                return;
+
+            XmlElement xmlElement = treeNode.Tag as XmlElement;
+            if (xmlElement == null)
+                return;
+
+
+            if (xmlElement.NodeType == XmlNodeType.Element)
+            {
+                XmlElement newElement = document.CreateElement("aaaaa");
+                xmlElement.ParentNode.InsertAfter(newElement, xmlElement);
+
+                TreeNode newTreeNode = treeNode.Parent.Nodes.Insert(treeNode.Index +1, newElement.Name);
+                newTreeNode.ImageIndex = 1;
+                newTreeNode.SelectedImageIndex = 1;
+                newTreeNode.Tag = newElement;
+
+
+            }
+        }
+
+        private void insertChildNode() {
+            TreeNode treeNode = treeView1.SelectedNode;
+            if (treeNode == null)
+                return;
+
+            XmlElement xmlElement = treeNode.Tag as XmlElement;
+            if (xmlElement == null)
+                return;
+
+
+            if ( xmlElement.NodeType == XmlNodeType.Element ) {
+                XmlElement newElement = document.CreateElement("aaaaa");
+                xmlElement.AppendChild(newElement);
+
+                TreeNode newTreeNode = treeNode.Nodes.Insert(0, newElement.Name);
+                newTreeNode.ImageIndex = 1;
+                newTreeNode.SelectedImageIndex = 1;
+                newTreeNode.Tag = newElement;
+
+                
             }
         }
 

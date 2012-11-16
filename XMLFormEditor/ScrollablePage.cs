@@ -36,7 +36,6 @@ namespace XMLFormEditor
             hScrollBar.LargeChange = documentForm.Width;
         }
 
-
         public DocumentLayout documentLayout
         {
             get { return documentForm.DocumentLayout; }
