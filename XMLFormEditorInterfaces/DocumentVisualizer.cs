@@ -13,7 +13,7 @@ namespace XMLFormEditor
     typeof(System.ComponentModel.Design.IDesigner))]
 
     public class DocumentVisualizer : UserControl
-    {
+    {       
        class ControlEqualityComparer : IEqualityComparer<Control>
        {
            public bool Equals(Control c1, Control c2)
@@ -63,7 +63,7 @@ namespace XMLFormEditor
 
         public DocumentVisualizer() 
         {
-            InitializeComponent();
+            InitializeComponent();            
             _viewRectangle = new Rectangle(0,0,Width,Height);            
         }
 
@@ -157,6 +157,7 @@ namespace XMLFormEditor
 
             if (recreateControlsNeeded) {
                 doRecreateControls();
+                doUpdateVisibleControls();
             }
 
             if (updateVisibleControlsNeeded) {
@@ -282,6 +283,7 @@ namespace XMLFormEditor
                 AddControl(newControls[iNew]);
                 ++iNew;
             }
+
             
         }
 
