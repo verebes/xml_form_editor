@@ -38,6 +38,9 @@ public sealed class WindowsApiMethods
     private static extern IntPtr SendMessage(IntPtr hWnd, Int32 msg, Int32 wParam, Int32 lParam);
 
 
+    [DllImport("User32")]
+    public static extern int GetKeyState(int nVirtKey);
+
     private WindowsApiMethods()
     {
     }

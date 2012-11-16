@@ -15,6 +15,29 @@ namespace XMLFormEditor
             InitializeComponent();
             hScrollBar.LargeChange = documentForm.Width;
             vScrollBar.LargeChange = documentForm.Height;
+
+            this.documentForm.MouseWheel += new MouseEventHandler(documentForm_MouseWheel);            
+        }
+
+        void documentForm_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ScrollBar scrollBar;
+
+            //querying whether ctrl key is pressed
+            int keyState = WindowsApiMethods.GetKeyState(0x11);
+            if ((keyState & 0x0100) == 0x0100)
+            {
+                scrollBar = hScrollBar;
+            }
+            else
+            {
+                scrollBar = vScrollBar;
+            }
+
+            int newVal = scrollBar.Value - e.Delta * SystemInformation.MouseWheelScrollLines / 10;
+            if (newVal >= scrollBar.Minimum && newVal <= scrollBar.Maximum)
+                scrollBar.Value = newVal;
+
         }
 
         private void scrollBar_Scroll(object sender, ScrollEventArgs e)
