@@ -25,6 +25,11 @@ namespace XMLFormEditor
             documentForm.ViewLocation = new Point(hScrollBar.Value, vScrollBar.Value);
         }
 
+        private void scrollBar_ValueChanged(object sender, EventArgs e)
+        {
+            documentForm.ViewLocation = new Point(hScrollBar.Value, vScrollBar.Value);
+        }
+
         private void scrollablePage_Resize(object sender, EventArgs e)
         {
             vScrollBar.LargeChange = documentForm.Height;
@@ -60,6 +65,8 @@ namespace XMLFormEditor
         {
             get { return documentForm; }
         }
+
+
 
     }
 }

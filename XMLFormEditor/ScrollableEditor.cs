@@ -25,6 +25,12 @@ namespace XMLFormEditor
             documentEditor.ViewLocation = new Point(hScrollBar.Value, vScrollBar.Value);
         }
 
+
+        private void scrollBar_ValueChanged(object sender, EventArgs e)
+        {
+            documentEditor.ViewLocation = new Point(hScrollBar.Value, vScrollBar.Value);
+        }
+
         protected override void OnResize(EventArgs e)
         {                       
             documentEditor.ClientSize = new Size(Width - vScrollBar.Width, Height - hScrollBar.Height);

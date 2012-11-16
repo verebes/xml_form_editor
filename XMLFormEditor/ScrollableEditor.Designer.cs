@@ -42,6 +42,7 @@ namespace XMLFormEditor
             this.hScrollBar.Size = new System.Drawing.Size(394, 17);
             this.hScrollBar.SmallChange = 20;
             this.hScrollBar.TabIndex = 11;
+            this.hScrollBar.ValueChanged += new System.EventHandler(this.scrollBar_ValueChanged);
             this.hScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.scrollBar_Scroll);
             // 
             // vScrollBar
@@ -53,6 +54,7 @@ namespace XMLFormEditor
             this.vScrollBar.Size = new System.Drawing.Size(19, 424);
             this.vScrollBar.SmallChange = 20;
             this.vScrollBar.TabIndex = 10;
+            this.vScrollBar.ValueChanged += new System.EventHandler(this.scrollBar_ValueChanged);
             this.vScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.scrollBar_Scroll);
             // 
             // documentEditor
