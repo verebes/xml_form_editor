@@ -238,12 +238,6 @@ namespace XMLFormEditor
             int deltaX = p.X - _dragStartPos.X;
             int deltaY = p.Y - _dragStartPos.Y;
 
-            int gs = _documentEditor.GridSize;
-
-            if (_documentEditor.SnapToGrid && Math.Abs(deltaX) < gs && Math.Abs(deltaY) < gs)
-                return;
-
-
             List<Point>.Enumerator it = positionList.GetEnumerator();
             foreach (XMLControl control in _documentLayout.SelectedControls())
             {
@@ -251,43 +245,21 @@ namespace XMLFormEditor
                 Point position = control.ClientRect.Location;
 
 
-                //System.Diagnostics.Trace.WriteLine("pos (1):" + position.X.ToString() + " ; " + position.Y.ToString());
+                Point newPos;
+
+                int gs = _documentEditor.GridSize;
+
                 if (_documentEditor.SnapToGrid)
                 {
-                    if (Math.Abs(deltaX) >= gs)
-                        position.X += deltaX;
-
-                    if (Math.Abs(deltaY) >= gs)
-                        position.Y += deltaY;
-
-                    position.X = ((position.X + (gs / 2) * Math.Sign(position.X)) / gs) * gs;
-                    position.Y = ((position.Y + (gs / 2) * Math.Sign(position.Y)) / gs) * gs;
+                    newPos = new Point( ((it.Current.X + deltaX) / gs) * gs, ((it.Current.Y + deltaY) / gs) * gs );
                 }
                 else
                 {
-                    
-                    //position.X += deltaX;
-                    //position.Y += deltaY;
+                    newPos = new Point(it.Current.X + deltaX, it.Current.Y + deltaY);    
                 }
                 System.Diagnostics.Trace.WriteLine("pos (2):" + position.X.ToString() + " ; " + position.Y.ToString());
-                
-                Point newPos = new Point(it.Current.X + deltaX, it.Current.Y + deltaY);
-                //newPos.Offset(deltaX, deltaY);
+
                 control.MoveToAbsolutePos(newPos);
-            }
-
-            if (_documentEditor.SnapToGrid)
-            {
-                //if (Math.Abs(deltaX) >= gs)
-                //    _dragStartPos.X = p.X - deltaX % gs;
-
-                //if (Math.Abs(deltaY) >= gs)
-                //    _dragStartPos.Y = p.Y - deltaY % gs;
-            }
-            else
-            {
-                //_dragStartPos.X = p.X;
-                //_dragStartPos.Y = p.Y;
             }
         }
 
