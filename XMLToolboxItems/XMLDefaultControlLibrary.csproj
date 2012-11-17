@@ -35,6 +35,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StaticLabel.cs" />
     <Compile Include="XMLDeleteButton.cs" />
     <Compile Include="DataSourceInterfaces.cs" />
     <Compile Include="MultiControl.cs">
@@ -55,7 +56,7 @@
     <Compile Include="SchemaPropertyControl.Designer.cs">
       <DependentUpon>SchemaPropertyControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="StaticLabel.cs" />
+    <Compile Include="Line.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
