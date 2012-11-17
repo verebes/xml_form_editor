@@ -293,16 +293,11 @@ namespace XMLFormEditor
             _editorOverlay.Height = ClientRectangle.Height;
             _editorOverlay.ResumeLayout(false);
 
-            if (!_refreshing)                
-                Update();
-
             if (storeNeeded)
             {
                 storeNeeded = false;
                 _editorOverlay.StoreBmp();
             }
-//            _editorOverlay.BringToFront();
-//            _editorOverlay.Focus(); // after adding new control the now control gets the focus so we focus back the overlay control
 
             _editorOverlay.Invalidate();
             paintingOverlay = false;
@@ -312,7 +307,6 @@ namespace XMLFormEditor
         {            
             base.doRecreateControls();
 
-            updateVisibleControls();
             storeNeeded = true;
             RefreshOverlay();
             
@@ -368,6 +362,7 @@ namespace XMLFormEditor
             }
             else
             {
+                _editorOverlay.Update();                
                 System.Diagnostics.Debug.WriteLine("Skip");
             }            
         }

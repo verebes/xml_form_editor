@@ -157,7 +157,6 @@ namespace XMLFormEditor
 
             if (recreateControlsNeeded) {
                 doRecreateControls();
-                doUpdateVisibleControls();
             }
 
             if (updateVisibleControlsNeeded) {
@@ -303,6 +302,8 @@ namespace XMLFormEditor
                 System.Diagnostics.Trace.WriteLine("XMLControl2ControlDictionary.ContainsKey:" + xmlControl.GetHashCode().ToString());
                 XMLControl2ControlDictionary.Add(xmlControl, editControl);
                 Control2XmlControlDictionary.Add(editControl, xmlControl);
+
+                xmlControl.UpdateEditorControl(editControl);                
             } else {
                 System.Diagnostics.Trace.WriteLine("how can this happen.ContainsKey:" + xmlControl.GetHashCode().ToString());
             }

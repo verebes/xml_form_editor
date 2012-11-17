@@ -20,8 +20,7 @@ namespace XMLFormEditor
 
         public override void doRecreateControls()
         {            
-            base.doRecreateControls();
-            updateVisibleControls();
+            base.doRecreateControls();            
          
             foreach (KeyValuePair<Control, XMLControl> p in Control2XmlControlDictionary)
             {
