@@ -398,8 +398,6 @@ namespace XMLFormEditor
                 return;
 
             System.Diagnostics.Debug.WriteLine("StoreBmp: " + DateTime.Now + " (" + System.DateTime.Now.Millisecond.ToString() + ")" + ": " + r.ToString());
-            //            System.Diagnostics.Debug.WriteLine("Stack:\n" + Environment.StackTrace.ToString());
-
 
             _storingBmp = true;
             if (_storedBmp == null || _storedBmp.Width != Parent.Width || _storedBmp.Height != Parent.Height)
