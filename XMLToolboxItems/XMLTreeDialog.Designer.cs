@@ -43,6 +43,7 @@ namespace XMLFormEditor
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(284, 219);
             this.treeView1.TabIndex = 1;
+            this.treeView1.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView1_AfterLabelEdit);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
             this.treeView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.treeView1_KeyUp);
             this.treeView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView1_KeyDown);
@@ -80,14 +81,14 @@ namespace XMLFormEditor
             // XMLTreeDialog
             // 
             this.AcceptButton = this.button1;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.button2;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "XMLTreeDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "XMLTreeDialog";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

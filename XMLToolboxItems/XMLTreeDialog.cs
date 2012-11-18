@@ -23,6 +23,7 @@ namespace XMLFormEditor
             iconList.Images.Add(XMLToolboxItems.Properties.Resources.document);
 
             treeView1.ImageList = iconList;
+            treeView1.LabelEdit = true;
             updateTree();
         }
 
@@ -169,6 +170,63 @@ namespace XMLFormEditor
                 insertNode();
             }
 
+            if ( e.KeyCode == Keys.F2 )
+            {
+                editNode();    
+            }
+
+            if (e.KeyCode == Keys.Delete)
+            {
+                deleteNode();
+            }
+
+        }
+
+        private void renameXmlElement(XmlElement xmlElement, string label)
+        {            
+            XmlElement newElement = document.CreateElement(label);
+            while ( xmlElement.HasChildNodes ) {
+                newElement.AppendChild(xmlElement.FirstChild);
+            }
+            while ( xmlElement.HasAttributes) {
+                newElement.Attributes.Append( xmlElement.Attributes[0]);
+            }
+            xmlElement.ParentNode.ReplaceChild(newElement, xmlElement);
+        }
+
+        private void deleteNode()
+        {
+            TreeNode treeNode = treeView1.SelectedNode;
+            if (treeNode == null)
+                return;
+
+            XmlElement xmlElement = treeNode.Tag as XmlElement;
+            if (xmlElement == null)
+                return;
+
+            const string question = "Do you really want to delete the selected node and all of it's descendants?";
+            const string caption = "Confirm delete node";
+            if ( MessageBox.Show(question,caption, MessageBoxButtons.YesNo) == DialogResult.Yes )
+            {
+                treeNode.Remove();
+                xmlElement.RemoveAll();
+            }            
+        }
+
+        private void editNode() {
+            TreeNode treeNode = treeView1.SelectedNode;
+            if (treeNode == null)
+                return;
+
+            XmlElement xmlElement = treeNode.Tag as XmlElement;
+            if (xmlElement == null)
+                return;
+
+
+            if (xmlElement.NodeType == XmlNodeType.Element)
+            {                
+                treeNode.BeginEdit();
+            }
         }
 
         private void insertNode() {
@@ -190,8 +248,6 @@ namespace XMLFormEditor
                 newTreeNode.ImageIndex = 1;
                 newTreeNode.SelectedImageIndex = 1;
                 newTreeNode.Tag = newElement;
-
-
             }
         }
 
@@ -216,6 +272,25 @@ namespace XMLFormEditor
 
                 
             }
+        }
+
+        private void treeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            if ( e.Label == null ||  e.Label.Trim() == "" ) {
+                e.CancelEdit = true;
+                return;
+            }
+
+            XmlElement xmlElement = e.Node.Tag as XmlElement;
+            
+            if (xmlElement == null) {
+                e.CancelEdit = true;
+                return;
+            }
+
+            renameXmlElement(xmlElement,e.Label);
+            
+
         }
 
     }
