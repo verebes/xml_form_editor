@@ -35,10 +35,12 @@ namespace XMLFormEditor
         {
             InitializeComponent();
 
+            this.TabStop = true;
+            SetStyle(ControlStyles.Selectable, true);
             _selecting = false;
             _movingControls = false;
             _resizingControls = false;
-            _moved = false;
+            _moved = false;            
         }
 
         #region Component Designer generated code
@@ -503,5 +505,16 @@ namespace XMLFormEditor
             base.OnVisibleChanged(e);
         }
 
+        protected override bool ProcessDialogKey(Keys keyData) {
+            if (keyData == Keys.Left ||
+                    keyData == Keys.Right ||
+                    keyData == Keys.Up ||
+                    keyData == Keys.Down ||
+                    keyData == Keys.End ||
+                    keyData == Keys.Home) {
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
     }
 }

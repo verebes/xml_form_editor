@@ -103,6 +103,5 @@ namespace XMLFormEditor
         {
             get { return documentEditor; }
         }
-
     }
 }

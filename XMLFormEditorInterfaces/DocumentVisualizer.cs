@@ -294,6 +294,7 @@ namespace XMLFormEditor
 
             editControl.Size = xmlControl.ClientRect.Size;
             editControl.Parent = this;
+            editControl.TabStop = false;
             System.Diagnostics.Trace.WriteLine("calling ResumeLayout");
             editControl.ResumeLayout();
 

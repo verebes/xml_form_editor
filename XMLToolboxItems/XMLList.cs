@@ -128,7 +128,7 @@ namespace XMLFormEditor
             listBox.Height = _defaultHeight;
             listBox.ResumeLayout();
             listBox.SelectionMode = SelectionMode.One;
-            listBox.SelectedIndexChanged += OnChange;
+            listBox.SelectedIndexChanged += OnChange;            
             return listBox;
         }
 

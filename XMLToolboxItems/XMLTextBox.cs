@@ -137,8 +137,7 @@ namespace XMLFormEditor
                     {
                         throw new Exception("Node has child element so content can not be edited");
                     }
-                }             
-
+                }
 
                 textBox.Text = node.InnerText;                
                 textBox.Enabled = true;

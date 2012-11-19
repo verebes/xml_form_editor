@@ -309,11 +309,21 @@ namespace XMLFormEditor
 
             storeNeeded = true;
             RefreshOverlay();
-            
+
+            List<Control> controls = new List<Control>();
             foreach (KeyValuePair<Control, XMLControl> p in Control2XmlControlDictionary) 
-            { 
-                p.Key.TabStop = false;
+            {
+                controls.Add(p.Key);
             }
+
+            foreach (Control p in controls)
+            {
+                p.TabStop = false;
+            }
+
+            _editorOverlay.TabIndex = 0;
+
+            _editorOverlay.Focus();
 
             System.Diagnostics.Trace.WriteLine("DocumentEditor:recreateControls (end): " + System.DateTime.Now.ToString() + " (" + System.DateTime.Now.Millisecond.ToString() + ")");
         }
@@ -393,6 +403,5 @@ namespace XMLFormEditor
                 return _editorOverlay.Focused;
             }
         }
-
     }
 }

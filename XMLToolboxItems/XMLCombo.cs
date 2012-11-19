@@ -138,7 +138,7 @@ namespace XMLFormEditor
             comboBox.Width = _defaultWidth;
             comboBox.Height = _defaultHeight;
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;            
-            comboBox.SelectedIndexChanged += OnChange;
+            comboBox.SelectedIndexChanged += OnChange;            
             return comboBox;
         }
 

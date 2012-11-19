@@ -25,7 +25,6 @@ namespace XMLFormEditor
             label.Visible = true;
 
             textBox = new TextBox();
-            textBox.TabStop = false;
             textBox.Parent = this;
             textBox.Left = 0;
             textBox.Top = 0;
@@ -34,7 +33,6 @@ namespace XMLFormEditor
             textBox.Visible = false;
 
             comboBox = new ComboBox();
-            comboBox.TabStop = false;
             comboBox.Parent = this;
             comboBox.Left = 0;
             comboBox.Top = 0;
