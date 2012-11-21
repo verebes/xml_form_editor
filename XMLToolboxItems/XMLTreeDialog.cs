@@ -30,12 +30,15 @@ namespace XMLFormEditor
         void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode node = e.Node;
+        }
+
+        private string GenerateXPath(TreeNode node) {
             selection = "";
-            while (node != null)
-            {
-                selection = "/" + node.Text + selection;                
+            while (node != null) {
+                selection = "/" + node.Text + selection;
                 node = node.Parent;
-            }            
+            }
+            return selection;
         }
 
 
@@ -172,7 +175,7 @@ namespace XMLFormEditor
 
             if ( e.KeyCode == Keys.F2 )
             {
-                editNode();    
+                editNode();
             }
 
             if (e.KeyCode == Keys.Delete)
@@ -241,10 +244,10 @@ namespace XMLFormEditor
 
             if (xmlElement.NodeType == XmlNodeType.Element)
             {
-                XmlElement newElement = document.CreateElement("aaaaa");
+                XmlElement newElement = document.CreateElement("New");
                 xmlElement.ParentNode.InsertAfter(newElement, xmlElement);
 
-                TreeNode newTreeNode = treeNode.Parent.Nodes.Insert(treeNode.Index +1, newElement.Name);
+                TreeNode newTreeNode = treeNode.Parent.Nodes.Insert(treeNode.Index +1, newElement.Name);                
                 newTreeNode.ImageIndex = 1;
                 newTreeNode.SelectedImageIndex = 1;
                 newTreeNode.Tag = newElement;
@@ -262,15 +265,13 @@ namespace XMLFormEditor
 
 
             if ( xmlElement.NodeType == XmlNodeType.Element ) {
-                XmlElement newElement = document.CreateElement("aaaaa");
+                XmlElement newElement = document.CreateElement("New");              
                 xmlElement.AppendChild(newElement);
 
                 TreeNode newTreeNode = treeNode.Nodes.Insert(0, newElement.Name);
                 newTreeNode.ImageIndex = 1;
                 newTreeNode.SelectedImageIndex = 1;
-                newTreeNode.Tag = newElement;
-
-                
+                newTreeNode.Tag = newElement;                
             }
         }
 
@@ -289,9 +290,35 @@ namespace XMLFormEditor
             }
 
             renameXmlElement(xmlElement,e.Label);
-            
+            e.Node.Tag = xmlElement;
+        }
 
+
+        protected override void OnClosing(CancelEventArgs e) {
+            TreeNode treeNode = treeView1.SelectedNode;
+            if (treeNode != null) {
+                selection = GenerateXPath(treeNode);
+            }
+                
+            base.OnClosing(e);
+        }
+
+        private void insertNodeToolStripMenuItem_Click(object sender, EventArgs e) {
+            insertNode();
+        }
+
+        private void inserChildNodeToolStripMenuItem_Click(object sender, EventArgs e) {
+            insertChildNode();
+        }
+
+        private void deleteNodeToolStripMenuItem_Click(object sender, EventArgs e) {
+            deleteNode();
+        }
+
+        private void editNodeToolStripMenuItem_Click(object sender, EventArgs e) {
+            editNode();
         }
 
     }
 }
+

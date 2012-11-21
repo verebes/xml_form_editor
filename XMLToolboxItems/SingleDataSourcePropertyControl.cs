@@ -60,6 +60,7 @@ namespace XMLFormEditor
             XMLTreeDialog xmlTree = new XMLTreeDialog();
             xmlTree.Document = XmlSourceDocumentManager.Instance().GetDocument( cbSourceDocuments.Text );
             if ( xmlTree.ShowDialog() == DialogResult.OK ) {
+                XmlSourceDocumentManager.Instance().SaveDocuments();
                 textBoxXPath.Text = xmlTree.Selection;
             }
         }
