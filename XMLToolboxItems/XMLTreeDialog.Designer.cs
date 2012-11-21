@@ -50,7 +50,7 @@ namespace XMLFormEditor
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.PathSeparator = "/";
-            this.treeView1.Size = new System.Drawing.Size(284, 219);
+            this.treeView1.Size = new System.Drawing.Size(517, 314);
             this.treeView1.TabIndex = 1;
             this.treeView1.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView1_AfterLabelEdit);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
@@ -62,15 +62,16 @@ namespace XMLFormEditor
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 219);
+            this.panel1.Location = new System.Drawing.Point(0, 314);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(284, 43);
+            this.panel1.Size = new System.Drawing.Size(517, 43);
             this.panel1.TabIndex = 2;
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(116, 8);
+            this.button2.Location = new System.Drawing.Point(349, 8);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
@@ -79,8 +80,9 @@ namespace XMLFormEditor
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(197, 8);
+            this.button1.Location = new System.Drawing.Point(430, 8);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -130,7 +132,7 @@ namespace XMLFormEditor
             this.AcceptButton = this.button1;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(517, 357);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;

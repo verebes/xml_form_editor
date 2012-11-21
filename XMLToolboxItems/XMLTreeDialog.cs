@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,6 +42,55 @@ namespace XMLFormEditor
             return selection;
         }
 
+
+        
+        protected TreeNode getTreeNode(XmlNode xmlNode) {
+            if (xmlNode == document) {
+                return treeView1.TopNode;
+            }
+
+            Stack stack = new Stack();
+
+            foreach (TreeNode treeNode in treeView1.Nodes) {
+                stack.Push(treeNode);
+            }
+            
+
+            while ( stack.Count > 0 ) {
+                TreeNode node = stack.Pop() as TreeNode;
+                if (node == null || node.Tag == null) {
+                    continue;                    
+                }
+                XmlNode currentXmlNode = node.Tag as XmlNode;
+                if (currentXmlNode == xmlNode) {
+                    return node;
+                }
+
+                foreach (TreeNode treeNode in node.Nodes) {
+                    stack.Push(treeNode);
+                }
+       
+            }
+            return null;
+
+        }
+
+        public void selectNodeByXPath (string xpathExpression ) {
+            try {
+                XmlNode node = document.SelectSingleNode(xpathExpression);
+
+                TreeNode treeNode = getTreeNode(node);
+                if (treeNode == null)
+                    return;
+
+                treeView1.SelectedNode = treeNode;
+                treeNode.ExpandAll();
+
+            } catch (System.Xml.XmlException e) {
+                return;
+            }
+        }
+        
 
         protected string selection;
         public string Selection 
@@ -241,6 +291,9 @@ namespace XMLFormEditor
             if (xmlElement == null)
                 return;
 
+            if (xmlElement.ParentNode == null || xmlElement.ParentNode == document) {
+                return;
+            }
 
             if (xmlElement.NodeType == XmlNodeType.Element)
             {
@@ -277,7 +330,11 @@ namespace XMLFormEditor
 
         private void treeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
-            if ( e.Label == null ||  e.Label.Trim() == "" ) {
+            // should be checked by regular expression according to the xml specification:]
+            // http://www.w3.org/TR/2008/REC-xml-20081126/#charsets 
+
+
+            if ( e.Label == null ||  e.Label.Trim() == ""  ) {
                 e.CancelEdit = true;
                 return;
             }

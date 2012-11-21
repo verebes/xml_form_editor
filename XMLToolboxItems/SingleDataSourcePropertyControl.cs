@@ -59,9 +59,12 @@ namespace XMLFormEditor
         {
             XMLTreeDialog xmlTree = new XMLTreeDialog();
             xmlTree.Document = XmlSourceDocumentManager.Instance().GetDocument( cbSourceDocuments.Text );
-            if ( xmlTree.ShowDialog() == DialogResult.OK ) {
+            xmlTree.selectNodeByXPath( textBoxXPath.Text );
+            if (xmlTree.ShowDialog() == DialogResult.OK) {
                 XmlSourceDocumentManager.Instance().SaveDocuments();
                 textBoxXPath.Text = xmlTree.Selection;
+            } else {
+                XmlSourceDocumentManager.Instance().LoadDocuments();
             }
         }
     }
