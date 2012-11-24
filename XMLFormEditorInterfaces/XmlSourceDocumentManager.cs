@@ -14,8 +14,8 @@ namespace XMLFormEditor
 
         private List<XmlDocument> SourceDocuments;
 
-
         public event System.EventHandler OnDocumentListChanged = delegate { };
+        public event System.EventHandler OnSourceDocumentChanged = delegate {};
 
 
         private static XmlSourceDocumentManager instance;
@@ -40,6 +40,8 @@ namespace XMLFormEditor
             xmlDocument2Filename.Clear();
             fileName2XmlDocument.Clear();
             SourceDocuments.Clear();
+
+            OnSourceDocumentChanged(this, null);
         }
 
 
@@ -71,6 +73,7 @@ namespace XMLFormEditor
             fileName2XmlDocument.Remove(documentFileName);
 
             OnDocumentListChanged(this, null);
+            OnSourceDocumentChanged(this, null);
         }
 
         public void NewDocument(string documentFileName)
@@ -106,6 +109,7 @@ namespace XMLFormEditor
             {
                 item.Value.Load(item.Key);                
             }
+            OnSourceDocumentChanged(this, null);
         }
 
         public void SaveDocuments()
@@ -114,6 +118,7 @@ namespace XMLFormEditor
             {
                 item.Value.Save(item.Key);
             }
+            OnSourceDocumentChanged(this, null);
         }
 
         public List<ValidationResult> ValidateDocuments()

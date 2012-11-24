@@ -186,7 +186,7 @@ namespace XMLFormEditor
                 _editorOverlay.Invalidate(XMLControl2ControlDictionary[ctr].ClientRectangle);
             }
 
-            storeNeeded = true;
+            storeNeeded = true;            
             RefreshOverlay();
             
         }

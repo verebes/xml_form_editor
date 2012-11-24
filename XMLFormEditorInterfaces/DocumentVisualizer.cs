@@ -64,7 +64,12 @@ namespace XMLFormEditor
         public DocumentVisualizer() 
         {
             InitializeComponent();            
-            _viewRectangle = new Rectangle(0,0,Width,Height);            
+            _viewRectangle = new Rectangle(0,0,Width,Height);
+            XmlSourceDocumentManager.Instance().OnSourceDocumentChanged += new EventHandler(DocumentVisualizer_OnSourceDocumentChanged);
+        }
+
+        void DocumentVisualizer_OnSourceDocumentChanged(object sender, EventArgs e) {
+            updateVisibleControls();
         }
 
         private int gridSize = 20; 

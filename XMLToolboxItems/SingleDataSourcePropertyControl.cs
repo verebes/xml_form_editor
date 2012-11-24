@@ -47,12 +47,20 @@ namespace XMLFormEditor
 
         private void FillDocumentCombo()
         {
+            string tmp = cbSourceDocuments.Text;
+            int selectedIndex = 0;
+            int i = 0;
             cbSourceDocuments.Items.Clear();
             List<string> docNames = XmlSourceDocumentManager.Instance().GetDocumentNames();
             foreach (string s in docNames)
             {
                 cbSourceDocuments.Items.Add(s);
+                if ( s == tmp )  {
+                    selectedIndex = i;
+                }
+                ++i;
             }
+            cbSourceDocuments.SelectedIndex = selectedIndex;
         }
 
         private void buttonShowXMLTree_Click(object sender, EventArgs e)
@@ -61,7 +69,7 @@ namespace XMLFormEditor
             xmlTree.Document = XmlSourceDocumentManager.Instance().GetDocument( cbSourceDocuments.Text );
             xmlTree.selectNodeByXPath( textBoxXPath.Text );
             if (xmlTree.ShowDialog() == DialogResult.OK) {
-                XmlSourceDocumentManager.Instance().SaveDocuments();
+                XmlSourceDocumentManager.Instance().SaveDocuments();                                
                 textBoxXPath.Text = xmlTree.Selection;
             } else {
                 XmlSourceDocumentManager.Instance().LoadDocuments();
