@@ -98,15 +98,6 @@ namespace XMLFormEditor
             _layoutFileName = "";
             XmlSourceDocumentManager.Instance().Clear();
             _layouts.Clear();
-
-            for (int i = 0; i < 2; i++)
-            {
-
-                DocumentLayout layout = new DocumentLayout();
-                layout.controlFactory = controlFactory;
-
-                _layouts.Add(layout);
-            }
         }
 
         public void Load(string fileName)
