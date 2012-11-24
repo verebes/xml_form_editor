@@ -33,8 +33,10 @@ namespace XMLFormEditor
         
         private void UpdateMenuState()
         {
-            bool enabldMenus = documentLayouts.LayoutCount > tabControl1.SelectedIndex && tabControl1.SelectedIndex>=0
-                && scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.Focused ;
+            bool enabldMenus = 
+                documentLayouts.LayoutCount > tabControl1.SelectedIndex && 
+                tabControl1.SelectedIndex>=0  &&                 
+                scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.Focused ;
 
             cutToolStripMenuItem1.Enabled = enabldMenus;
             copyToolStripMenuItem.Enabled = enabldMenus;
