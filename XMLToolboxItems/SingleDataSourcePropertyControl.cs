@@ -47,11 +47,12 @@ namespace XMLFormEditor
 
         private void FillDocumentCombo()
         {
-            string tmp = cbSourceDocuments.Text;
-            int selectedIndex = 0;
-            int i = 0;
+            string tmp = cbSourceDocuments.Text;            
             cbSourceDocuments.Items.Clear();
             List<string> docNames = XmlSourceDocumentManager.Instance().GetDocumentNames();
+
+            int selectedIndex = docNames.Count > 0? 0 : -1;
+            int i = 0;
             foreach (string s in docNames)
             {
                 cbSourceDocuments.Items.Add(s);
