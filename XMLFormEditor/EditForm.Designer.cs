@@ -28,6 +28,7 @@ namespace XMLFormEditor
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditorForm));
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -74,8 +75,13 @@ namespace XMLFormEditor
             this.buttonAddDocument = new System.Windows.Forms.Button();
             this.listBoxDocumentSources = new System.Windows.Forms.ListBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.toolBoxControl1 = new XMLFormEditor.XmlEditorToolBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.toolBoxControl1 = new XMLFormEditor.XmlEditorToolBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tabControl1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -83,23 +89,24 @@ namespace XMLFormEditor
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitter1
             // 
             this.splitter1.Enabled = false;
-            this.splitter1.Location = new System.Drawing.Point(200, 24);
+            this.splitter1.Location = new System.Drawing.Point(200, 49);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(5, 553);
+            this.splitter1.Size = new System.Drawing.Size(5, 528);
             this.splitter1.TabIndex = 7;
             this.splitter1.TabStop = false;
             // 
             // splitter2
             // 
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter2.Location = new System.Drawing.Point(694, 24);
+            this.splitter2.Location = new System.Drawing.Point(694, 49);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(5, 553);
+            this.splitter2.Size = new System.Drawing.Size(5, 528);
             this.splitter2.TabIndex = 10;
             this.splitter2.TabStop = false;
             // 
@@ -111,7 +118,7 @@ namespace XMLFormEditor
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(489, 553);
+            this.tabControl1.Size = new System.Drawing.Size(489, 528);
             this.tabControl1.TabIndex = 11;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -120,7 +127,7 @@ namespace XMLFormEditor
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(481, 527);
+            this.tabPage1.Size = new System.Drawing.Size(481, 502);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -347,10 +354,10 @@ namespace XMLFormEditor
             this.panel1.Controls.Add(this.splitter5);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(699, 24);
+            this.panel1.Location = new System.Drawing.Point(699, 49);
             this.panel1.MinimumSize = new System.Drawing.Size(220, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(249, 553);
+            this.panel1.Size = new System.Drawing.Size(249, 528);
             this.panel1.TabIndex = 13;
             // 
             // panel4
@@ -359,7 +366,7 @@ namespace XMLFormEditor
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 253);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(249, 300);
+            this.panel4.Size = new System.Drawing.Size(249, 275);
             this.panel4.TabIndex = 10;
             // 
             // splitter3
@@ -518,10 +525,19 @@ namespace XMLFormEditor
             // 
             this.panel3.Controls.Add(this.toolBoxControl1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 24);
+            this.panel3.Location = new System.Drawing.Point(0, 49);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 553);
+            this.panel3.Size = new System.Drawing.Size(200, 528);
             this.panel3.TabIndex = 14;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.tabControl1);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(205, 49);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(489, 528);
+            this.panel6.TabIndex = 15;
             // 
             // toolBoxControl1
             // 
@@ -532,17 +548,53 @@ namespace XMLFormEditor
             this.toolBoxControl1.Editor = null;
             this.toolBoxControl1.Location = new System.Drawing.Point(0, 0);
             this.toolBoxControl1.Name = "toolBoxControl1";
-            this.toolBoxControl1.Size = new System.Drawing.Size(200, 553);
+            this.toolBoxControl1.Size = new System.Drawing.Size(200, 528);
             this.toolBoxControl1.TabIndex = 1;
             // 
-            // panel6
+            // toolStrip1
             // 
-            this.panel6.Controls.Add(this.tabControl1);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(205, 24);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(489, 553);
-            this.panel6.TabIndex = 15;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripSeparator1,
+            this.toolStripButton3});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(948, 25);
+            this.toolStrip1.TabIndex = 16;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "toolStripButton3";
             // 
             // EditorForm
             // 
@@ -554,6 +606,7 @@ namespace XMLFormEditor
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.splitter2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "EditorForm";
@@ -567,6 +620,8 @@ namespace XMLFormEditor
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -622,6 +677,11 @@ namespace XMLFormEditor
         private System.Windows.Forms.ToolStripMenuItem applyXSLTToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ListBox listBoxPageNames;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
 
     }
 }
