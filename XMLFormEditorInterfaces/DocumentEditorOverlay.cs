@@ -61,6 +61,13 @@ namespace XMLFormEditor
             Trace.WriteLine("DocumentEditorOverlay::OnMouseDown");
             base.OnMouseDown(e);
 
+            if ( ModifierKeys == Keys.Alt) {
+                MouseDownToAddJunction(e);
+                Invalidate();
+                return;
+            }
+
+
             HandlerType ht = _documentLayout.getResizeHandlerType(ViewPoint2LalyoutPoint(e.Location));
             if (ht != HandlerType.None)
                 MouseDownOnHandler(e, ht);
@@ -84,6 +91,18 @@ namespace XMLFormEditor
             Point ret = new Point(layoutPoint.X, layoutPoint.Y);
             ret.Offset(-1 * _documentEditor.ViewLocation.X, -1 * _documentEditor.ViewLocation.Y);
             return ret;
+        }
+
+
+        private void MouseDownToAddJunction(MouseEventArgs e)
+        {
+            //_documentEditor.LineDrawer.AddJunction(new LineDrawer.Junction(LineDrawer.Junction.Type.Cross, ViewPoint2LalyoutPoint(e.Location)));
+            int x = (e.Location.X + _documentEditor.GridSize /2) / _documentEditor.GridSize * _documentEditor.GridSize;
+            int y = (e.Location.Y + _documentEditor.GridSize / 2) / _documentEditor.GridSize * _documentEditor.GridSize;
+            _documentEditor.LineDrawer.AddJunction(new LineDrawer.Junction(LineDrawer.Junction.Type.Cross, new Point(x,y)));
+            //_documentEditor.LineDrawer.AddJunction(new LineDrawer.Junction(LineDrawer.Junction.Type.Cross, new Point(250,250)));
+            //_documentEditor.LineDrawer.AddJunction(new LineDrawer.Junction(LineDrawer.Junction.Type.Cross, new Point(300, 250)));
+            _documentEditor.UpdateSectionListNeeded();
         }
 
 
@@ -144,7 +163,7 @@ namespace XMLFormEditor
         {
             Trace.WriteLine("DocumentEditorOverlay::MouseDownOnBackground");
             if (ModifierKeys != Keys.Control)
-                _documentLayout.ClearSelection();
+                _documentLayout.ClearSelection();            
 
             _dragStartPos = ViewPoint2LalyoutPoint(e.Location);
             _selecting = true;
