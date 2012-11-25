@@ -228,6 +228,9 @@ namespace XMLFormEditor
             return sections;
         }
 
+        public List<Junction> getJunctionList() {
+            return junctions;
+        }
 
     }
 }

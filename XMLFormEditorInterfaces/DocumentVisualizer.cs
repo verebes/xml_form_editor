@@ -161,20 +161,59 @@ namespace XMLFormEditor
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
+
         }
 
        private void drawLines(PaintEventArgs e)
        {
            List<LineDrawer.Section> sections = _lineDrawer.getSectionList();
+
+           Pen pen = Pens.Black.Clone() as Pen;
+           pen.Width = 2;
+
            foreach (LineDrawer.Section section in sections)
            {
-               e.Graphics.DrawEllipse(Pens.Blue, section.p1.X - 3, section.p1.Y - 3, 6, 6);
-               e.Graphics.DrawEllipse(Pens.Green, section.p2.X - 4, section.p2.Y - 4, 8, 8);
-               Pen pen = Pens.Red.Clone() as Pen;
-               pen.Width = 2;
+               //e.Graphics.DrawEllipse(Pens.Blue, section.p1.X - 3, section.p1.Y - 3, 6, 6);
+               //e.Graphics.DrawEllipse(Pens.Green, section.p2.X - 4, section.p2.Y - 4, 8, 8);
                e.Graphics.DrawLine(pen, section.p1, section.p2);
            }            
+       }
 
+       private void drawJunctions(PaintEventArgs e)
+       {
+           List<LineDrawer.Junction> junctions = _lineDrawer.getJunctionList();
+
+           Pen pen = Pens.Red.Clone() as Pen;
+           pen.Width = 2;
+           const int length = 4;
+
+           foreach (LineDrawer.Junction junction in junctions)
+           {
+               if ( junction.type.up) {
+                   Point p2 = junction.position;
+                   p2.Y -= length;
+                   e.Graphics.DrawLine(pen, junction.position, p2);
+               }
+               if (junction.type.down)
+               {
+                   Point p2 = junction.position;
+                   p2.Y += length;
+                   e.Graphics.DrawLine(pen, junction.position, p2);
+               }
+               if (junction.type.left)
+               {
+                   Point p2 = junction.position;
+                   p2.X -= length;
+                   e.Graphics.DrawLine(pen, junction.position, p2);
+               }
+               if (junction.type.right)
+               {
+                   Point p2 = junction.position;
+                   p2.X += length;
+                   e.Graphics.DrawLine(pen, junction.position, p2);
+               }
+
+           }
        }
 
         private Pen gridPen = new Pen(Color.LightGray, 1);
@@ -194,6 +233,7 @@ namespace XMLFormEditor
             e.Graphics.FillRectangle(Brushes.White, e.ClipRectangle);
             
             drawLines(e);
+            drawJunctions(e);
 
             if (DrawGrid)
             {                
