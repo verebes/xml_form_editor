@@ -273,6 +273,21 @@ namespace XMLFormEditor
             refreshOverlayNeeded = true;           
         }
 
+        private bool updateSectionListNeeded = false;
+        public void UpdateSectionListNeeded()
+        {
+            if (!updateSectionListNeeded) {
+                updateSectionListNeeded = true;
+                RefreshOverlay();
+                storeNeeded = true;
+                Invalidate();
+            }
+        }
+        private void doUpdateSectionList() {
+            updateSectionListNeeded = false;
+            LineDrawer.UpdateSectionList();
+        }
+
         private bool storeNeeded = false;
         private bool paintingOverlay = false;
         private void doRefreshOverlay() 
@@ -358,6 +373,10 @@ namespace XMLFormEditor
                 System.Diagnostics.Trace.WriteLine("calling doUpdateVisibleControls() from DocumentEditor's OnPaint()");
                 doUpdateVisibleControls();
                 storeNeeded = true;
+            }
+
+            if (updateSectionListNeeded ) {
+                doUpdateSectionList();
             }
 
             if (refreshOverlayNeeded)
