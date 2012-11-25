@@ -58,6 +58,7 @@
     <Compile Include="IEditorControl.cs" />
     <Compile Include="IToolBoxItem.cs" />
     <Compile Include="IUpdateableWindow.cs" />
+    <Compile Include="LineDrawer.cs" />
     <Compile Include="ToolBoxControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

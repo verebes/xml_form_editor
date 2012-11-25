@@ -31,9 +31,16 @@ namespace XMLFormEditor
         protected Dictionary<XMLControl, Control> XMLControl2ControlDictionary = new Dictionary<XMLControl, Control>();
         protected Dictionary<Control, XMLControl> Control2XmlControlDictionary = new Dictionary<Control, XMLControl>( new ControlEqualityComparer() );
 
+        protected LineDrawer _lineDrawer;
+        public virtual  LineDrawer LineDrawer
+        {
+            get { return _lineDrawer;  }
+            set { _lineDrawer = value; }
+        }
 
-        protected DocumentLayout _documentLayout;
-   
+
+
+        protected DocumentLayout _documentLayout;  
         public virtual DocumentLayout DocumentLayout
         {
             get { return _documentLayout; }
@@ -63,7 +70,8 @@ namespace XMLFormEditor
 
         public DocumentVisualizer() 
         {
-            InitializeComponent();            
+            InitializeComponent();
+            _lineDrawer = new LineDrawer();
             _viewRectangle = new Rectangle(0,0,Width,Height);
             XmlSourceDocumentManager.Instance().OnSourceDocumentChanged += new EventHandler(DocumentVisualizer_OnSourceDocumentChanged);
         }
@@ -155,6 +163,20 @@ namespace XMLFormEditor
         {
         }
 
+       private void drawLines(PaintEventArgs e)
+       {
+           List<LineDrawer.Section> sections = _lineDrawer.getSectionList();
+           foreach (LineDrawer.Section section in sections)
+           {
+               e.Graphics.DrawEllipse(Pens.Blue, section.p1.X - 3, section.p1.Y - 3, 6, 6);
+               e.Graphics.DrawEllipse(Pens.Green, section.p2.X - 4, section.p2.Y - 4, 8, 8);
+               Pen pen = Pens.Red.Clone() as Pen;
+               pen.Width = 2;
+               e.Graphics.DrawLine(pen, section.p1, section.p2);
+           }            
+
+       }
+
         private Pen gridPen = new Pen(Color.LightGray, 1);
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -170,6 +192,9 @@ namespace XMLFormEditor
             }
 
             e.Graphics.FillRectangle(Brushes.White, e.ClipRectangle);
+            
+            drawLines(e);
+
             if (DrawGrid)
             {                
                 gridPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
