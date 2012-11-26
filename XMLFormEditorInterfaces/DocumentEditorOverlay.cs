@@ -16,6 +16,8 @@ namespace XMLFormEditor
         private bool _moved = false; // moved since last 'mousedown' event
         private Point _dragStartPos;
 
+        JunctionSelector junctionSelector = new JunctionSelector();
+
         private DocumentLayout _documentLayout;
         public DocumentLayout DocumentLayout
         {
@@ -40,7 +42,16 @@ namespace XMLFormEditor
             _selecting = false;
             _movingControls = false;
             _resizingControls = false;
-            _moved = false;            
+            _moved = false;
+            junctionSelector.OnJunctionTypeSelected += new EventHandler(junctionSelector_OnJunctionTypeSelected);
+        }
+
+        void junctionSelector_OnJunctionTypeSelected(object sender, EventArgs e) {                           
+            //_documentEditor.LineDrawer.AddJunction(new LineDrawer.Junction(LineDrawer.Junction.Type.Cross, new Point(x,y)));
+            LineDrawer.Junction j = new LineDrawer.Junction(junctionSelector.SelectedJunction.type, junctionSelector.SelectedJunction.position);
+            _documentEditor.LineDrawer.AddJunction(j);
+            _documentEditor.UpdateSectionListNeeded();
+
         }
 
         #region Component Designer generated code
@@ -94,15 +105,20 @@ namespace XMLFormEditor
         }
 
 
+
         private void MouseDownToAddJunction(MouseEventArgs e)
         {
-            //_documentEditor.LineDrawer.AddJunction(new LineDrawer.Junction(LineDrawer.Junction.Type.Cross, ViewPoint2LalyoutPoint(e.Location)));
-            int x = (e.Location.X + _documentEditor.GridSize /2) / _documentEditor.GridSize * _documentEditor.GridSize;
+
+            //junctionSelector.Top = e.Location.Y  + Top + Parent.Top;
+            //junctionSelector.Left = e.Location.X + Left + Parent.Left;
+            int x = (e.Location.X + _documentEditor.GridSize / 2) / _documentEditor.GridSize * _documentEditor.GridSize;
             int y = (e.Location.Y + _documentEditor.GridSize / 2) / _documentEditor.GridSize * _documentEditor.GridSize;
-            _documentEditor.LineDrawer.AddJunction(new LineDrawer.Junction(LineDrawer.Junction.Type.Cross, new Point(x,y)));
-            //_documentEditor.LineDrawer.AddJunction(new LineDrawer.Junction(LineDrawer.Junction.Type.Cross, new Point(250,250)));
-            //_documentEditor.LineDrawer.AddJunction(new LineDrawer.Junction(LineDrawer.Junction.Type.Cross, new Point(300, 250)));
-            _documentEditor.UpdateSectionListNeeded();
+
+            junctionSelector.SelectedJunction.position = new Point(x, y);
+            //junctionSelector.showSelector(new Point(x,y));
+            junctionSelector.Show();
+            junctionSelector.Location = PointToScreen(e.Location);
+            junctionSelector.Capture = true;            
         }
 
 
@@ -176,6 +192,9 @@ namespace XMLFormEditor
             Trace.WriteLine("DocumentEditorOverlay::OnMouseUp");
             base.OnMouseUp(e);
             _documentEditor.RefreshOverlay();
+
+
+            junctionSelector.Hide();
 
             // this was in because of clicking when more than one control is selected and we click on an allready selecet control
             // in this case the selection should disappear from the other controls

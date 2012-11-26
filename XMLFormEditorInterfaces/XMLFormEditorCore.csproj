@@ -58,7 +58,18 @@
     <Compile Include="IEditorControl.cs" />
     <Compile Include="IToolBoxItem.cs" />
     <Compile Include="IUpdateableWindow.cs" />
+    <Compile Include="JunctionSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JunctionSelector.Designer.cs">
+      <DependentUpon>JunctionSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="LineDrawer.cs" />
+    <Compile Include="Icons.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Icons.resx</DependentUpon>
+    </Compile>
     <Compile Include="ToolBoxControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +107,15 @@
       <SubType>Designer</SubType>
       <DependentUpon>DocumentVisualizer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JunctionSelector.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>JunctionSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icons.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Icons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ToolBoxControl.resx">
       <DependentUpon>ToolBoxControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -113,5 +133,44 @@
     <None Include="ClassDiagram_full.cd" />
     <None Include="ClassDiagram_toolBox.cd" />
     <None Include="ClassDiagram_collapsed.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Left.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Right.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Up.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Down.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpLeft.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DownLeft.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpRight.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TLeft.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TDown.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TRight.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TUp.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cross.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DownRight.ico" />
   </ItemGroup>
 </Project>

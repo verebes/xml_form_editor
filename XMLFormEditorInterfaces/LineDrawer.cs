@@ -28,6 +28,7 @@ namespace XMLFormEditor
                     return up || down || left || right;
                 }
 
+                public static Type Invalid = new Type(false, false, false, false);
                 public static Type Up = new Type(true, false, false, false);
                 public static Type Down = new Type(false, true, false, false);
                 public static Type Left = new Type(false, false, true, false);
@@ -43,6 +44,10 @@ namespace XMLFormEditor
                 public static Type TRight = new Type(true, true, false, true);
             }
 
+            public Junction() {
+                type = Type.Invalid;
+                this.position = new Point(0, 0);
+            }
             public Junction(Type type, Point point) {
                 this.type = type;
                 this.position = point;
