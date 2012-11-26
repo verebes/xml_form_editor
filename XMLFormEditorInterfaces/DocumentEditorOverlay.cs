@@ -32,6 +32,20 @@ namespace XMLFormEditor
             set { _documentEditor = value; }
         }
 
+        private const int CS_DROPSHADOW = 0x20000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams parameters = base.CreateParams;
+                if (OSFeature.IsPresent(SystemParameter.DropShadow))
+                {
+                    parameters.ClassStyle |= CS_DROPSHADOW;
+                }
+                return parameters;
+            }
+        }
+
 
         public DocumentEditorOverlay()
         {
@@ -49,7 +63,13 @@ namespace XMLFormEditor
         void junctionSelector_OnJunctionTypeSelected(object sender, EventArgs e) {                           
             //_documentEditor.LineDrawer.AddJunction(new LineDrawer.Junction(LineDrawer.Junction.Type.Cross, new Point(x,y)));
             LineDrawer.Junction j = new LineDrawer.Junction(junctionSelector.SelectedJunction.type, junctionSelector.SelectedJunction.position);
-            _documentEditor.LineDrawer.AddJunction(j);
+
+            if (j.type == LineDrawer.Junction.Type.Invalid)
+            {
+                _documentEditor.LineDrawer.RemoveJunction(j);
+            } else {
+                _documentEditor.LineDrawer.AddJunction(j);
+            }
             _documentEditor.UpdateSectionListNeeded();
 
         }
@@ -115,10 +135,10 @@ namespace XMLFormEditor
             int y = (e.Location.Y + _documentEditor.GridSize / 2) / _documentEditor.GridSize * _documentEditor.GridSize;
 
             junctionSelector.SelectedJunction.position = new Point(x, y);
-            //junctionSelector.showSelector(new Point(x,y));
-            junctionSelector.Show();
-            junctionSelector.Location = PointToScreen(e.Location);
-            junctionSelector.Capture = true;            
+            junctionSelector.showSelector(PointToScreen(e.Location));
+            //junctionSelector.Show();
+            //junctionSelector.Location = PointToScreen(e.Location);
+            //junctionSelector.Capture = true;            
         }
 
 

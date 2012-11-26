@@ -20,7 +20,10 @@ namespace XMLFormEditor
 
 
         public void showSelector( Point junctionLocation ) {
-            selectedJunction.position = junctionLocation;
+            this.Show();
+            Location =  new Point(junctionLocation.X - bCross.Left - bCross.Width / 2, junctionLocation.Y - bCross.Top - bCross.Height / 2);
+            selectedJunction.type = LineDrawer.Junction.Type.Invalid;
+            Capture = true;
         }
 
         LineDrawer.Junction selectedJunction = new LineDrawer.Junction();
@@ -36,6 +39,7 @@ namespace XMLFormEditor
 
         private void SelectJunction(object sender)
         {
+            selectedJunction.type = LineDrawer.Junction.Type.Invalid;
             if (sender == bLeft)
                 selectedJunction.type = LineDrawer.Junction.Type.Left;
             if (sender == bRight)
@@ -62,6 +66,8 @@ namespace XMLFormEditor
                 selectedJunction.type = LineDrawer.Junction.Type.TDown;
             if (sender == bTUp)
                 selectedJunction.type = LineDrawer.Junction.Type.TUp;
+            if (sender == bDelete)
+                selectedJunction.type = LineDrawer.Junction.Type.Invalid;
 
             OnJunctionTypeSelected(this, null);
             Hide();
@@ -71,11 +77,5 @@ namespace XMLFormEditor
         {            
             SelectJunction(GetChildAtPoint(e.Location));
         }
-
-        private void bDownRight_MouseEnter(object sender, EventArgs e)
-        {
-            Button b = sender as Button;
-        }
-
     }
 }

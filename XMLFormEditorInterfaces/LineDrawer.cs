@@ -132,8 +132,18 @@ namespace XMLFormEditor
             {
                 junctions.Remove(j);
             }
-            
-            junctions.Add(junction);
+
+            if (junction.type != Junction.Type.Invalid)
+            {
+                junctions.Add(junction);
+            }
+        }
+
+        public void RemoveJunction ( Junction junction )
+        {
+            // when we add an invalid junction to a position it will remove all junctions from there
+            Junction j = new Junction(Junction.Type.Invalid, junction.position);
+            AddJunction(j);
         }
 
         public void UpdateSectionList () {
