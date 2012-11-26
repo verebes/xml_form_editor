@@ -16,6 +16,8 @@ namespace XMLFormEditor
         private bool _moved = false; // moved since last 'mousedown' event
         private Point _dragStartPos;
 
+        private Timer _longClickTimer = new Timer();
+
         JunctionSelector junctionSelector = new JunctionSelector();
 
         private DocumentLayout _documentLayout;
@@ -32,21 +34,6 @@ namespace XMLFormEditor
             set { _documentEditor = value; }
         }
 
-        private const int CS_DROPSHADOW = 0x20000;
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams parameters = base.CreateParams;
-                if (OSFeature.IsPresent(SystemParameter.DropShadow))
-                {
-                    parameters.ClassStyle |= CS_DROPSHADOW;
-                }
-                return parameters;
-            }
-        }
-
-
         public DocumentEditorOverlay()
         {
             InitializeComponent();
@@ -58,10 +45,18 @@ namespace XMLFormEditor
             _resizingControls = false;
             _moved = false;
             junctionSelector.OnJunctionTypeSelected += new EventHandler(junctionSelector_OnJunctionTypeSelected);
+            _longClickTimer.Tick += new EventHandler(_longClickTimer_Tick);
+        }
+
+        void _longClickTimer_Tick(object sender, EventArgs e)
+        {
+            _longClickTimer.Stop();
+            MouseDownToAddJunction(lastMousePressEventArg);
+            Invalidate();
         }
 
         void junctionSelector_OnJunctionTypeSelected(object sender, EventArgs e) {                           
-            //_documentEditor.LineDrawer.AddJunction(new LineDrawer.Junction(LineDrawer.Junction.Type.Cross, new Point(x,y)));
+            
             LineDrawer.Junction j = new LineDrawer.Junction(junctionSelector.SelectedJunction.type, junctionSelector.SelectedJunction.position);
 
             if (j.type == LineDrawer.Junction.Type.Invalid)
@@ -87,6 +82,7 @@ namespace XMLFormEditor
         #endregion
 
 
+        MouseEventArgs lastMousePressEventArg = null;
         protected override void OnMouseDown(MouseEventArgs e)
         {
             Trace.WriteLine("DocumentEditorOverlay::OnMouseDown");
@@ -97,6 +93,10 @@ namespace XMLFormEditor
                 Invalidate();
                 return;
             }
+
+            lastMousePressEventArg = e;
+            _longClickTimer.Interval = 500;
+            _longClickTimer.Start();
 
 
             HandlerType ht = _documentLayout.getResizeHandlerType(ViewPoint2LalyoutPoint(e.Location));
@@ -128,17 +128,11 @@ namespace XMLFormEditor
 
         private void MouseDownToAddJunction(MouseEventArgs e)
         {
-
-            //junctionSelector.Top = e.Location.Y  + Top + Parent.Top;
-            //junctionSelector.Left = e.Location.X + Left + Parent.Left;
             int x = (e.Location.X + _documentEditor.GridSize / 2) / _documentEditor.GridSize * _documentEditor.GridSize;
             int y = (e.Location.Y + _documentEditor.GridSize / 2) / _documentEditor.GridSize * _documentEditor.GridSize;
 
             junctionSelector.SelectedJunction.position = new Point(x, y);
             junctionSelector.showSelector(PointToScreen(e.Location));
-            //junctionSelector.Show();
-            //junctionSelector.Location = PointToScreen(e.Location);
-            //junctionSelector.Capture = true;            
         }
 
 
@@ -215,6 +209,7 @@ namespace XMLFormEditor
 
 
             junctionSelector.Hide();
+            _longClickTimer.Stop();
 
             // this was in because of clicking when more than one control is selected and we click on an allready selecet control
             // in this case the selection should disappear from the other controls
@@ -235,6 +230,14 @@ namespace XMLFormEditor
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
+
+            if (lastMousePressEventArg != null)
+            {
+                int dx = e.Location.X - lastMousePressEventArg.Location.X;
+                int dy = e.Location.Y - lastMousePressEventArg.Location.Y;
+                if (dx * dx + dy * dy > 25)
+                    _longClickTimer.Stop();
+            }
 
 
             if (!_selecting && !_movingControls && !_resizingControls)
@@ -527,10 +530,6 @@ namespace XMLFormEditor
             g.Flush();
             e.Graphics.DrawImageUnscaled(tmpBmp, 0, 0);
             g.Dispose();
-            //tmpBmp.Save("e:\\GitHub\\tmp\\test_" + tmpCount.ToString() + ".bmp");
-            //System.IO.TextWriter tw = new System.IO.StreamWriter("e:\\GitHub\\tmp\\test_" + tmpCount.ToString() + ".txt");
-            //tw.WriteLine(System.Environment.StackTrace);
-            //tw.Close();
 
             ++tmpCount;
         }

@@ -14,6 +14,20 @@ namespace XMLFormEditor
         public JunctionSelector() {
             InitializeComponent();
         }
+
+        private const int CS_DROPSHADOW = 0x20000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams parameters = base.CreateParams;
+                if (OSFeature.IsPresent(SystemParameter.DropShadow))
+                {
+                    parameters.ClassStyle |= CS_DROPSHADOW;
+                }
+                return parameters;
+            }
+        }
         
         public event System.EventHandler OnJunctionTypeSelected = delegate {
         };
