@@ -131,7 +131,8 @@ namespace XMLFormEditor
             int x = (e.Location.X + _documentEditor.GridSize / 2) / _documentEditor.GridSize * _documentEditor.GridSize;
             int y = (e.Location.Y + _documentEditor.GridSize / 2) / _documentEditor.GridSize * _documentEditor.GridSize;
 
-            junctionSelector.SelectedJunction.position = new Point(x, y);
+            //junctionSelector.SelectedJunction.position = new Point(x, y);
+            junctionSelector.SelectedJunction.position = ViewPoint2LalyoutPoint(new Point(x, y));
             junctionSelector.showSelector(PointToScreen(e.Location));
         }
 

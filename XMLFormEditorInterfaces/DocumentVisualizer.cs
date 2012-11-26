@@ -164,6 +164,16 @@ namespace XMLFormEditor
 
         }
 
+
+        private Point LayoutPoint2ViewPoint(Point layoutPoint)
+        {
+            Point ret = new Point(layoutPoint.X, layoutPoint.Y);
+            ret.Offset(-1 * ViewLocation.X, -1 * ViewLocation.Y);
+            return ret;
+        }
+
+
+
        private void drawLines(PaintEventArgs e)
        {
            List<LineDrawer.Section> sections = _lineDrawer.getSectionList();
@@ -173,9 +183,8 @@ namespace XMLFormEditor
 
            foreach (LineDrawer.Section section in sections)
            {
-               //e.Graphics.DrawEllipse(Pens.Blue, section.p1.X - 3, section.p1.Y - 3, 6, 6);
-               //e.Graphics.DrawEllipse(Pens.Green, section.p2.X - 4, section.p2.Y - 4, 8, 8);
-               e.Graphics.DrawLine(pen, section.p1, section.p2);
+               //todo: here we should paint sections which intersects the view rectangle
+               e.Graphics.DrawLine(pen, LayoutPoint2ViewPoint(section.p1), LayoutPoint2ViewPoint(section.p2));
            }            
        }
 
@@ -185,32 +194,33 @@ namespace XMLFormEditor
 
            Pen pen = Pens.Red.Clone() as Pen;
            pen.Width = 2;
-           const int length = 4;
+           const int length = 4;           
 
            foreach (LineDrawer.Junction junction in junctions)
            {
+               Point pos = LayoutPoint2ViewPoint(junction.position);
                if ( junction.type.up) {
-                   Point p2 = junction.position;
+                   Point p2 = pos;
                    p2.Y -= length;
-                   e.Graphics.DrawLine(pen, junction.position, p2);
+                   e.Graphics.DrawLine(pen,pos, p2);
                }
                if (junction.type.down)
                {
-                   Point p2 = junction.position;
+                   Point p2 = pos;
                    p2.Y += length;
-                   e.Graphics.DrawLine(pen, junction.position, p2);
+                   e.Graphics.DrawLine(pen, pos, p2);
                }
                if (junction.type.left)
                {
-                   Point p2 = junction.position;
+                   Point p2 = pos;
                    p2.X -= length;
-                   e.Graphics.DrawLine(pen, junction.position, p2);
+                   e.Graphics.DrawLine(pen, pos, p2);
                }
                if (junction.type.right)
                {
-                   Point p2 = junction.position;
+                   Point p2 = pos;
                    p2.X += length;
-                   e.Graphics.DrawLine(pen, junction.position, p2);
+                   e.Graphics.DrawLine(pen,pos, p2);
                }
 
            }
