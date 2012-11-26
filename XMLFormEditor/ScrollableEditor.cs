@@ -20,6 +20,7 @@ namespace XMLFormEditor
             this.documentEditor.MouseWheel += new MouseEventHandler(documentEditor_MouseWheel);
         }
 
+
         void documentEditor_MouseWheel(object sender, MouseEventArgs e)
         {
             ScrollBar scrollBar;
