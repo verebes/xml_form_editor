@@ -495,7 +495,7 @@ namespace XMLFormEditor
                 clipboardDoc.DocumentElement.Attributes["Name"].Value = documentLayouts[tabControl1.SelectedIndex].LayoutName;
                 documentLayouts[tabControl1.SelectedIndex].ClearSelection();
                 documentLayouts[tabControl1.SelectedIndex].deserializeFromXml(clipboardDoc.DocumentElement, true);
-                scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.recreateControls();
+                scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.recreateControls();                
             }
             catch (Exception)
             { 

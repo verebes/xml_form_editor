@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
+using System.Xml;
 
 namespace XMLFormEditor
 {
@@ -263,5 +264,42 @@ namespace XMLFormEditor
             return junctions;
         }
 
+        public XmlElement serializeToXml(XmlDocument document) {
+
+            XmlElement junctionElement = document.CreateElement("Junctions");            
+
+            foreach ( Junction j in junctions)
+            {
+                XmlElement element = document.CreateElement("Junction");
+                String type = String.Format("{0},{1},{2},{3}", j.type.up, j.type.down, j.type.left, j.type.right);                
+                element.SetAttribute("Type", type);
+                element.SetAttribute("X", j.position.X.ToString());
+                element.SetAttribute("Y", j.position.Y.ToString());
+                junctionElement.AppendChild(element);
+            }
+            return junctionElement;
+        }
+
+        public void deserializeFromXml(XmlNode element) {
+            foreach (XmlNode node in element.ChildNodes) {
+
+                Junction j = new Junction();
+                
+                String type = node.Attributes["Type"].Value;
+                String[] s = type.Split(',');
+                Junction.Type t = new Junction.Type(
+                    Convert.ToBoolean(s[0]),
+                    Convert.ToBoolean(s[1]),
+                    Convert.ToBoolean(s[2]),
+                    Convert.ToBoolean(s[3]));
+
+                j.type = t;
+                j.position.X = Convert.ToInt32(node.Attributes["X"].Value);
+                j.position.Y = Convert.ToInt32(node.Attributes["Y"].Value);
+
+                junctions.Add(j);
+            }
+            UpdateSectionList();
+        }
     }
 }

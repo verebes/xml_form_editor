@@ -150,6 +150,18 @@ namespace XMLFormEditor
             get { return _minimalSize;}
         }
 
+
+        protected LineDrawer _lineDrawer = new LineDrawer();
+        public virtual LineDrawer LineDrawer {
+            get {
+                return _lineDrawer;
+            }
+            set {
+                _lineDrawer = value;
+            }
+        }
+
+
         public Rectangle Size
         {
             get {
@@ -173,6 +185,8 @@ namespace XMLFormEditor
             {               
                 element.AppendChild(control.serializeToXml( document ));
             }
+
+            element.AppendChild(_lineDrawer.serializeToXml(document));
 
             return element;
         }
@@ -199,17 +213,24 @@ namespace XMLFormEditor
             Rectangle clientRect = new Rectangle();
             foreach ( XmlNode node in element.ChildNodes)
             {
-                XMLControl control = controlFactory.createControl(node.Attributes["Type"].Value);
-                
-                clientRect.X =  Convert.ToInt32(node.Attributes["X"].Value);
-                clientRect.Y =  Convert.ToInt32(node.Attributes["Y"].Value);
-                clientRect.Width  = Convert.ToInt32(node.Attributes["Width"].Value);
-                clientRect.Height = Convert.ToInt32(node.Attributes["Height"].Value);
+                if (node.Name == "Control") {
+                    XMLControl control = controlFactory.createControl(node.Attributes["Type"].Value);
 
-                control.ClientRect = clientRect;
-                control.Selected = selected;
-                control.deserializeFromXml(node);
-                AddControl(control);
+                    clientRect.X = Convert.ToInt32(node.Attributes["X"].Value);
+                    clientRect.Y = Convert.ToInt32(node.Attributes["Y"].Value);
+                    clientRect.Width = Convert.ToInt32(node.Attributes["Width"].Value);
+                    clientRect.Height = Convert.ToInt32(node.Attributes["Height"].Value);
+
+                    control.ClientRect = clientRect;
+                    control.Selected = selected;
+                    control.deserializeFromXml(node);
+                    AddControl(control);
+                }
+
+                if (node.Name == "Junctions") {
+                    LineDrawer.deserializeFromXml(node);
+                }
+
             }
         }
 

@@ -31,15 +31,6 @@ namespace XMLFormEditor
         protected Dictionary<XMLControl, Control> XMLControl2ControlDictionary = new Dictionary<XMLControl, Control>();
         protected Dictionary<Control, XMLControl> Control2XmlControlDictionary = new Dictionary<Control, XMLControl>( new ControlEqualityComparer() );
 
-        protected LineDrawer _lineDrawer;
-        public virtual  LineDrawer LineDrawer
-        {
-            get { return _lineDrawer;  }
-            set { _lineDrawer = value; }
-        }
-
-
-
         protected DocumentLayout _documentLayout;  
         public virtual DocumentLayout DocumentLayout
         {
@@ -71,7 +62,7 @@ namespace XMLFormEditor
         public DocumentVisualizer() 
         {
             InitializeComponent();
-            _lineDrawer = new LineDrawer();
+            
             _viewRectangle = new Rectangle(0,0,Width,Height);
             XmlSourceDocumentManager.Instance().OnSourceDocumentChanged += new EventHandler(DocumentVisualizer_OnSourceDocumentChanged);
         }
@@ -176,7 +167,7 @@ namespace XMLFormEditor
 
        private void drawLines(PaintEventArgs e)
        {
-           List<LineDrawer.Section> sections = _lineDrawer.getSectionList();
+           List<LineDrawer.Section> sections = DocumentLayout.LineDrawer.getSectionList();
 
            Pen pen = Pens.Black.Clone() as Pen;
            pen.Width = 2;
@@ -190,7 +181,7 @@ namespace XMLFormEditor
 
        private void drawJunctions(PaintEventArgs e)
        {
-           List<LineDrawer.Junction> junctions = _lineDrawer.getJunctionList();
+           List<LineDrawer.Junction> junctions = DocumentLayout.LineDrawer.getJunctionList();
 
            Pen pen = Pens.Red.Clone() as Pen;
            pen.Width = 2;

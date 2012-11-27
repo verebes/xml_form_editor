@@ -285,7 +285,7 @@ namespace XMLFormEditor
         }
         private void doUpdateSectionList() {
             updateSectionListNeeded = false;
-            LineDrawer.UpdateSectionList();
+            DocumentLayout.LineDrawer.UpdateSectionList();
         }
 
         private bool storeNeeded = false;

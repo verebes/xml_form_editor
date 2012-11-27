@@ -61,9 +61,9 @@ namespace XMLFormEditor
 
             if (j.type == LineDrawer.Junction.Type.Invalid)
             {
-                _documentEditor.LineDrawer.RemoveJunction(j);
+                DocumentLayout.LineDrawer.RemoveJunction(j);
             } else {
-                _documentEditor.LineDrawer.AddJunction(j);
+                DocumentLayout.LineDrawer.AddJunction(j);
             }
             _documentEditor.UpdateSectionListNeeded();
 
@@ -379,7 +379,7 @@ namespace XMLFormEditor
                         r.Width = ((r.Width + gs / 2) / gs) * gs;
                         r.Height = ((r.Height + gs / 2) / gs) * gs;
                     }
-                    _documentEditor.LineDrawer.AddRectange(r);
+                    DocumentLayout.LineDrawer.AddRectange(r);
                     _documentEditor.UpdateSectionListNeeded();                    
                     return;
                 }
