@@ -93,24 +93,6 @@ namespace XMLFormEditor
 
         public LineDrawer()
         {
-            AddJunction(new Junction(Junction.Type.DownRight, new Point(0, 50)));
-            AddJunction(new Junction(Junction.Type.UpLeft, new Point(120, 50)));
-            AddJunction(new Junction(Junction.Type.DownRight, new Point(120, 0)));
-            AddJunction(new Junction(Junction.Type.UpLeft, new Point(200, 100)));
-            AddJunction(new Junction(Junction.Type.Cross, new Point(100, 100)));
-            AddJunction(new Junction(Junction.Type.UpLeft, new Point(100, 200)));
-            AddJunction(new Junction(Junction.Type.UpRight, new Point(0, 200)));
-            AddJunction(new Junction(Junction.Type.DownLeft, new Point(200, 0)));
-
-            AddJunction(new Junction(Junction.Type.TRight, new Point(0, 80)));
-            AddJunction(new Junction(Junction.Type.DownLeft, new Point(100, 80)));
-
-
-            //AddJunction(new Junction( Junction.Type.DownRight, new Point( 100,100) ));
-            //AddJunction(new Junction(Junction.Type.DownLeft, new Point(200, 100)));
-            //AddJunction(new Junction(Junction.Type.UpLeft, new Point(200, 200)));
-            //AddJunction(new Junction(Junction.Type.UpRight, new Point(100, 200)));
-
             UpdateSectionList();
         }
 
