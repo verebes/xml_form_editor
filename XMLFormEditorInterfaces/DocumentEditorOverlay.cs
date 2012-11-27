@@ -55,9 +55,11 @@ namespace XMLFormEditor
             Invalidate();
         }
 
-        void junctionSelector_OnJunctionTypeSelected(object sender, EventArgs e) {                           
+        void junctionSelector_OnJunctionTypeSelected(object sender, EventArgs e) {
+
+            Point p = junctionSelector.SelectedJunction.position;
             
-            LineDrawer.Junction j = new LineDrawer.Junction(junctionSelector.SelectedJunction.type, junctionSelector.SelectedJunction.position);
+            LineDrawer.Junction j = new LineDrawer.Junction(junctionSelector.SelectedJunction.type, p);
 
             if (j.type == LineDrawer.Junction.Type.Invalid)
             {
@@ -371,14 +373,15 @@ namespace XMLFormEditor
                     _documentLayout.ClearSelection();
 
                 if (ModifierKeys == Keys.Alt) {
-                    Rectangle r = getCurrentSelectionRectangle();
+                    Rectangle cr = getCurrentSelectionRectangle();
+                    Rectangle r = new Rectangle(cr.Location, cr.Size);
                     if ( DocumentEditor.SnapToGrid ) {
                         int gs = DocumentEditor.GridSize;
                         r.X = ((r.X + gs / 2) / gs) * gs;
                         r.Y = ((r.Y + gs / 2) / gs) * gs;
                         r.Width = ((r.Width + gs / 2) / gs) * gs;
                         r.Height = ((r.Height + gs / 2) / gs) * gs;
-                    }
+                    }                    
                     DocumentLayout.LineDrawer.AddRectange(r);
                     _documentEditor.UpdateSectionListNeeded();                    
                     return;

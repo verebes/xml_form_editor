@@ -9,7 +9,7 @@ namespace XMLFormEditor
     public class LineDrawer
     {
         public class Junction {
-            public class Type
+            public class Type : ICloneable
             {
                 public Type(bool up, bool down, bool left, bool right )
                 {
@@ -17,6 +17,11 @@ namespace XMLFormEditor
                     this.down = down;
                     this.left = left;
                     this.right = right;
+                }
+
+                public Object Clone() {
+                    Type t = new Type(up, down, left, right);
+                    return t;
                 }
 
                 public bool up = false;
@@ -46,12 +51,12 @@ namespace XMLFormEditor
             }
 
             public Junction() {
-                type = Type.Invalid;
+                type = Type.Invalid.Clone() as Type;
                 this.position = new Point(0, 0);
             }
             public Junction(Type type, Point point) {
-                this.type = type;
-                this.position = point;
+                this.type = type.Clone() as Type;
+                this.position = new Point(point.X, point.Y);
             }
 
             public Junction Union(Junction junction){
@@ -112,7 +117,7 @@ namespace XMLFormEditor
         List<Section> sections = new List<Section>();
 
         public void AddJunction(Junction junction) {
-            AddJunction(junction, true);
+            AddJunction(junction, false);
         }
 
         public void AddJunction( Junction junction, bool unionJunction) {

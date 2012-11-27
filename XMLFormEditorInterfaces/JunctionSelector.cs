@@ -53,36 +53,37 @@ namespace XMLFormEditor
 
         private void SelectJunction(object sender)
         {
-            selectedJunction.type = LineDrawer.Junction.Type.Invalid;
+            LineDrawer.Junction.Type o = LineDrawer.Junction.Type.Invalid;
             if (sender == bLeft)
-                selectedJunction.type = LineDrawer.Junction.Type.Left;
+                o = LineDrawer.Junction.Type.Left;
             if (sender == bRight)
-                selectedJunction.type = LineDrawer.Junction.Type.Right;
+                o = LineDrawer.Junction.Type.Right;
             if (sender == bDown)
-                selectedJunction.type = LineDrawer.Junction.Type.Down;
+                o = LineDrawer.Junction.Type.Down;
             if (sender == bUp)
-                selectedJunction.type = LineDrawer.Junction.Type.Up;
+                o = LineDrawer.Junction.Type.Up;
             if (sender == bDownLeft)
-                selectedJunction.type = LineDrawer.Junction.Type.DownLeft;
+                o = LineDrawer.Junction.Type.DownLeft;
             if (sender == bDownRight)
-                selectedJunction.type = LineDrawer.Junction.Type.DownRight;
+                o = LineDrawer.Junction.Type.DownRight;
             if (sender == bUpLeft)
-                selectedJunction.type = LineDrawer.Junction.Type.UpLeft;
+                o = LineDrawer.Junction.Type.UpLeft;
             if (sender == bUpRight)
-                selectedJunction.type = LineDrawer.Junction.Type.UpRight;
+                o = LineDrawer.Junction.Type.UpRight;
             if (sender == bCross)
-                selectedJunction.type = LineDrawer.Junction.Type.Cross;
+                o = LineDrawer.Junction.Type.Cross;
             if (sender == bTLeft)
-                selectedJunction.type = LineDrawer.Junction.Type.TLeft;
+                o = LineDrawer.Junction.Type.TLeft;
             if (sender == bTRight)
-                selectedJunction.type = LineDrawer.Junction.Type.TRight;
+                o = LineDrawer.Junction.Type.TRight;
             if (sender == bTDown)
-                selectedJunction.type = LineDrawer.Junction.Type.TDown;
+                o = LineDrawer.Junction.Type.TDown;
             if (sender == bTUp)
-                selectedJunction.type = LineDrawer.Junction.Type.TUp;
+                o = LineDrawer.Junction.Type.TUp;
             if (sender == bDelete)
-                selectedJunction.type = LineDrawer.Junction.Type.Invalid;
+                o = LineDrawer.Junction.Type.Invalid;
 
+            selectedJunction.type = o.Clone() as LineDrawer.Junction.Type;
             OnJunctionTypeSelected(this, null);
             Hide();
         }
