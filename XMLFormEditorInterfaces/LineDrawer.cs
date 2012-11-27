@@ -53,6 +53,15 @@ namespace XMLFormEditor
                 this.position = point;
             }
 
+            public Junction Union(Junction junction){
+                type.left = type.left | junction.type.left;
+                type.right = type.right | junction.type.right;
+                type.up = type.up | junction.type.up;
+                type.down = type.down | junction.type.down;
+
+                return this;
+            }
+
             public Type type;
             public Point position;
         }
@@ -101,7 +110,11 @@ namespace XMLFormEditor
         List<HalfSection> halfSections = new List<HalfSection>();
         List<Section> sections = new List<Section>();
 
-        public void AddJunction( Junction junction) {
+        public void AddJunction(Junction junction) {
+            AddJunction(junction, true);
+        }
+
+        public void AddJunction( Junction junction, bool unionJunction) {
 
             List<Junction> toDelete = new List<Junction>();
             foreach ( Junction j in junctions)
@@ -110,6 +123,14 @@ namespace XMLFormEditor
                     toDelete.Add(j);
                 }
             }
+
+
+            Junction jUnioun = new Junction(junction.type, junction.position);
+            foreach (Junction j in toDelete) {
+                jUnioun = jUnioun.Union(j);
+            }
+
+
             foreach ( Junction j in toDelete) 
             {
                 junctions.Remove(j);
@@ -117,8 +138,21 @@ namespace XMLFormEditor
 
             if (junction.type != Junction.Type.Invalid)
             {
-                junctions.Add(junction);
+                if (unionJunction) {                    
+                    junctions.Add(jUnioun);
+                } else {
+                    junctions.Add(junction);
+                }
             }
+        }
+
+
+        public void AddRectange(Rectangle r)
+        {                        
+            AddJunction(new Junction(Junction.Type.Cross, new Point(r.Location.X, r.Location.Y)),true);
+            AddJunction(new Junction(Junction.Type.Cross, new Point(r.Location.X + r.Width, r.Location.Y)), true);
+            AddJunction(new Junction(Junction.Type.Cross, new Point(r.Location.X, r.Location.Y + r.Height)), true);
+            AddJunction(new Junction(Junction.Type.Cross, new Point(r.Location.X + r.Width, r.Location.Y + r.Height)), true);
         }
 
         public void RemoveJunction ( Junction junction )

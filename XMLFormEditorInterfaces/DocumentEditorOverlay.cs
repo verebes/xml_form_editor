@@ -88,7 +88,7 @@ namespace XMLFormEditor
             Trace.WriteLine("DocumentEditorOverlay::OnMouseDown");
             base.OnMouseDown(e);
 
-            if ( ModifierKeys == Keys.Alt) {
+            if ( ModifierKeys == (Keys.Alt | Keys.Control)) {
                 MouseDownToAddJunction(e);
                 Invalidate();
                 return;
@@ -369,6 +369,20 @@ namespace XMLFormEditor
 
                 if (ModifierKeys != Keys.Control)
                     _documentLayout.ClearSelection();
+
+                if (ModifierKeys == Keys.Alt) {
+                    Rectangle r = getCurrentSelectionRectangle();
+                    if ( DocumentEditor.SnapToGrid ) {
+                        int gs = DocumentEditor.GridSize;
+                        r.X = ((r.X + gs / 2) / gs) * gs;
+                        r.Y = ((r.Y + gs / 2) / gs) * gs;
+                        r.Width = ((r.Width + gs / 2) / gs) * gs;
+                        r.Height = ((r.Height + gs / 2) / gs) * gs;
+                    }
+                    _documentEditor.LineDrawer.AddRectange(r);
+                    _documentEditor.UpdateSectionListNeeded();                    
+                    return;
+                }
 
                 _documentLayout.SelectControls(getCurrentSelectionRectangle());
 
