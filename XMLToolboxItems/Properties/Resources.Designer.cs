@@ -60,13 +60,6 @@ namespace XMLToolboxItems.Properties {
             }
         }
         
-        internal static System.Drawing.Icon attribute {
-            get {
-                object obj = ResourceManager.GetObject("attribute", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
         internal static System.Drawing.Icon button {
             get {
                 object obj = ResourceManager.GetObject("button", resourceCulture);
@@ -77,13 +70,6 @@ namespace XMLToolboxItems.Properties {
         internal static System.Drawing.Icon combo {
             get {
                 object obj = ResourceManager.GetObject("combo", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Icon document {
-            get {
-                object obj = ResourceManager.GetObject("document", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -102,23 +88,9 @@ namespace XMLToolboxItems.Properties {
             }
         }
         
-        internal static System.Drawing.Icon node {
-            get {
-                object obj = ResourceManager.GetObject("node", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
         internal static System.Drawing.Icon pager {
             get {
                 object obj = ResourceManager.GetObject("pager", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Icon text {
-            get {
-                object obj = ResourceManager.GetObject("text", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

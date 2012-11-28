@@ -60,9 +60,23 @@ namespace XMLFormEditor {
             }
         }
         
+        internal static System.Drawing.Icon attribute {
+            get {
+                object obj = ResourceManager.GetObject("attribute", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon Cross {
             get {
                 object obj = ResourceManager.GetObject("Cross", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon document {
+            get {
+                object obj = ResourceManager.GetObject("document", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -95,6 +109,13 @@ namespace XMLFormEditor {
             }
         }
         
+        internal static System.Drawing.Icon node {
+            get {
+                object obj = ResourceManager.GetObject("node", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon Right {
             get {
                 object obj = ResourceManager.GetObject("Right", resourceCulture);
@@ -105,6 +126,13 @@ namespace XMLFormEditor {
         internal static System.Drawing.Icon TDown {
             get {
                 object obj = ResourceManager.GetObject("TDown", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon text {
+            get {
+                object obj = ResourceManager.GetObject("text", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

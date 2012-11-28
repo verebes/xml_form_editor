@@ -90,6 +90,12 @@
       <DependentUpon>XMLPropertyControlBase.cs</DependentUpon>
     </Compile>
     <Compile Include="XmlSourceDocumentManager.cs" />
+    <Compile Include="XMLTreeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMLTreeDialog.Designer.cs">
+      <DependentUpon>XMLTreeDialog.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -126,6 +132,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="XMLPropertyControlBase.resx">
       <DependentUpon>XMLPropertyControlBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMLTreeDialog.resx">
+      <DependentUpon>XMLTreeDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -172,5 +182,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DownRight.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="attribute.ico" />
+    <Content Include="node.ico" />
+    <None Include="Resources\node.ico" />
+    <None Include="Resources\document.ico" />
+    <None Include="Resources\text.ico" />
+    <None Include="Resources\attribute.ico" />
+    <Content Include="text.ico" />
   </ItemGroup>
 </Project>
