@@ -35,6 +35,8 @@ namespace XMLFormEditor
 
         public void showSelector( Point junctionLocation ) {
             this.Show();
+
+            // moving the cross button on the window under the mouse cursor
             Location =  new Point(junctionLocation.X - bCross.Left - bCross.Width / 2, junctionLocation.Y - bCross.Top - bCross.Height / 2);
             selectedJunction.type = LineDrawer.Junction.Type.Invalid;
             Capture = true;
