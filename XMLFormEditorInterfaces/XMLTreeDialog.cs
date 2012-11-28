@@ -52,7 +52,10 @@ namespace XMLFormEditor
                 descendant = (draggedNode == tmp);
                 tmp = tmp.Parent;
             }
-            if (!descendant) {
+            if (!descendant && 
+                node.Tag != null && node.Tag is XmlElement &&
+                draggedNode.Tag != null && draggedNode.Tag is XmlElement
+                ) {
                 e.Effect = DragDropEffects.Move;            
             }
             return;
