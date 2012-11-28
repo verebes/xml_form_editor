@@ -200,6 +200,8 @@ namespace XMLFormEditor
                 Convert.ToInt32(propertyControl.textBoxBottom.Text) - Convert.ToInt32(propertyControl.textBoxTop.Text)
             );
 
+            _documentLayout.BackgroundImage = propertyControl.textBoxBackgroundImage.Text;
+
             storeNeeded = true;
         }
         
@@ -236,6 +238,7 @@ namespace XMLFormEditor
                 editorPropertyWindow.textBoxTop.Text = DocumentLayout.Size.Top.ToString();
                 editorPropertyWindow.textBoxRight.Text = DocumentLayout.Size.Right.ToString();
                 editorPropertyWindow.textBoxBottom.Text = DocumentLayout.Size.Bottom.ToString();
+                editorPropertyWindow.textBoxBackgroundImage.Text = DocumentLayout.BackgroundImage;
 
 
                 editorPropertyWindow.Parent = _propertyWindowPlace;

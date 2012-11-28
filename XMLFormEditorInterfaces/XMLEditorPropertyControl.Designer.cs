@@ -40,6 +40,9 @@ namespace XMLFormEditor
             this.textBoxRight = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.textBoxBackgroundImage = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.bFileSelect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +86,7 @@ namespace XMLFormEditor
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(133, 177);
+            this.button1.Location = new System.Drawing.Point(85, 251);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -138,10 +141,39 @@ namespace XMLFormEditor
             this.label5.TabIndex = 7;
             this.label5.Text = "Right";
             // 
+            // textBoxBackgroundImage
+            // 
+            this.textBoxBackgroundImage.Location = new System.Drawing.Point(10, 208);
+            this.textBoxBackgroundImage.Name = "textBoxBackgroundImage";
+            this.textBoxBackgroundImage.Size = new System.Drawing.Size(150, 20);
+            this.textBoxBackgroundImage.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 192);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Background image";
+            // 
+            // bFileSelect
+            // 
+            this.bFileSelect.Location = new System.Drawing.Point(167, 204);
+            this.bFileSelect.Name = "bFileSelect";
+            this.bFileSelect.Size = new System.Drawing.Size(25, 23);
+            this.bFileSelect.TabIndex = 13;
+            this.bFileSelect.Text = "...";
+            this.bFileSelect.UseVisualStyleBackColor = true;
+            this.bFileSelect.Click += new System.EventHandler(this.bFileSelect_Click);
+            // 
             // XMLEditorPropertyControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.bFileSelect);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBoxBackgroundImage);
             this.Controls.Add(this.textBoxBottom);
             this.Controls.Add(this.textBoxRight);
             this.Controls.Add(this.label4);
@@ -165,6 +197,9 @@ namespace XMLFormEditor
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.textBoxRight, 0);
             this.Controls.SetChildIndex(this.textBoxBottom, 0);
+            this.Controls.SetChildIndex(this.textBoxBackgroundImage, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.bFileSelect, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -184,5 +219,8 @@ namespace XMLFormEditor
         public System.Windows.Forms.TextBox textBoxRight;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox textBoxBackgroundImage;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button bFileSelect;
     }
 }

@@ -140,6 +140,15 @@ namespace XMLFormEditor
             set { _layoutName = value; }
         }
 
+        private string _backgroundImage = "";
+        public string BackgroundImage {
+            get {
+                return _backgroundImage;
+            }
+            set {
+                _backgroundImage = value;
+            }
+        }
         private Rectangle _minimalSize = new Rectangle(0,0,0,0);
         public Rectangle MinimalSize
         {
@@ -180,6 +189,7 @@ namespace XMLFormEditor
         {
             XmlElement element = document.CreateElement("Form");
             element.SetAttribute("Name", LayoutName);
+            element.SetAttribute("BackgroundImage", BackgroundImage);
             
             foreach (XMLControl control in _xmlControlList)
             {               
@@ -195,6 +205,7 @@ namespace XMLFormEditor
         {
             XmlElement element = document.CreateElement("Form");
             element.SetAttribute("Name", LayoutName);
+            element.SetAttribute("BackgroundImage", BackgroundImage);
 
             foreach (XMLControl control in _xmlControlList)
             {
@@ -209,6 +220,13 @@ namespace XMLFormEditor
         public void deserializeFromXml(XmlNode element, bool selected)
         {
             LayoutName = element.Attributes["Name"].Value;
+            try {
+                BackgroundImage = element.Attributes["BackgroundImage"].Value;
+            } 
+            catch (Exception e )
+            {
+                BackgroundImage = "";
+            }
 
             Rectangle clientRect = new Rectangle();
             foreach ( XmlNode node in element.ChildNodes)

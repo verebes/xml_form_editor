@@ -50,5 +50,19 @@ namespace XMLFormEditor
                 e.Cancel = true;
             }
         }
+
+        private void bFileSelect_Click(object sender, EventArgs e) {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Select background image";
+            openFileDialog.Filter = "Images (*.jpg)|*.jpg|All files (*.*)|*.*";
+            openFileDialog.FilterIndex = 0;
+            openFileDialog.DefaultExt = "jpg";
+            openFileDialog.AddExtension = true;
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            textBoxBackgroundImage.Text = openFileDialog.FileName;
+        }
     }
 }

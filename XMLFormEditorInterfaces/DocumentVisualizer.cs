@@ -31,11 +31,21 @@ namespace XMLFormEditor
         protected Dictionary<XMLControl, Control> XMLControl2ControlDictionary = new Dictionary<XMLControl, Control>();
         protected Dictionary<Control, XMLControl> Control2XmlControlDictionary = new Dictionary<Control, XMLControl>( new ControlEqualityComparer() );
 
+
+        protected Image backgroundImage = null;
+
         protected DocumentLayout _documentLayout;  
         public virtual DocumentLayout DocumentLayout
         {
             get { return _documentLayout; }
-            set { _documentLayout = value; }
+            set { 
+                _documentLayout = value;
+                if (_documentLayout != null &&_documentLayout.BackgroundImage != "") {
+                    backgroundImage = new Bitmap(_documentLayout.BackgroundImage);
+                } else {
+                    backgroundImage = null;
+                }
+            }
         }
 
         public Point ViewLocation
@@ -62,6 +72,7 @@ namespace XMLFormEditor
         public DocumentVisualizer() 
         {
             InitializeComponent();
+            DoubleBuffered = true;
             
             _viewRectangle = new Rectangle(0,0,Width,Height);
             XmlSourceDocumentManager.Instance().OnSourceDocumentChanged += new EventHandler(DocumentVisualizer_OnSourceDocumentChanged);
@@ -216,7 +227,6 @@ namespace XMLFormEditor
 
            }
        }
-
         private Pen gridPen = new Pen(Color.LightGray, 1);
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -232,6 +242,10 @@ namespace XMLFormEditor
             }
 
             e.Graphics.FillRectangle(Brushes.White, e.ClipRectangle);
+
+            if (backgroundImage != null) {
+                e.Graphics.DrawImage(backgroundImage, 0, 0);
+            }
             
             drawLines(e);
             drawJunctions(e);
