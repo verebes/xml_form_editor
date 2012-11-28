@@ -23,10 +23,10 @@ namespace XMLFormEditor
             treeView1.DragOver += new DragEventHandler(treeView1_DragOver);            
 
             ImageList iconList = new ImageList();
-            iconList.Images.Add(XMLToolboxItems.Properties.Resources.attribute);
-            iconList.Images.Add(XMLToolboxItems.Properties.Resources.node);
-            iconList.Images.Add(XMLToolboxItems.Properties.Resources.text);
-            iconList.Images.Add(XMLToolboxItems.Properties.Resources.document);
+            iconList.Images.Add(Icons.attribute);
+            iconList.Images.Add(Icons.node);
+            iconList.Images.Add(Icons.text);
+            iconList.Images.Add(Icons.document);
             
             treeView1.ImageList = iconList;
             treeView1.LabelEdit = true;
@@ -78,7 +78,7 @@ namespace XMLFormEditor
             //draggedNode.Parent = node;
         }
 
-        private void move(TreeNode node, TreeNode newParent) {
+        private void  move(TreeNode node, TreeNode newParent) {
 
             XmlElement xmlElement = node.Tag as XmlElement;
             XmlElement newParentXmlNode = newParent.Tag as XmlElement;
@@ -94,10 +94,13 @@ namespace XMLFormEditor
 
             while (xmlElement.HasAttributes ) {
                 newElement.Attributes.Append(xmlElement.Attributes[0]);
-            }            
+            }
 
+            node.Tag = newElement;
             node.Parent.Nodes.Remove(node);
             newParent.Nodes.Add(node);
+            xmlElement.ParentNode.RemoveChild(xmlElement);
+            newParentXmlNode.AppendChild(newElement);            
         }
 
         TreeNode draggedNode = null;
@@ -421,7 +424,7 @@ namespace XMLFormEditor
 
         }
 
-        private void renameXmlElement(XmlElement xmlElement, string label)
+        private XmlElement renameXmlElement(XmlElement xmlElement, string label)
         {            
             XmlElement newElement = document.CreateElement(label);
             while ( xmlElement.HasChildNodes ) {
@@ -434,8 +437,10 @@ namespace XMLFormEditor
             if (xmlElement.ParentNode == null) {
                 document.ReplaceChild(newElement, document.FirstChild);
             } else {
-                xmlElement.ParentNode.ReplaceChild(newElement, xmlElement);
+                xmlElement.ParentNode.ReplaceChild(newElement, xmlElement);                
             }
+
+            return newElement;
         }
 
         private void deleteNode()
@@ -497,7 +502,7 @@ namespace XMLFormEditor
                 XmlElement newElement = document.CreateElement("New");
                 xmlElement.ParentNode.InsertAfter(newElement, xmlElement);
 
-                TreeNode newTreeNode = treeNode.Parent.Nodes.Insert(treeNode.Index +1, newElement.Name);                
+                TreeNode newTreeNode = treeNode.Parent.Nodes.Insert(treeNode.Index +1, newElement.Name);
                 newTreeNode.ImageIndex = TreeIcon.Node;
                 newTreeNode.SelectedImageIndex = TreeIcon.Node;
                 newTreeNode.Tag = newElement;
@@ -519,12 +524,12 @@ namespace XMLFormEditor
 
             if ( xmlElement.NodeType == XmlNodeType.Element ) {
                 XmlElement newElement = document.CreateElement("New");
-                xmlElement.AppendChild(newElement);
+                XmlNode newChildNode = xmlElement.AppendChild(newElement);
 
                 TreeNode newTreeNode = treeNode.Nodes.Insert(0, newElement.Name);
                 newTreeNode.ImageIndex = TreeIcon.Node;
                 newTreeNode.SelectedImageIndex = TreeIcon.Node;
-                newTreeNode.Tag = newElement;
+                newTreeNode.Tag = newChildNode;
 
                 treeView1.SelectedNode = newTreeNode;
                 newTreeNode.BeginEdit();
@@ -610,11 +615,11 @@ namespace XMLFormEditor
                 return;
             }
             
-            renameXmlElement(xmlElement,e.Label);
-            if (xmlElement.ParentNode == null) {
+            XmlElement renamedElement = renameXmlElement(xmlElement,e.Label);
+            if (renamedElement.ParentNode == null) {
                 e.Node.Tag = document.FirstChild; // in case we edited the topmost node
             } else {
-                e.Node.Tag = xmlElement;
+                e.Node.Tag = renamedElement;
             }
         }
 
