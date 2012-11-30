@@ -702,5 +702,21 @@ namespace XMLFormEditor
             }
         }
 
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Drawing.Printing.PrintDocument doc = new System.Drawing.Printing.PrintDocument();
+            doc.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(doc_PrintPage);
+
+            PrintPreviewDialog ppDialog = new PrintPreviewDialog();
+            ppDialog.Document  = doc;
+            ppDialog.ShowDialog();
+
+        }
+
+        void doc_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("valami", new Font("Arial", 24),Brushes.Black, 10,10);
+        }
+
     }
 }

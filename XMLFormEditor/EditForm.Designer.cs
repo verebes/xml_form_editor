@@ -84,6 +84,7 @@ namespace XMLFormEditor
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.showLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showJunctionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -164,6 +165,7 @@ namespace XMLFormEditor
             this.loadLayoutToolStripMenuItem,
             this.saveLayoutToolStripMenuItem,
             this.saveAsToolStripMenuItem,
+            this.printToolStripMenuItem,
             this.toolStripMenuItem1,
             this.applyXSLTToolStripMenuItem,
             this.toolStripMenuItem4,
@@ -175,7 +177,7 @@ namespace XMLFormEditor
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -183,7 +185,7 @@ namespace XMLFormEditor
             // 
             this.loadLayoutToolStripMenuItem.Name = "loadLayoutToolStripMenuItem";
             this.loadLayoutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.loadLayoutToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.loadLayoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loadLayoutToolStripMenuItem.Text = "&Open";
             this.loadLayoutToolStripMenuItem.Click += new System.EventHandler(this.openLayoutToolStripMenuItem_Click);
             // 
@@ -191,38 +193,38 @@ namespace XMLFormEditor
             // 
             this.saveLayoutToolStripMenuItem.Name = "saveLayoutToolStripMenuItem";
             this.saveLayoutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveLayoutToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveLayoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveLayoutToolStripMenuItem.Text = "&Save";
             this.saveLayoutToolStripMenuItem.Click += new System.EventHandler(this.saveLayoutToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveAsToolStripMenuItem.Text = "Save &As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // applyXSLTToolStripMenuItem
             // 
             this.applyXSLTToolStripMenuItem.Name = "applyXSLTToolStripMenuItem";
-            this.applyXSLTToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.applyXSLTToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.applyXSLTToolStripMenuItem.Text = "Import";
             this.applyXSLTToolStripMenuItem.Click += new System.EventHandler(this.applyXSLTToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -629,6 +631,15 @@ namespace XMLFormEditor
             this.showJunctionsToolStripMenuItem.Text = "Show junctions";
             this.showJunctionsToolStripMenuItem.Click += new System.EventHandler(this.showJunctionsToolStripMenuItem_Click);
             // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Text = "Print";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+            // 
+            
+            // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -715,6 +726,7 @@ namespace XMLFormEditor
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showBackgroundImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showJunctionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showLinesToolStripMenuItem;
