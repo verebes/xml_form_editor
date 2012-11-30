@@ -62,7 +62,7 @@ namespace XMLFormEditor
             if (openFileDialog.ShowDialog() != DialogResult.OK)
                 return;
 
-            textBoxBackgroundImage.Text = openFileDialog.FileName;
+            textBoxBackgroundImage.Text = openFileDialog.FileName;            
         }
     }
 }

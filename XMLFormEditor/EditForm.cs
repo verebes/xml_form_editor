@@ -33,24 +33,28 @@ namespace XMLFormEditor
         
         private void UpdateMenuState()
         {
-            bool enabldMenus = 
+            bool enableMenus = 
                 documentLayouts.LayoutCount > tabControl1.SelectedIndex && 
                 tabControl1.SelectedIndex>=0  &&                 
                 scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.Focused ;
 
-            cutToolStripMenuItem1.Enabled = enabldMenus;
-            copyToolStripMenuItem.Enabled = enabldMenus;
-            deleteToolStripMenuItem.Enabled = enabldMenus;
-            pasteToolStripMenuItem.Enabled = enabldMenus;
-            clearSelectionToolStripMenuItem.Enabled = enabldMenus;
-            arrangeLeftToolStripMenuItem.Enabled = enabldMenus;
-            arrangeRightToolStripMenuItem.Enabled = enabldMenus;
-            snapToGridToolStripMenuItem.Enabled = enabldMenus;
-            drawGridToolStripMenuItem.Enabled = enabldMenus;
-            setGridSizeToolStripMenuItem.Enabled = enabldMenus;
+            cutToolStripMenuItem1.Enabled = enableMenus;
+            copyToolStripMenuItem.Enabled = enableMenus;
+            deleteToolStripMenuItem.Enabled = enableMenus;
+            pasteToolStripMenuItem.Enabled = enableMenus;
+            clearSelectionToolStripMenuItem.Enabled = enableMenus;
+            arrangeLeftToolStripMenuItem.Enabled = enableMenus;
+            arrangeRightToolStripMenuItem.Enabled = enableMenus;
+
+            snapToGridToolStripMenuItem.Enabled = true;
+            showBackgroundImageToolStripMenuItem.Enabled = true;
+            drawGridToolStripMenuItem.Enabled = true;
+            setGridSizeToolStripMenuItem.Enabled = true;
+            showLinesToolStripMenuItem.Enabled = true;
+            showJunctionsToolStripMenuItem.Enabled = true;
             
             
-            selectAllToolStripMenuItem.Enabled = enabldMenus;
+            selectAllToolStripMenuItem.Enabled = enableMenus;
         }
 
 
@@ -142,6 +146,14 @@ namespace XMLFormEditor
             editor.documentLayout = documentLayouts[tabIndex];
             editor.documentEditorVisualizer.PropertyWindowPlace = panel4;
             editor.Parent = tabControl1.TabPages[tabIndex];
+
+            editor.documentEditorVisualizer.BackgroundVisible = showBackgroundImageToolStripMenuItem.Checked;
+            editor.documentEditorVisualizer.SnapToGrid = snapToGridToolStripMenuItem.Checked;
+            editor.documentEditorVisualizer.DrawGrid = drawGridToolStripMenuItem.Checked;
+            editor.documentEditorVisualizer.GridSize = gridSize;
+            editor.documentEditorVisualizer.LinesVisible = showLinesToolStripMenuItem.Checked;
+            editor.documentEditorVisualizer.JunctionsVisible = showJunctionsToolStripMenuItem.Checked;
+
             editor.Enter += delegate { 
                 editor.documentEditorVisualizer.Focus();
                 UpdateMenuState();
@@ -567,19 +579,30 @@ namespace XMLFormEditor
             }            
         }
 
+        protected int gridSize = 20;
+        public int GridSize {
+            get {
+                return gridSize;
+            }
+            set {
+                if (gridSize == value)
+                    return;
+                
+                gridSize = value;
+                foreach (ScrollableEditor editor in scrollableEditors) {
+                    editor.documentEditorVisualizer.GridSize = gridSize;
+                }
+            }
+        }
+
         private void setGridSizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
             OptionsForm optionsForm = new OptionsForm();            
-            //optionsForm.textBoxGridSize.Text = scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.GridSize.ToString();
 
             if (optionsForm.ShowDialog() == DialogResult.OK)
             {
-                foreach (ScrollableEditor editor in scrollableEditors)
-                {
-                    editor.documentEditorVisualizer.GridSize = Convert.ToInt32(optionsForm.textBoxGridSize.Text);
-                }
-                scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.Update();            
+                GridSize = Convert.ToInt32(optionsForm.textBoxGridSize.Text);                
             }
         }
 
@@ -591,8 +614,6 @@ namespace XMLFormEditor
                 editor.documentEditorVisualizer.DrawGrid = drawGridToolStripMenuItem.Checked;                
             }
 
-            if (tabControl1.SelectedIndex >= 0)
-                scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.Invalidate();
         }
 
         private void applyXSLTToolStripMenuItem_Click(object sender, EventArgs e)
@@ -655,6 +676,29 @@ namespace XMLFormEditor
             catch (System.Exception exception)
             {
                 MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void showBackgroundImageToolStripMenuItem_Click(object sender, EventArgs e) {            
+            showBackgroundImageToolStripMenuItem.Checked = !showBackgroundImageToolStripMenuItem.Checked;
+            foreach (ScrollableEditor editor in scrollableEditors) {
+                editor.documentEditorVisualizer.BackgroundVisible = showBackgroundImageToolStripMenuItem.Checked;
+            }
+            if (tabControl1.SelectedIndex >= 0)
+                scrollableEditors[tabControl1.SelectedIndex].documentEditorVisualizer.Invalidate();
+        }
+
+        private void showJunctionsToolStripMenuItem_Click(object sender, EventArgs e) {
+            showJunctionsToolStripMenuItem.Checked = !showJunctionsToolStripMenuItem.Checked;
+            foreach (ScrollableEditor editor in scrollableEditors) {
+                editor.documentEditorVisualizer.JunctionsVisible = showJunctionsToolStripMenuItem.Checked;
+            }
+        }
+
+        private void showLinesToolStripMenuItem_Click(object sender, EventArgs e) {
+            showLinesToolStripMenuItem.Checked = !showLinesToolStripMenuItem.Checked;
+            foreach (ScrollableEditor editor in scrollableEditors) {
+                editor.documentEditorVisualizer.LinesVisible = showLinesToolStripMenuItem.Checked;
             }
         }
 

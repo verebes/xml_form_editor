@@ -40,12 +40,21 @@ namespace XMLFormEditor
             get { return _documentLayout; }
             set { 
                 _documentLayout = value;
-                if (_documentLayout != null &&_documentLayout.BackgroundImage != "") {
+                UpdateBackgroundImage();
+            }
+        }
+
+        protected void UpdateBackgroundImage() {
+            if (_documentLayout != null && _documentLayout.BackgroundImage != "") {
+                try {
                     backgroundImage = new Bitmap(_documentLayout.BackgroundImage);
-                } else {
+                } catch (System.Exception) {
                     backgroundImage = null;
                 }
+            } else {
+                backgroundImage = null;
             }
+            Invalidate();
         }
 
         public Point ViewLocation
@@ -196,7 +205,7 @@ namespace XMLFormEditor
 
            Pen pen = Pens.Red.Clone() as Pen;
            pen.Width = 2;
-           const int length = 4;           
+           const int length = 6;           
 
            foreach (LineDrawer.Junction junction in junctions)
            {
@@ -228,8 +237,20 @@ namespace XMLFormEditor
            }
        }
 
+       private bool linesVisible = true;
+       virtual public bool LinesVisible {
+           get {
+               return linesVisible;
+           }
+           set {
+               linesVisible = value;
+               Invalidate();
+           }
+       }
+
+
        private bool junctionsVisible = false;
-       public bool JunctionsVisible {
+       virtual public bool JunctionsVisible {
            get {
                return junctionsVisible;
            }
@@ -238,6 +259,20 @@ namespace XMLFormEditor
                Invalidate();
            }
        }
+
+
+       private bool backgroundVisible = true;
+        virtual public bool BackgroundVisible {
+            get {
+                return backgroundVisible;
+            }
+            set {
+                backgroundVisible = value;
+                Invalidate();
+            }
+        }
+       
+
         private Pen gridPen = new Pen(Color.LightGray, 1);
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -254,13 +289,8 @@ namespace XMLFormEditor
 
             e.Graphics.FillRectangle(Brushes.White, e.ClipRectangle);
 
-            if (backgroundImage != null) {
+            if (backgroundVisible && backgroundImage != null) {
                 e.Graphics.DrawImage(backgroundImage, LayoutPoint2ViewPoint(new Point(0, 0)));
-            }
-            
-            drawLines(e);
-            if (JunctionsVisible) {
-                drawJunctions(e);
             }
 
             if (DrawGrid)
@@ -278,6 +308,16 @@ namespace XMLFormEditor
                     e.Graphics.DrawLine(gridPen, e.ClipRectangle.Left, i, e.ClipRectangle.Width, i);
                 }
             }
+
+            if (linesVisible) {
+                drawLines(e);
+            }
+
+            if (JunctionsVisible) {
+                drawJunctions(e);
+            }
+
+
             base.OnPaint(e);
         }
 

@@ -70,8 +70,44 @@ namespace XMLFormEditor
             get {
                 return base.GridSize;
             }
+        }
+
+        public override bool BackgroundVisible {
+            set {
+                base.BackgroundVisible = value;
+                storeNeeded = true;
+                RefreshOverlay();
+            }
+            get {
+                return base.BackgroundVisible;
+            }
+        }
+
+        public override bool JunctionsVisible {
+            set {
+                base.JunctionsVisible = value;
+                storeNeeded = true;
+                RefreshOverlay();
+            }
+            get {
+                return base.JunctionsVisible;
+            }
 
         }
+
+        public override bool LinesVisible {
+            set {                
+                base.LinesVisible = value;
+                storeNeeded = true;
+                RefreshOverlay();
+            }
+            get {
+                return base.LinesVisible;
+                ;
+            }
+        }
+       
+
 
 
         protected override void OnResize(EventArgs e)
@@ -202,6 +238,7 @@ namespace XMLFormEditor
             );
 
             _documentLayout.BackgroundImage = propertyControl.textBoxBackgroundImage.Text;
+            UpdateBackgroundImage();
 
             storeNeeded = true;
         }
