@@ -62,6 +62,17 @@ namespace XMLFormEditor
             if (openFileDialog.ShowDialog() != DialogResult.OK)
                 return;
 
+
+            try {
+                Bitmap bitmap = new Bitmap(openFileDialog.FileName);
+                textBoxLeft.Text = "0";
+                textBoxTop.Text = "0";
+                textBoxRight.Text = bitmap.Width.ToString();
+                textBoxBottom.Text = bitmap.Height.ToString();
+            } catch (System.Exception) {
+                return;
+            }
+
             textBoxBackgroundImage.Text = openFileDialog.FileName;            
         }
     }
