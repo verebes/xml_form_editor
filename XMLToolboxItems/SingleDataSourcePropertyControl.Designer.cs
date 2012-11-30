@@ -91,6 +91,7 @@ namespace XMLFormEditor
             // 
             // buttonShowXMLTree
             // 
+            this.buttonShowXMLTree.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowXMLTree.Location = new System.Drawing.Point(210, 105);
             this.buttonShowXMLTree.Name = "buttonShowXMLTree";
             this.buttonShowXMLTree.Size = new System.Drawing.Size(23, 23);
