@@ -202,7 +202,7 @@ namespace XMLFormEditor
             _dragStartPos = ViewPoint2LalyoutPoint(e.Location);
             _selecting = true;
             _moved = false;
-
+                
             lastMousePressEventArg = e;
             _longClickTimer.Interval = 500;
             _longClickTimer.Start();

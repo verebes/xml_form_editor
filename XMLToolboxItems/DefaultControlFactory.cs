@@ -20,6 +20,8 @@ namespace XMLFormEditor
                     return new Line();
                 case "XMLCombo":
                     return new XMLCombo();
+                case "XMLGrid":
+                    return new XMLGrid();
                 case "XMLList":
                     return new XMLList();
                 case "XMLLargeTextBox":

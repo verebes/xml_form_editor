@@ -35,6 +35,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="XMLGrid.cs" />
     <Compile Include="StaticLabel.cs" />
     <Compile Include="XMLDeleteButton.cs" />
     <Compile Include="DataSourceInterfaces.cs" />
@@ -140,15 +141,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="attribute.ico" />
     <Content Include="button.ico" />
     <Content Include="combo.ico" />
-    <Content Include="document.ico" />
     <Content Include="label.ico" />
     <Content Include="listbox.ico" />
-    <Content Include="node.ico" />
     <Content Include="pager.ico" />
-    <Content Include="text.ico" />
     <Content Include="textbox.ico" />
   </ItemGroup>
   <ItemGroup>

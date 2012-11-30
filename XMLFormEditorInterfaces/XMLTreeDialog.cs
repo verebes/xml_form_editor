@@ -631,8 +631,7 @@ namespace XMLFormEditor
             TreeNode treeNode = treeView1.SelectedNode;
             if (treeNode != null) {
                 selection = GenerateXPath(treeNode);
-            }
-                
+            }               
             base.OnClosing(e);
         }
 

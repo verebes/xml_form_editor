@@ -184,12 +184,9 @@
     <None Include="Resources\DownRight.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="attribute.ico" />
-    <Content Include="node.ico" />
     <None Include="Resources\node.ico" />
     <None Include="Resources\document.ico" />
     <None Include="Resources\text.ico" />
     <None Include="Resources\attribute.ico" />
-    <Content Include="text.ico" />
   </ItemGroup>
 </Project>
