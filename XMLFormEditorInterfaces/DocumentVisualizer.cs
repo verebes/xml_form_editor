@@ -48,6 +48,8 @@ namespace XMLFormEditor
             if (_documentLayout != null && _documentLayout.BackgroundImage != "") {
                 try {
                     backgroundImage = new Bitmap(_documentLayout.BackgroundImage);
+                    Rectangle r = new Rectangle(new Point(0,0),backgroundImage.Size);
+                    _documentLayout.MinimalSize = r;
                 } catch (System.Exception) {
                     backgroundImage = null;
                 }

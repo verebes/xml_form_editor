@@ -46,7 +46,8 @@ namespace XMLFormEditor
         {
             if (e.Type != ScrollEventType.EndScroll)
                 return;
-            documentEditor.ViewLocation = new Point(hScrollBar.Value, vScrollBar.Value);
+            Rectangle docSize = documentEditor.DocumentLayout.Size;
+            documentEditor.ViewLocation = new Point( docSize.Left + hScrollBar.Value,  docSize.Top + vScrollBar.Value);
         }
 
 
@@ -55,9 +56,11 @@ namespace XMLFormEditor
             documentEditor.ViewLocation = new Point(hScrollBar.Value, vScrollBar.Value);
         }
 
+
+        private static int margin = 20;
         protected override void OnResize(EventArgs e)
         {                       
-            documentEditor.ClientSize = new Size(Width - vScrollBar.Width, Height - hScrollBar.Height);
+            documentEditor.ClientSize = new Size(Width - vScrollBar.Width, Height - hScrollBar.Height);            
             documentEditor.Left = 0;
             documentEditor.Top = 0;
 
@@ -73,6 +76,20 @@ namespace XMLFormEditor
             vScrollBar.LargeChange = documentEditor.Height;
             hScrollBar.LargeChange = documentEditor.Width;
 
+            if (documentEditor.DocumentLayout != null) {
+                Rectangle docSize = documentEditor.DocumentLayout.Size;
+
+                if (vScrollBar.Maximum < documentEditor.Height) {
+                    vScrollBar.Value = 0;
+                }
+
+                if (hScrollBar.Maximum < documentEditor.Width) {                    
+                    hScrollBar.Value = 0;
+                }
+
+                documentEditor.ViewLocation = new Point(docSize.Left + hScrollBar.Value, docSize.Top + vScrollBar.Value);
+            }
+
             base.OnResize(e);
         }
 
@@ -81,21 +98,25 @@ namespace XMLFormEditor
         public DocumentLayout documentLayout
         {
             get { return documentEditor.DocumentLayout; }
-            set { 
+            set {                
                 documentEditor.DocumentLayout = value;
-                hScrollBar.Minimum = documentEditor.DocumentLayout.Size.Left;
-                vScrollBar.Minimum = documentEditor.DocumentLayout.Size.Top;
-                hScrollBar.Maximum = documentEditor.DocumentLayout.Size.Right;
-                vScrollBar.Maximum = documentEditor.DocumentLayout.Size.Bottom;
+                Rectangle docSize = documentEditor.DocumentLayout.Size;
+                hScrollBar.Minimum = 0;
+                vScrollBar.Minimum = 0;
+                hScrollBar.Maximum = docSize.Width + margin;
+                vScrollBar.Maximum = docSize.Height + margin;
 
+                documentEditor.ViewLocation = new Point(docSize.Left + hScrollBar.Value, docSize.Top + vScrollBar.Value);                
 
                 documentEditor.DocumentLayout.OnSizeChanged += delegate(object sender)
                 {
-                    hScrollBar.Minimum = documentEditor.DocumentLayout.Size.Left;
-                    vScrollBar.Minimum = documentEditor.DocumentLayout.Size.Top;
+                        Rectangle size = documentEditor.DocumentLayout.Size;
+                        hScrollBar.Minimum = 0;
+                        vScrollBar.Minimum = 0;
+                        hScrollBar.Maximum = size.Width + margin;
+                        vScrollBar.Maximum = size.Height + margin;
 
-                    hScrollBar.Maximum = documentEditor.DocumentLayout.Size.Right + documentEditor.Width /2;
-                    vScrollBar.Maximum = documentEditor.DocumentLayout.Size.Bottom + documentEditor.Height / 2;
+                        documentEditor.ViewLocation = new Point(size.Left + hScrollBar.Value, size.Top + vScrollBar.Value);
                 };
             }
         }

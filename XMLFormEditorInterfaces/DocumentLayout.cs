@@ -147,6 +147,7 @@ namespace XMLFormEditor
             }
             set {
                 _backgroundImage = value;
+                OnSizeChanged(this);
             }
         }
         private Rectangle _minimalSize = new Rectangle(0,0,0,0);
@@ -179,6 +180,15 @@ namespace XMLFormEditor
                 foreach (XMLControl control in _xmlControlList)
                 {
                     ret = Rectangle.Union(ret, control.ClientRect);
+                }
+                List<LineDrawer.Section> sectionList = _lineDrawer.getSectionList();
+                foreach ( LineDrawer.Section section in sectionList) 
+                {                    
+                    Rectangle r1 = new Rectangle(section.p1.X -4, section.p1.Y -4, 9 , 9);
+                    Rectangle r2 = new Rectangle(section.p2.X - 4, section.p2.Y - 4, 9, 9);
+                    
+                    ret = Rectangle.Union(ret, r1);
+                    ret = Rectangle.Union(ret, r2);
                 }
                 
                 return ret;             

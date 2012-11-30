@@ -237,7 +237,7 @@ namespace XMLFormEditor
                 Convert.ToInt32(propertyControl.textBoxBottom.Text) - Convert.ToInt32(propertyControl.textBoxTop.Text)
             );
 
-            _documentLayout.BackgroundImage = propertyControl.textBoxBackgroundImage.Text;
+            _documentLayout.BackgroundImage = propertyControl.textBoxBackgroundImage.Text;            
             UpdateBackgroundImage();
 
             storeNeeded = true;
