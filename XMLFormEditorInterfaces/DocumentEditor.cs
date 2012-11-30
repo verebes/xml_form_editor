@@ -103,6 +103,7 @@ namespace XMLFormEditor
             _editorOverlay.DocumentEditor = this;            
             this.DrawGrid = true;
             DoubleBuffered = false;
+            JunctionsVisible = true;
             
             _editorOverlay.Parent = this;
             storeNeeded = true;

@@ -227,6 +227,17 @@ namespace XMLFormEditor
 
            }
        }
+
+       private bool junctionsVisible = false;
+       public bool JunctionsVisible {
+           get {
+               return junctionsVisible;
+           }
+           set {
+               junctionsVisible = value;
+               Invalidate();
+           }
+       }
         private Pen gridPen = new Pen(Color.LightGray, 1);
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -248,7 +259,9 @@ namespace XMLFormEditor
             }
             
             drawLines(e);
-            drawJunctions(e);
+            if (JunctionsVisible) {
+                drawJunctions(e);
+            }
 
             if (DrawGrid)
             {                
