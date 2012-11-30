@@ -96,11 +96,6 @@ namespace XMLFormEditor
                 return;
             }
 
-            lastMousePressEventArg = e;
-            _longClickTimer.Interval = 500;
-            _longClickTimer.Start();
-
-
             HandlerType ht = _documentLayout.getResizeHandlerType(ViewPoint2LalyoutPoint(e.Location));
             if (ht != HandlerType.None)
                 MouseDownOnHandler(e, ht);
@@ -208,6 +203,9 @@ namespace XMLFormEditor
             _selecting = true;
             _moved = false;
 
+            lastMousePressEventArg = e;
+            _longClickTimer.Interval = 500;
+            _longClickTimer.Start();
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
