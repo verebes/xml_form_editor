@@ -178,13 +178,29 @@ namespace XMLFormEditor
 
 
             Point layoutPosition = new Point(position.X + ViewLocation.X, position.Y + ViewLocation.Y);
+
+            Rectangle r = new Rectangle();
+            bool found = _documentLayout.LineDrawer.getSmallestBoundingRectangle(layoutPosition, ref r);
+            if (found) {
+                layoutPosition = r.Location;
+            }
+
+
             XMLControl xmlConrtol = toolBoxItem.Duplicate(layoutPosition);
+            if (found) {
+                xmlConrtol.ClientRect = r;
+            }
+
             DocumentLayout.AddControl( xmlConrtol );
             
             IEditorControl xmlControl = toolBoxItem as IEditorControl;
             Control editControl = xmlControl.CreateEditorControl();            
-            editControl.Left = position.X;
-            editControl.Top = position.Y;
+
+            editControl.Left = layoutPosition.X - ViewLocation.X;
+            editControl.Top = layoutPosition.Y - ViewLocation.Y;
+            editControl.Width = xmlConrtol.ClientRect.Width;
+            editControl.Height = xmlConrtol.ClientRect.Height;
+
             editControl.Parent = this;
             editControl.Visible = true;
             editControl.TabStop = false;
