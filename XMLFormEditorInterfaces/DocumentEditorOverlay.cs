@@ -99,10 +99,15 @@ namespace XMLFormEditor
             HandlerType ht = _documentLayout.getResizeHandlerType(ViewPoint2LalyoutPoint(e.Location));
             if (ht != HandlerType.None)
                 MouseDownOnHandler(e, ht);
-            else if (_documentLayout.Controls(ViewPoint2LalyoutPoint(e.Location)).Count == 0)
-                MouseDownOnBackground(e);
-            else
-                MouseDownOnControls(e);
+            else if (!_documentLayout.LineDrawer.onJunction(ViewPoint2LalyoutPoint(e.Location))) {
+                if (_documentLayout.Controls(ViewPoint2LalyoutPoint(e.Location)).Count == 0) {
+                    MouseDownOnBackground(e);
+                } else {
+                    MouseDownOnControls(e);
+                }
+            } else {
+                MouseDownOnJunction(e);
+            }
 
             Invalidate();
         }
@@ -141,6 +146,7 @@ namespace XMLFormEditor
 
 
         private List<Rectangle> positionList = new List<Rectangle>();
+        private List<Point> junctionPositionList = new List<Point>();
 
         private void MouseDownOnHandler(MouseEventArgs e, HandlerType handlerType)
         {
@@ -158,7 +164,42 @@ namespace XMLFormEditor
             _moved = false;
             _dragStartPos = ViewPoint2LalyoutPoint(e.Location);
         }
-        
+
+
+        private void MouseDownOnJunction(MouseEventArgs e) {    
+
+            Point layoutPoint = ViewPoint2LalyoutPoint(e.Location);
+            LineDrawer ld = _documentLayout.LineDrawer;
+            if (ld.getSelectedJunctions(layoutPoint).Count == 0 || ModifierKeys == Keys.Control) {
+                if (ModifierKeys == Keys.Control) {
+                    ld.toggleSelection(layoutPoint);
+                } else {
+                    ld.ClearSelection();
+                    ld.select(layoutPoint);
+                }
+            }
+
+            List<XMLControl> selectedControls = _documentLayout.SelectedControls();
+            positionList.Clear();
+
+            foreach (XMLControl control in selectedControls) {
+                positionList.Add(new Rectangle(control.ClientRect.Location, control.ClientRect.Size));
+            }
+
+            junctionPositionList.Clear();
+            List<LineDrawer.Junction> selectedJunctions = ld.getSelectedJunctions();
+            foreach (LineDrawer.Junction j in selectedJunctions) {
+                junctionPositionList.Add(j.position);
+            }
+
+
+            _movingControls = true;
+            _moved = false;
+
+            _dragStartPos = layoutPoint;
+
+        }
+
         private void MouseDownOnControls(MouseEventArgs e)
         {
             Trace.WriteLine("DocumentEditorOverlay::MouseDownOnControls");
@@ -186,6 +227,13 @@ namespace XMLFormEditor
             foreach (XMLControl control in selectedControls) {
                 positionList.Add(new Rectangle(control.ClientRect.Location, control.ClientRect.Size));
             }
+
+            junctionPositionList.Clear();
+            List<LineDrawer.Junction> selectedJunctions = DocumentLayout.LineDrawer.getSelectedJunctions();
+            foreach (LineDrawer.Junction j in selectedJunctions) {
+                junctionPositionList.Add(j.position);
+            }           
+
 
             _movingControls = true;
             _moved = false;
@@ -253,8 +301,11 @@ namespace XMLFormEditor
                 return;
             }
 
-            if (_movingControls)                
+            if (_movingControls) {
                 MovingControls(e);
+                MovingJunctions(e);
+                DocumentLayout.LineDrawer.UpdateSectionList();
+            }
 
             if (_resizingControls)
                 ResizingControls(e);            
@@ -312,6 +363,35 @@ namespace XMLFormEditor
         }
 
 
+        private void MovingJunctions(MouseEventArgs e) {
+            Point p = ViewPoint2LalyoutPoint(e.Location);
+
+            if (!_moved && p.X == _dragStartPos.X && p.Y == _dragStartPos.Y) {
+                return;
+            }
+            _moved = true;
+
+            int deltaX = p.X - _dragStartPos.X;
+            int deltaY = p.Y - _dragStartPos.Y;
+
+            List<Point>.Enumerator it = junctionPositionList.GetEnumerator();
+            List<LineDrawer.Junction> selectedJunctions = _documentLayout.LineDrawer.getSelectedJunctions();
+            foreach (LineDrawer.Junction j in  selectedJunctions ) {
+                it.MoveNext();
+                Point position = j.position;
+
+                Point newPos;
+
+                if (_documentEditor.SnapToGrid) {
+                    int gs = _documentEditor.GridSize;
+                    newPos = new Point(((it.Current.X + deltaX) / gs) * gs, ((it.Current.Y + deltaY) / gs) * gs);
+                } else {
+                    newPos = new Point(it.Current.X + deltaX, it.Current.Y + deltaY);
+                }
+                j.position = newPos;
+            }
+        }
+        
         private void MovingControls(MouseEventArgs e)
         {
             Point p = ViewPoint2LalyoutPoint(e.Location);
@@ -346,6 +426,7 @@ namespace XMLFormEditor
 
                 control.MoveToAbsolutePos(newPos);
             }
+            
         }
 
         protected override void OnMouseCaptureChanged(EventArgs e)
@@ -446,6 +527,24 @@ namespace XMLFormEditor
                 if (!_moved)
                     PaintResizeHandler(g, rect, control.ResizeMode);
             }
+        }
+
+        protected void PaintJunctionSelection(Graphics g) {
+
+            List<LineDrawer.Junction> junctions = _documentLayout.LineDrawer.getJunctionList();
+            Rectangle r = new Rectangle(0,0,7,7);
+            Pen pen = Pens.Blue.Clone() as Pen;
+            pen.Width = 3;
+            foreach (LineDrawer.Junction junction in junctions) {
+                if (junction.selected) {
+                    Point pos = LayoutPoint2ViewPoint(junction.position);
+
+                    r.Location = pos;
+                    r.Offset(-3, -3);
+                    g.DrawRectangle(pen, r);
+                }
+            }
+
         }
 
         protected void PaintResizeHandler(Graphics g, Rectangle controlRect, ResizeMode resizeMode)
@@ -549,6 +648,7 @@ namespace XMLFormEditor
             }
 
             PaintSelection(g);
+            PaintJunctionSelection(g);
             g.Flush();
             e.Graphics.DrawImageUnscaled(tmpBmp, 0, 0);
             g.Dispose();

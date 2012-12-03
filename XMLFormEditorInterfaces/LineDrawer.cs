@@ -27,7 +27,7 @@ namespace XMLFormEditor
                 public bool up = false;
                 public bool down = false;
                 public bool left = false;
-                public bool right = false;
+                public bool right = false;                
 
                 public bool isValid()
                 {
@@ -70,6 +70,7 @@ namespace XMLFormEditor
 
             public Type type;
             public Point position;
+            public bool selected = false;
         }
 
         public class Vector2d 
@@ -175,7 +176,7 @@ namespace XMLFormEditor
                 junctions.Remove(j);
             }
 
-            if (junction.type != Junction.Type.Invalid)
+            if (junction.type.isValid())
             {
                 if (unionJunction) {                    
                     junctions.Add(jUnioun);
@@ -303,6 +304,37 @@ namespace XMLFormEditor
             return junctions;
         }
 
+        public List<Junction> getSelectedJunctions() {
+            List<Junction> selectedJunctions = new List<Junction>();
+            foreach ( Junction j in junctions )
+            {
+                if (j.selected) {
+                    selectedJunctions.Add(j);
+                }
+            }
+            return selectedJunctions;
+        }
+
+        public bool onJunction(Point p) {
+            Rectangle r = new Rectangle(p.X-3,p.Y-3,7,7);
+            foreach (Junction j in junctions)
+            {                
+                if (r.Contains(j.position))
+                    return true;
+            }
+            return false;
+        }
+
+        public List<Junction> getSelectedJunctions(Point p) {       
+            List<Junction> result = new List<Junction>();
+            Rectangle r = new Rectangle(p.X-3,p.Y-3,7,7);
+            foreach (Junction j in junctions)
+            {                
+                if (j.selected && r.Contains(j.position))
+                    result.Add(j);
+            }
+            return result;
+        }
 
         public bool getSmallestBoundingRectangle( Point p, ref Rectangle rect  ) {
             List<Section> leftSections = new List<Section>();
@@ -466,5 +498,62 @@ namespace XMLFormEditor
             }
             UpdateSectionList();
         }
+
+        public void select(Rectangle rect) {
+            select(rect, true);
+        }
+        
+        public void select(Rectangle rect, bool selectionOn) {
+            foreach ( Junction j in junctions)
+            {
+                if ( rect.Contains(j.position))
+                    j.selected = selectionOn;
+            }
+        }
+
+        public void select(Point p) {
+            Rectangle r = new Rectangle(p.X - 3, p.Y - 3, 7, 7);
+            foreach (Junction j in junctions) {
+                if (r.Contains(j.position))
+                    j.selected = true;
+            }
+        }
+
+        public void toggleSelection(Point selectionPoint) {
+                foreach ( Junction j in junctions)
+                {
+                    int x = selectionPoint.X - j.position.X;
+                    int y = selectionPoint.Y - j.position.Y;
+                    double distant = Math.Sqrt( x * x + y * y  );
+                    const int junctionSelectionSensitivity = 3;
+                    if (distant < 3) {
+                        j.selected = !j.selected;
+                    }
+                }
+        }
+
+        public void ClearSelection() {
+            foreach (Junction j in junctions) {
+                j.selected = false;
+            }
+        }
+
+        public void SelectAll() {
+            foreach ( Junction j in junctions)
+            {
+                j.selected = true;
+            }
+        }
+
+        public void MoveSelectedJunctions(int deltaX, int deltaY)
+        {
+            foreach (Junction j in junctions) {
+                if (j.selected) {
+                    j.position.Offset(deltaX, deltaY);
+                }                
+            }
+            UpdateSectionList();
+        }
+
     }
 }

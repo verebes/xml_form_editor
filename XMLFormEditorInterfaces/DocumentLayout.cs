@@ -117,8 +117,9 @@ namespace XMLFormEditor
 
         }
     }
-    public delegate void SizeChangedDelegate(object sender);    
-
+    public delegate void SizeChangedDelegate(object sender);
+    
+    
     public class DocumentLayout
     {
         protected List<XMLControl> _xmlControlList =  new List<XMLControl>();
@@ -280,6 +281,7 @@ namespace XMLFormEditor
                     control.Selected = true;
                 }
             }
+            LineDrawer.select(selectionArea);
         }
 
         public void ToggleControlSelections(System.Drawing.Point selectionPoint)
@@ -289,6 +291,7 @@ namespace XMLFormEditor
                     control.Selected = !control.Selected;
                 }
             }
+            LineDrawer.toggleSelection(selectionPoint);
         }
 
         public void SelectControls(System.Drawing.Point selectionPoint)
@@ -308,6 +311,7 @@ namespace XMLFormEditor
             {
                 control.Selected = true;
             }
+            LineDrawer.SelectAll();
         }
 
         public void ClearSelection()
@@ -315,7 +319,8 @@ namespace XMLFormEditor
             foreach (XMLControl control in _xmlControlList)
             {
                 control.Selected = false;
-            }
+            }   
+            LineDrawer.ClearSelection();
         }
 
         public List<XMLControl> Controls(Point point)
@@ -445,7 +450,7 @@ namespace XMLFormEditor
 
                 }
             }
-
+            LineDrawer.MoveSelectedJunctions(deltaX, deltaY);
             OnSizeChanged( this );
         }
 
