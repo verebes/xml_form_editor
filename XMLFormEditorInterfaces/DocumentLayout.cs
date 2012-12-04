@@ -464,7 +464,8 @@ namespace XMLFormEditor
                 else
                     i++;
             }
-            
+
+            LineDrawer.RemoveSelectedJunctions();
             OnSizeChanged(this);
         }
         

@@ -145,9 +145,13 @@ namespace XMLFormEditor
 
             
             List<LineDrawer.Junction> junctions = _documentLayout.LineDrawer.getSelectedJunctions(p);
-            if (_documentLayout.LineDrawer.getSelectedJunctions().Count == 1 &&
-                junctions.Count == 1) {
+            int selectedCount = _documentLayout.LineDrawer.getSelectedJunctions().Count;
 
+            if ( selectedCount > 1 && junctions.Count > 0 ) {
+                return;
+            }
+
+            if ( selectedCount == 1 && junctions.Count == 1) {
                 p = junctions[0].position;
             } else {
 
@@ -218,6 +222,7 @@ namespace XMLFormEditor
 
         }
 
+        private Rectangle selectedControlArea = new Rectangle();
         private void MouseDownOnControls(MouseEventArgs e)
         {
             Trace.WriteLine("DocumentEditorOverlay::MouseDownOnControls");
@@ -232,12 +237,17 @@ namespace XMLFormEditor
 
 
                 selectedControls = _documentLayout.SelectedControls();
-                if (selectedControls.Count == 1)
+                if (selectedControls.Count == 1) {
+                    selectedControlArea = selectedControls[0].ClientRect;
                     _documentEditor.CreateControlPropertyWindow(selectedControls[0]);
-                else
+                } else {
                     _documentEditor.DestroyPropertyWindow();
+                }
             } else {
                 selectedControls = _documentLayout.SelectedControls();
+                if (selectedControls.Count == 1) {
+                    selectedControlArea = selectedControls[0].ClientRect;
+                }
             }
 
             positionList.Clear();
@@ -419,6 +429,18 @@ namespace XMLFormEditor
 
             int deltaX = p.X - _dragStartPos.X;
             int deltaY = p.Y - _dragStartPos.Y;
+
+
+            Rectangle rect = new Rectangle();
+
+            if (_documentLayout.SelectedControls().Count == 1) {
+                if (ModifierKeys == Keys.Control && _documentLayout.LineDrawer.getSmallestBoundingRectangle(p, ref rect)) {
+                    _documentLayout.SelectedControls()[0].ClientRect = rect;
+                    return;
+                } else {
+                    _documentLayout.SelectedControls()[0].ClientRect = selectedControlArea;
+                }
+            }
 
             List<Rectangle>.Enumerator it = positionList.GetEnumerator();
             foreach (XMLControl control in _documentLayout.SelectedControls())

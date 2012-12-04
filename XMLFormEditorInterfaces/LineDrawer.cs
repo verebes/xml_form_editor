@@ -336,6 +336,20 @@ namespace XMLFormEditor
             return result;
         }
 
+        public void  RemoveSelectedJunctions() {
+            List<Junction> toDelete = new List<Junction>();
+            foreach (Junction j in junctions) {
+                if (j.selected)
+                    toDelete.Add(j);
+            }
+            foreach ( Junction j in toDelete )
+            {
+                junctions.Remove(j);
+            }
+            toDelete.Clear();
+            UpdateSectionList();
+        }
+
         public bool getSmallestBoundingRectangle( Point p, ref Rectangle rect  ) {
             List<Section> leftSections = new List<Section>();
             List<Section> rightSections = new List<Section>();
