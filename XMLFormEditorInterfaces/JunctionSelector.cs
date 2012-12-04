@@ -55,6 +55,11 @@ namespace XMLFormEditor
 
         private void SelectJunction(object sender)
         {
+            if (sender == null) {
+                Hide();
+                return;
+            }
+
             LineDrawer.Junction.Type o = LineDrawer.Junction.Type.Invalid;
             if (sender == bLeft)
                 o = LineDrawer.Junction.Type.Left;

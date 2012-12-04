@@ -96,19 +96,28 @@ namespace XMLFormEditor
                 return;
             }
 
-            HandlerType ht = _documentLayout.getResizeHandlerType(ViewPoint2LalyoutPoint(e.Location));
-            if (ht != HandlerType.None)
-                MouseDownOnHandler(e, ht);
-            else if (!_documentLayout.LineDrawer.onJunction(ViewPoint2LalyoutPoint(e.Location))) {
-                if (_documentLayout.Controls(ViewPoint2LalyoutPoint(e.Location)).Count == 0) {
-                    MouseDownOnBackground(e);
-                } else {
-                    MouseDownOnControls(e);
-                }
-            } else {
-                MouseDownOnJunction(e);
-            }
 
+            lastMousePressEventArg = e;
+            _longClickTimer.Interval = 500;
+            _longClickTimer.Start();
+
+
+            Point viewportPos = ViewPoint2LalyoutPoint(e.Location);
+            HandlerType ht = _documentLayout.getResizeHandlerType(viewportPos);
+            if (ht != HandlerType.None) {
+                MouseDownOnHandler(e, ht);
+            } else {
+                if (!_documentLayout.LineDrawer.onJunction(viewportPos))
+                {
+                    if (_documentLayout.Controls(viewportPos).Count == 0) {
+                        MouseDownOnBackground(e);
+                    } else {
+                        MouseDownOnControls(e);
+                    }
+                } else {
+                    MouseDownOnJunction(e);
+                }
+            }
             Invalidate();
         }
 
@@ -134,10 +143,19 @@ namespace XMLFormEditor
             //junctionSelector.SelectedJunction.position = new Point(x, y);
             Point p = ViewPoint2LalyoutPoint(new Point(e.Location.X, e.Location.Y));
 
-            if (_documentEditor.SnapToGrid) {
-                int gs = _documentEditor.GridSize;
-                p.X = ((p.X + gs / 2) / gs) * gs;
-                p.Y = ((p.Y + gs / 2) / gs) * gs;
+            
+            List<LineDrawer.Junction> junctions = _documentLayout.LineDrawer.getSelectedJunctions(p);
+            if (_documentLayout.LineDrawer.getSelectedJunctions().Count == 1 &&
+                junctions.Count == 1) {
+
+                p = junctions[0].position;
+            } else {
+
+                if (_documentEditor.SnapToGrid) {
+                    int gs = _documentEditor.GridSize;
+                    p.X = ((p.X + gs / 2) / gs) * gs;
+                    p.Y = ((p.Y + gs / 2) / gs) * gs;
+                }
             }
 
             junctionSelector.SelectedJunction.position = p;
@@ -251,9 +269,6 @@ namespace XMLFormEditor
             _selecting = true;
             _moved = false;
                 
-            lastMousePressEventArg = e;
-            _longClickTimer.Interval = 500;
-            _longClickTimer.Start();
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
@@ -532,16 +547,19 @@ namespace XMLFormEditor
         protected void PaintJunctionSelection(Graphics g) {
 
             List<LineDrawer.Junction> junctions = _documentLayout.LineDrawer.getJunctionList();
-            Rectangle r = new Rectangle(0,0,7,7);
-            Pen pen = Pens.Blue.Clone() as Pen;
-            pen.Width = 3;
+            Rectangle r = new Rectangle(0,0,11,11);
+            
+            Pen selecttionPen = new Pen(Color.Red, 1);
+            //selecttionPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+
             foreach (LineDrawer.Junction junction in junctions) {
                 if (junction.selected) {
                     Point pos = LayoutPoint2ViewPoint(junction.position);
 
                     r.Location = pos;
-                    r.Offset(-3, -3);
-                    g.DrawRectangle(pen, r);
+                    r.Offset(-5, -5);
+                    //g.DrawRectangle(selecttionPen, r);
+                    g.DrawEllipse(selecttionPen, r);
                 }
             }
 
