@@ -189,4 +189,10 @@
     <None Include="Resources\text.ico" />
     <None Include="Resources\attribute.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\node_text.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Icon1.ico" />
+  </ItemGroup>
 </Project>

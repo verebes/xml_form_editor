@@ -165,6 +165,24 @@
       <Name>XMLDefaultControlLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open-file-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-document-save-all-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Left-align-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Right-align-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Utilities-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selection-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

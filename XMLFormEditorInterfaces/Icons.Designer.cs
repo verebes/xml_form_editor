@@ -116,6 +116,13 @@ namespace XMLFormEditor {
             }
         }
         
+        internal static System.Drawing.Icon node_text {
+            get {
+                object obj = ResourceManager.GetObject("node_text", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon Right {
             get {
                 object obj = ResourceManager.GetObject("Right", resourceCulture);

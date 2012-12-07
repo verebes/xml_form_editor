@@ -36,10 +36,8 @@ namespace XMLFormEditor
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.applyXSLTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
@@ -50,16 +48,14 @@ namespace XMLFormEditor
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearSelectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.arrangeLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.arrangeRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.snapToGridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drawGridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showBackgroundImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setGridSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showJunctionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.splitter3 = new System.Windows.Forms.Splitter();
@@ -79,13 +75,17 @@ namespace XMLFormEditor
             this.toolBoxControl1 = new XMLFormEditor.XmlEditorToolBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.showLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showJunctionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.arrangeLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.arrangeRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setGridSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -174,35 +174,19 @@ namespace XMLFormEditor
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newToolStripMenuItem.Text = "&New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
-            // 
-            // loadLayoutToolStripMenuItem
-            // 
-            this.loadLayoutToolStripMenuItem.Name = "loadLayoutToolStripMenuItem";
-            this.loadLayoutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.loadLayoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.loadLayoutToolStripMenuItem.Text = "&Open";
-            this.loadLayoutToolStripMenuItem.Click += new System.EventHandler(this.openLayoutToolStripMenuItem_Click);
-            // 
-            // saveLayoutToolStripMenuItem
-            // 
-            this.saveLayoutToolStripMenuItem.Name = "saveLayoutToolStripMenuItem";
-            this.saveLayoutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveLayoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveLayoutToolStripMenuItem.Text = "&Save";
-            this.saveLayoutToolStripMenuItem.Click += new System.EventHandler(this.saveLayoutToolStripMenuItem_Click);
-            // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveAsToolStripMenuItem.Text = "Save &As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Text = "Print";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -279,14 +263,6 @@ namespace XMLFormEditor
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(159, 6);
             // 
-            // selectAllToolStripMenuItem
-            // 
-            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.selectAllToolStripMenuItem.Text = "Select all";
-            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
-            // 
             // clearSelectionToolStripMenuItem
             // 
             this.clearSelectionToolStripMenuItem.Name = "clearSelectionToolStripMenuItem";
@@ -309,20 +285,6 @@ namespace XMLFormEditor
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
-            // 
-            // arrangeLeftToolStripMenuItem
-            // 
-            this.arrangeLeftToolStripMenuItem.Name = "arrangeLeftToolStripMenuItem";
-            this.arrangeLeftToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.arrangeLeftToolStripMenuItem.Text = "Arrange left";
-            this.arrangeLeftToolStripMenuItem.Click += new System.EventHandler(this.arrangeLeftToolStripMenuItem_Click);
-            // 
-            // arrangeRightToolStripMenuItem
-            // 
-            this.arrangeRightToolStripMenuItem.Name = "arrangeRightToolStripMenuItem";
-            this.arrangeRightToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.arrangeRightToolStripMenuItem.Text = "Arrange right";
-            this.arrangeRightToolStripMenuItem.Click += new System.EventHandler(this.arrangeRightToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -356,12 +318,23 @@ namespace XMLFormEditor
             this.showBackgroundImageToolStripMenuItem.Text = "Show background image";
             this.showBackgroundImageToolStripMenuItem.Click += new System.EventHandler(this.showBackgroundImageToolStripMenuItem_Click);
             // 
-            // setGridSizeToolStripMenuItem
+            // showJunctionsToolStripMenuItem
             // 
-            this.setGridSizeToolStripMenuItem.Name = "setGridSizeToolStripMenuItem";
-            this.setGridSizeToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.setGridSizeToolStripMenuItem.Text = "Options";
-            this.setGridSizeToolStripMenuItem.Click += new System.EventHandler(this.setGridSizeToolStripMenuItem_Click);
+            this.showJunctionsToolStripMenuItem.Checked = true;
+            this.showJunctionsToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showJunctionsToolStripMenuItem.Name = "showJunctionsToolStripMenuItem";
+            this.showJunctionsToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.showJunctionsToolStripMenuItem.Text = "Show junctions";
+            this.showJunctionsToolStripMenuItem.Click += new System.EventHandler(this.showJunctionsToolStripMenuItem_Click);
+            // 
+            // showLinesToolStripMenuItem
+            // 
+            this.showLinesToolStripMenuItem.Checked = true;
+            this.showLinesToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showLinesToolStripMenuItem.Name = "showLinesToolStripMenuItem";
+            this.showLinesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.showLinesToolStripMenuItem.Text = "Show lines";
+            this.showLinesToolStripMenuItem.Click += new System.EventHandler(this.showLinesToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -572,14 +545,19 @@ namespace XMLFormEditor
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
+            this.toolStripButton3,
             this.toolStripButton2,
-            this.toolStripSeparator1,
-            this.toolStripButton3});
+            this.toolStripSeparator1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(948, 25);
             this.toolStrip1.TabIndex = 16;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton1
             // 
@@ -589,20 +567,7 @@ namespace XMLFormEditor
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripButton1.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // toolStripButton3
             // 
@@ -613,32 +578,73 @@ namespace XMLFormEditor
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "toolStripButton3";
             // 
-            // showLinesToolStripMenuItem
+            // toolStripButton2
             // 
-            this.showLinesToolStripMenuItem.Checked = true;
-            this.showLinesToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.showLinesToolStripMenuItem.Name = "showLinesToolStripMenuItem";
-            this.showLinesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.showLinesToolStripMenuItem.Text = "Show lines";
-            this.showLinesToolStripMenuItem.Click += new System.EventHandler(this.showLinesToolStripMenuItem_Click);
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.White;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
             // 
-            // showJunctionsToolStripMenuItem
+            // newToolStripMenuItem
             // 
-            this.showJunctionsToolStripMenuItem.Checked = true;
-            this.showJunctionsToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.showJunctionsToolStripMenuItem.Name = "showJunctionsToolStripMenuItem";
-            this.showJunctionsToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.showJunctionsToolStripMenuItem.Text = "Show junctions";
-            this.showJunctionsToolStripMenuItem.Click += new System.EventHandler(this.showJunctionsToolStripMenuItem_Click);
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Text = "&New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
-            // printToolStripMenuItem
+            // loadLayoutToolStripMenuItem
             // 
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.printToolStripMenuItem.Text = "Print";
-            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+            this.loadLayoutToolStripMenuItem.Image = global::XMLFormEditor.Properties.Resources.open_file_icon;
+            this.loadLayoutToolStripMenuItem.Name = "loadLayoutToolStripMenuItem";
+            this.loadLayoutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.loadLayoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadLayoutToolStripMenuItem.Text = "&Open";
+            this.loadLayoutToolStripMenuItem.Click += new System.EventHandler(this.openLayoutToolStripMenuItem_Click);
             // 
-            
+            // saveLayoutToolStripMenuItem
+            // 
+            this.saveLayoutToolStripMenuItem.Image = global::XMLFormEditor.Properties.Resources.Actions_document_save_all_icon;
+            this.saveLayoutToolStripMenuItem.Name = "saveLayoutToolStripMenuItem";
+            this.saveLayoutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveLayoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveLayoutToolStripMenuItem.Text = "&Save";
+            this.saveLayoutToolStripMenuItem.Click += new System.EventHandler(this.saveLayoutToolStripMenuItem_Click);
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            this.selectAllToolStripMenuItem.Image = global::XMLFormEditor.Properties.Resources.selection_icon;
+            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.selectAllToolStripMenuItem.Text = "Select all";
+            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
+            // 
+            // arrangeLeftToolStripMenuItem
+            // 
+            this.arrangeLeftToolStripMenuItem.Image = global::XMLFormEditor.Properties.Resources.Left_align_icon;
+            this.arrangeLeftToolStripMenuItem.Name = "arrangeLeftToolStripMenuItem";
+            this.arrangeLeftToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.arrangeLeftToolStripMenuItem.Text = "Arrange left";
+            this.arrangeLeftToolStripMenuItem.Click += new System.EventHandler(this.arrangeLeftToolStripMenuItem_Click);
+            // 
+            // arrangeRightToolStripMenuItem
+            // 
+            this.arrangeRightToolStripMenuItem.Image = global::XMLFormEditor.Properties.Resources.Right_align_icon;
+            this.arrangeRightToolStripMenuItem.Name = "arrangeRightToolStripMenuItem";
+            this.arrangeRightToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.arrangeRightToolStripMenuItem.Text = "Arrange right";
+            this.arrangeRightToolStripMenuItem.Click += new System.EventHandler(this.arrangeRightToolStripMenuItem_Click);
+            // 
+            // setGridSizeToolStripMenuItem
+            // 
+            this.setGridSizeToolStripMenuItem.Image = global::XMLFormEditor.Properties.Resources.Utilities_icon;
+            this.setGridSizeToolStripMenuItem.Name = "setGridSizeToolStripMenuItem";
+            this.setGridSizeToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.setGridSizeToolStripMenuItem.Text = "Options";
+            this.setGridSizeToolStripMenuItem.Click += new System.EventHandler(this.setGridSizeToolStripMenuItem_Click);
             // 
             // EditorForm
             // 
@@ -652,6 +658,7 @@ namespace XMLFormEditor
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "EditorForm";
             this.Text = "Xml Form Editor";
