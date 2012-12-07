@@ -286,21 +286,27 @@ namespace XMLFormEditor
 
         public void ToggleControlSelections(System.Drawing.Point selectionPoint)
         {
-            foreach (XMLControl control in _xmlControlList) {
+            int i = _xmlControlList.Count;
+            while (i > 0) {
+                i--;
+                XMLControl control = _xmlControlList[i];
                 if (control.ClientRect.Contains(selectionPoint)) {
                     control.Selected = !control.Selected;
-                }
+                    break; // we only toggle one point at once
+                }                
             }
             LineDrawer.toggleSelection(selectionPoint);
         }
 
         public void SelectControls(System.Drawing.Point selectionPoint)
         {
-            foreach (XMLControl control in _xmlControlList)
-            {
-                if (control.ClientRect.Contains(selectionPoint))
-                {
+            int i = _xmlControlList.Count;
+            while (i > 0) {
+                i--;
+                XMLControl control = _xmlControlList[i];
+                if (control.ClientRect.Contains(selectionPoint)) {
                     control.Selected = true;
+                    break; // we only toggle one point at once
                 }
             }
         }
