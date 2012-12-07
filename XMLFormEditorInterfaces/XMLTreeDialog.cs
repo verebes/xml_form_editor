@@ -17,6 +17,8 @@ namespace XMLFormEditor
         public XMLTreeDialog()
         {
             InitializeComponent();
+            splitContainer1.Panel2Collapsed = true;            
+
             treeView1.AfterSelect += new TreeViewEventHandler(treeView1_AfterSelect);
             treeView1.DragDrop += new DragEventHandler(treeView1_DragDrop);
             treeView1.ItemDrag += new ItemDragEventHandler(treeView1_ItemDrag);
@@ -27,6 +29,7 @@ namespace XMLFormEditor
             iconList.Images.Add(Icons.node);
             iconList.Images.Add(Icons.text);
             iconList.Images.Add(Icons.document);
+            iconList.Images.Add(Icons.node_text);
             
             treeView1.ImageList = iconList;
             treeView1.LabelEdit = true;
@@ -114,9 +117,31 @@ namespace XMLFormEditor
                 return;            
         }
 
+
+        private bool hasChildElement(XmlNode node)
+        {            
+            foreach ( XmlNode child in node.ChildNodes   )
+            {
+                if (child.NodeType != XmlNodeType.Text)
+                    return true;
+            }
+            return false;
+
+        }
+
         void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode node = e.Node;
+
+            XmlElement xmlElement = node.Tag as XmlElement;
+            if (xmlElement == null || hasChildElement(xmlElement)) {
+                splitContainer1.Panel2Collapsed = true;
+                textBox1.Text = "";
+            } else {
+                splitContainer1.Panel2Collapsed = false;
+                textBox1.Text = xmlElement.InnerText;                
+            }
+
         }
 
         private string GenerateXPath(TreeNode node) {
@@ -302,6 +327,7 @@ namespace XMLFormEditor
             public const int Node = 1;
             public const int Text = 2;
             public const int Document = 3;
+            public const int NodeText = 4;
         };
 
 
@@ -649,6 +675,38 @@ namespace XMLFormEditor
 
         private void editNodeToolStripMenuItem_Click(object sender, EventArgs e) {
             editNode();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e) {
+            if (treeView1.SelectedNode == null)
+                return;
+
+            XmlElement xmlElement = treeView1.SelectedNode.Tag as XmlElement;
+            if (xmlElement == null)
+                return;
+            
+            if ( hasChildElement(xmlElement))
+                return;
+            
+            xmlElement.InnerText = textBox1.Text;
+        }
+
+        private void XMLTreeDialog_Shown(object sender, EventArgs e) {
+            treeView1.Focus();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
+            switch (keyData) {
+                case Keys.Control | Keys.Right:
+                    if ( !splitContainer1.Panel2Collapsed )
+                        textBox1.Focus();    
+                    return true;
+                case Keys.Control | Keys.Left:
+                    treeView1.Focus();    
+                    return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
     }
