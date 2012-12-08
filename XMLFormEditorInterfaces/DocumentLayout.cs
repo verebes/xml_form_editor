@@ -173,9 +173,14 @@ namespace XMLFormEditor
         }
 
 
+        private Rectangle lastSize;
+        private bool lastSizeInvalid = true;
         public Rectangle Size
         {
             get {
+                if (!lastSizeInvalid)
+                    return lastSize;
+                
                 Rectangle ret = MinimalSize;
 
                 foreach (XMLControl control in _xmlControlList)
@@ -191,7 +196,9 @@ namespace XMLFormEditor
                     ret = Rectangle.Union(ret, r1);
                     ret = Rectangle.Union(ret, r2);
                 }
-                
+
+                lastSizeInvalid = false;
+                lastSize = ret;
                 return ret;             
             }
         }
@@ -456,7 +463,7 @@ namespace XMLFormEditor
 
                 }
             }
-            LineDrawer.MoveSelectedJunctions(deltaX, deltaY);
+            LineDrawer.MoveSelectedJunctions(deltaX, deltaY);            
             OnSizeChanged( this );
         }
 
@@ -515,11 +522,18 @@ namespace XMLFormEditor
 
 
         public void RefreshControlPosition( XMLControl xmlControl )
-        {
-            OnSizeChanged(this);
+        {            
+            if (!Size.Contains(xmlControl.ClientRect))
+                OnSizeChanged(this);
         }
 
         
-        public event SizeChangedDelegate OnSizeChanged = delegate( object sender ) { };
+        public event SizeChangedDelegate OnSizeChanged = delegate( object sender ) {
+            DocumentLayout dl = sender as DocumentLayout;
+            if ( dl == null)
+                return;
+
+            dl.lastSizeInvalid = true;
+        };
     }
 }

@@ -79,7 +79,15 @@ namespace XMLFormEditor
                 this.x = x;
                 this.y = y;
             }
-            
+
+            public void normalize()
+            {
+                double lengthW = Math.Sqrt(x * x + y * y);
+                x = x/lengthW;
+                y = y/lengthW;
+
+            }
+           
             public double x;
             public double y;
         };
@@ -223,23 +231,24 @@ namespace XMLFormEditor
         private void findClosestJunction(HalfSection halfSection, ref HalfSection junction, ref bool found)
         {            
             double minDistant = Double.MaxValue;
+            Vector2d w = new Vector2d(1, 0);
             foreach (HalfSection j in halfSections)
             {
                 if ( j.p == halfSection.p ) {
                     continue;
                 }
 
-                Vector2d w = new Vector2d(j.p.X - halfSection.p.X, j.p.Y - halfSection.p.Y);
+                w.x = j.p.X - halfSection.p.X;
+                w.y = j.p.Y - halfSection.p.Y;                
                 Vector2d v = halfSection.vector;
                 if (w.x * v.y - w.y * v.x != 0)
                     continue;
 
                 // Junction is on the line of the half section
-                
-                double lengthW = Math.Sqrt(w.x * w.x + w.y*w.y);
-                Vector2d normalizedW = new Vector2d(w.x / lengthW, w.y / lengthW );
-                if (normalizedW.x != halfSection.vector.x ||
-                     normalizedW.y != halfSection.vector.y)
+                                
+                w.normalize();
+                if (w.x != halfSection.vector.x ||
+                     w.y != halfSection.vector.y)
                     continue;
                     // we are on the good half of the line
                     {                            

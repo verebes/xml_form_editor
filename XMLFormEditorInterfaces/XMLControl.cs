@@ -68,7 +68,7 @@ namespace XMLFormEditor
         {
             _clientRect.Location = pos;
 
-            ParentLayout.RefreshControlPosition(this);        
+            //ParentLayout.RefreshControlPosition(this);        
         }
     
 
