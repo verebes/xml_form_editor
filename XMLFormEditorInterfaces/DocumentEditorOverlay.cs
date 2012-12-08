@@ -416,7 +416,12 @@ namespace XMLFormEditor
                 j.position = newPos;
             }
         }
-        
+
+        bool dropIntoCellAlowed()
+        {
+            return ModifierKeys == (Keys.Control | Keys.Shift); 
+        }
+
         private void MovingControls(MouseEventArgs e)
         {
             Point p = ViewPoint2LalyoutPoint(e.Location);
@@ -434,7 +439,7 @@ namespace XMLFormEditor
             Rectangle rect = new Rectangle();
 
             if (_documentLayout.SelectedControls().Count == 1) {
-                if (ModifierKeys == Keys.Control && _documentLayout.LineDrawer.getSmallestBoundingRectangle(p, ref rect)) {
+                if ( dropIntoCellAlowed() && _documentLayout.LineDrawer.getSmallestBoundingRectangle(p, ref rect)) {
                     _documentLayout.SelectedControls()[0].ClientRect = rect;
                     return;
                 } else {
