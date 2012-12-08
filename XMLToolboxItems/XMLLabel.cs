@@ -80,7 +80,6 @@ namespace XMLFormEditor
                 System.Diagnostics.Trace.WriteLine("XMLLabel::UpdateEditorControl: control type not Label");
                 return;
             }
-                
 
             try
             {                
@@ -118,7 +117,7 @@ namespace XMLFormEditor
             {
                 label.Text = e.Message ;
                 label.Enabled = false;
-            }
+            }            
         }
 
 

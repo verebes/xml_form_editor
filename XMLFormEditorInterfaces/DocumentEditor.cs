@@ -267,8 +267,8 @@ namespace XMLFormEditor
                 newPropertyWindow = xmlControl.GetPropertyWindow();                
                 newPropertyWindow.OnDataSourceChanged += delegate { ApplyDataSource(_currentPropertyWindow); };
 
-                newPropertyWindow.Parent = _propertyWindowPlace;
-                newPropertyWindow.Dock = DockStyle.Fill;
+                newPropertyWindow.Parent = _propertyWindowPlace;                
+                newPropertyWindow.Dock = DockStyle.Top;                
                 newPropertyWindow.Show();
             }
 
@@ -297,7 +297,7 @@ namespace XMLFormEditor
 
 
                 editorPropertyWindow.Parent = _propertyWindowPlace;
-                editorPropertyWindow.Dock = DockStyle.Fill;
+                editorPropertyWindow.Dock = DockStyle.Top;
                 editorPropertyWindow.OnDataSourceChanged += delegate { ApplyEditorSettings(editorPropertyWindow); };
 
                 editorPropertyWindow.Show();

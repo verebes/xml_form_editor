@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.Drawing;
 
 namespace XMLFormEditor
 {
@@ -18,7 +19,11 @@ namespace XMLFormEditor
     /// </summary>
     public interface IStaticLabelDataSource : IDataSourceBase
     {
-        string getCaption();        
+        string getCaption();
+        Font getFont();
+        Color getColor();
+        Color getBackground();
+        ContentAlignment getAlignment();
     }
 
 

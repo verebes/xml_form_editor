@@ -123,6 +123,7 @@ namespace XMLFormEditor
             // 
             // bListExpression
             // 
+            this.bListExpression.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bListExpression.Location = new System.Drawing.Point(210, 226);
             this.bListExpression.Name = "bListExpression";
             this.bListExpression.Size = new System.Drawing.Size(23, 23);
@@ -133,6 +134,7 @@ namespace XMLFormEditor
             // 
             // bCaptionExpression
             // 
+            this.bCaptionExpression.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bCaptionExpression.Location = new System.Drawing.Point(210, 268);
             this.bCaptionExpression.Name = "bCaptionExpression";
             this.bCaptionExpression.Size = new System.Drawing.Size(23, 23);
@@ -143,6 +145,7 @@ namespace XMLFormEditor
             // 
             // bValueExpression
             // 
+            this.bValueExpression.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bValueExpression.Location = new System.Drawing.Point(210, 312);
             this.bValueExpression.Name = "bValueExpression";
             this.bValueExpression.Size = new System.Drawing.Size(23, 23);
@@ -166,7 +169,7 @@ namespace XMLFormEditor
             this.Controls.Add(this.textBoxList);
             this.Controls.Add(this.label4);
             this.Name = "XMLListDataSourcePropertyControl";
-            this.Size = new System.Drawing.Size(236, 364);
+            this.Size = new System.Drawing.Size(236, 380);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.textBoxList, 0);
             this.Controls.SetChildIndex(this.label6, 0);
