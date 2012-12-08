@@ -32,6 +32,7 @@ namespace XMLFormEditor
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbPageCountDocument = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bApply
@@ -45,7 +46,7 @@ namespace XMLFormEditor
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPageCountXPath.Location = new System.Drawing.Point(6, 220);
             this.textBoxPageCountXPath.Name = "textBoxPageCountXPath";
-            this.textBoxPageCountXPath.Size = new System.Drawing.Size(227, 20);
+            this.textBoxPageCountXPath.Size = new System.Drawing.Size(202, 20);
             this.textBoxPageCountXPath.TabIndex = 4;
             // 
             // label1
@@ -77,9 +78,20 @@ namespace XMLFormEditor
             this.cbPageCountDocument.Size = new System.Drawing.Size(227, 21);
             this.cbPageCountDocument.TabIndex = 3;
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(210, 220);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(23, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // PagerPropertyControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbPageCountDocument);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxPageCountXPath);
@@ -92,6 +104,7 @@ namespace XMLFormEditor
             this.Controls.SetChildIndex(this.title, 0);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.cbPageCountDocument, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,5 +116,6 @@ namespace XMLFormEditor
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.ComboBox cbPageCountDocument;
+        private System.Windows.Forms.Button button1;
     }
 }

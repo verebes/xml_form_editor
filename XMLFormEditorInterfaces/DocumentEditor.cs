@@ -268,6 +268,7 @@ namespace XMLFormEditor
                 newPropertyWindow.OnDataSourceChanged += delegate { ApplyDataSource(_currentPropertyWindow); };
 
                 newPropertyWindow.Parent = _propertyWindowPlace;
+                newPropertyWindow.Dock = DockStyle.Fill;
                 newPropertyWindow.Show();
             }
 

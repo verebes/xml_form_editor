@@ -86,7 +86,8 @@ namespace XMLFormEditor
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(85, 251);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(102, 234);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -143,9 +144,11 @@ namespace XMLFormEditor
             // 
             // textBoxBackgroundImage
             // 
+            this.textBoxBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBackgroundImage.Location = new System.Drawing.Point(10, 208);
             this.textBoxBackgroundImage.Name = "textBoxBackgroundImage";
-            this.textBoxBackgroundImage.Size = new System.Drawing.Size(150, 20);
+            this.textBoxBackgroundImage.Size = new System.Drawing.Size(167, 20);
             this.textBoxBackgroundImage.TabIndex = 11;
             // 
             // label6
@@ -159,7 +162,8 @@ namespace XMLFormEditor
             // 
             // bFileSelect
             // 
-            this.bFileSelect.Location = new System.Drawing.Point(167, 204);
+            this.bFileSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bFileSelect.Location = new System.Drawing.Point(183, 208);
             this.bFileSelect.Name = "bFileSelect";
             this.bFileSelect.Size = new System.Drawing.Size(25, 23);
             this.bFileSelect.TabIndex = 13;
@@ -185,7 +189,7 @@ namespace XMLFormEditor
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "XMLEditorPropertyControl";
-            this.Size = new System.Drawing.Size(211, 314);
+            this.Size = new System.Drawing.Size(211, 272);
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);

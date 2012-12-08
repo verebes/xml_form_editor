@@ -37,6 +37,8 @@ namespace XMLFormEditor
             // 
             // richTextBoxInsertXml
             // 
+            this.richTextBoxInsertXml.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBoxInsertXml.Location = new System.Drawing.Point(6, 134);
             this.richTextBoxInsertXml.Name = "richTextBoxInsertXml";
             this.richTextBoxInsertXml.Size = new System.Drawing.Size(227, 183);
