@@ -36,9 +36,9 @@ namespace XMLFormEditor
             this.textBoxValue = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbListSourceDocument = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bListExpression = new System.Windows.Forms.Button();
+            this.bCaptionExpression = new System.Windows.Forms.Button();
+            this.bValueExpression = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bApply
@@ -121,40 +121,43 @@ namespace XMLFormEditor
             this.cbListSourceDocument.Size = new System.Drawing.Size(227, 21);
             this.cbListSourceDocument.TabIndex = 16;
             // 
-            // button1
+            // bListExpression
             // 
-            this.button1.Location = new System.Drawing.Point(210, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bListExpression.Location = new System.Drawing.Point(210, 226);
+            this.bListExpression.Name = "bListExpression";
+            this.bListExpression.Size = new System.Drawing.Size(23, 23);
+            this.bListExpression.TabIndex = 17;
+            this.bListExpression.Text = "...";
+            this.bListExpression.UseVisualStyleBackColor = true;
+            this.bListExpression.Click += new System.EventHandler(this.bListExpression_Click);
             // 
-            // button2
+            // bCaptionExpression
             // 
-            this.button2.Location = new System.Drawing.Point(210, 268);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(23, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "...";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bCaptionExpression.Location = new System.Drawing.Point(210, 268);
+            this.bCaptionExpression.Name = "bCaptionExpression";
+            this.bCaptionExpression.Size = new System.Drawing.Size(23, 23);
+            this.bCaptionExpression.TabIndex = 18;
+            this.bCaptionExpression.Text = "...";
+            this.bCaptionExpression.UseVisualStyleBackColor = true;
+            this.bCaptionExpression.Click += new System.EventHandler(this.bCaptionExpression_Click);
             // 
-            // button3
+            // bValueExpression
             // 
-            this.button3.Location = new System.Drawing.Point(210, 312);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(23, 23);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "...";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bValueExpression.Location = new System.Drawing.Point(210, 312);
+            this.bValueExpression.Name = "bValueExpression";
+            this.bValueExpression.Size = new System.Drawing.Size(23, 23);
+            this.bValueExpression.TabIndex = 19;
+            this.bValueExpression.Text = "...";
+            this.bValueExpression.UseVisualStyleBackColor = true;
+            this.bValueExpression.Click += new System.EventHandler(this.bValueExpression_Click);
             // 
             // XMLListDataSourcePropertyControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bValueExpression);
+            this.Controls.Add(this.bCaptionExpression);
             this.Controls.Add(this.cbListSourceDocument);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bListExpression);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxCaption);
@@ -172,11 +175,11 @@ namespace XMLFormEditor
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.bApply, 0);
             this.Controls.SetChildIndex(this.label5, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.bListExpression, 0);
             this.Controls.SetChildIndex(this.cbListSourceDocument, 0);
             this.Controls.SetChildIndex(this.title, 0);
-            this.Controls.SetChildIndex(this.button2, 0);
-            this.Controls.SetChildIndex(this.button3, 0);
+            this.Controls.SetChildIndex(this.bCaptionExpression, 0);
+            this.Controls.SetChildIndex(this.bValueExpression, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,8 +195,8 @@ namespace XMLFormEditor
         internal System.Windows.Forms.TextBox textBoxCaption;
         internal System.Windows.Forms.TextBox textBoxValue;
         internal System.Windows.Forms.ComboBox cbListSourceDocument;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bListExpression;
+        private System.Windows.Forms.Button bCaptionExpression;
+        private System.Windows.Forms.Button bValueExpression;
     }
 }

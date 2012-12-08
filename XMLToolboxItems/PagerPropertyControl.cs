@@ -43,28 +43,14 @@ namespace XMLFormEditor
             }
         }
 
-        private string between( string before, string str, string after )
-        {
-            int bl = before.Length;
-            int al = after.Length;
-            int sl = str.Length;
 
-            
-            if ( sl > (bl + al) && 
-                str.Substring(0, bl).ToLower() == before.ToLower() && 
-                str.Substring(sl - al, al).ToLower() == after.ToLower())
-            {
-                return str.Substring(bl, sl - (bl + al));                
-            }
-            return "";
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             XMLTreeDialog xmlTree = new XMLTreeDialog();
-            xmlTree.Document = XmlSourceDocumentManager.Instance().GetDocument(cbSourceDocuments.Text);
+            xmlTree.Document = XmlSourceDocumentManager.Instance().GetDocument(cbPageCountDocument.Text);
 
-            string xpath = between("count(", textBoxPageCountXPath.Text.Trim(), ")");
+            string xpath = XMLTreeDialog.between("count(", textBoxPageCountXPath.Text.Trim(), ")");
             if (xpath == "") {
                 xpath = textBoxPageCountXPath.Text;
             }
@@ -73,13 +59,8 @@ namespace XMLFormEditor
             if (xmlTree.ShowDialog() == DialogResult.OK)
             {
                 XmlSourceDocumentManager.Instance().SaveDocuments();
-                string selectedPath = xmlTree.Selection;
-                int lastBracket = selectedPath.LastIndexOf('[');
-                int lastSlash = selectedPath.LastIndexOf('/');
-                if ( lastBracket > lastSlash) {
-                    selectedPath = selectedPath.Substring(0, lastBracket);
-                }
 
+                string selectedPath = XMLTreeDialog.cutLastBracketIfExists(xmlTree.Selection);
                 textBoxPageCountXPath.Text = "count(" + selectedPath + ")";                
             }
             else

@@ -81,7 +81,6 @@ namespace XMLFormEditor
             }
 
             move(draggedNode, node);
-            //draggedNode.Parent = node;
         }
 
         private void  move(TreeNode node, TreeNode newParent) {
@@ -165,6 +164,11 @@ namespace XMLFormEditor
 
                 node = node.Parent;
             }
+
+            if ( markedNode != null && common == markedNode) {
+                selection = selection.TrimStart('/');
+            }
+
             node = markedNode;
             string pathBack = "";
             while (node != null && node != common)
@@ -174,6 +178,11 @@ namespace XMLFormEditor
             }
             pathBack = pathBack.TrimEnd('/');
             selection = pathBack + selection;
+
+            if (selection == "") {
+                selection = ".";
+            }
+
             return selection;
         }
 
@@ -249,24 +258,30 @@ namespace XMLFormEditor
 
         }
 
-        public void selectNodeByXPath (string xpathExpression ) {
-            if (document == null)
-                return;
+        public XmlNode selectNodeByXPath(string xpathExpression)
+        {
+            return selectNodeByXPath(xpathExpression, document);
+        }
 
-            try {
-                XmlNode node = document.SelectSingleNode(xpathExpression);
+        public XmlNode selectNodeByXPath(string xpathExpression, XmlNode node)
+        {
+            if (node == null)
+                return null;
 
-                TreeNode treeNode = getTreeNode(node);
+            try {                
+                XmlNode selectedNode = node.SelectSingleNode(xpathExpression);
+
+                TreeNode treeNode = getTreeNode(selectedNode);
                 if (treeNode == null)
-                    return;
+                    return null;
 
                 treeView1.SelectedNode = treeNode;
                 treeNode.ExpandAll();
-
+                return selectedNode;
             } catch (System.Xml.XmlException e) {
-                return;
+                return null;
             } catch (System.Xml.XPath.XPathException e) {
-                return;
+                return null;
             }
         }
         
@@ -290,7 +305,7 @@ namespace XMLFormEditor
         private TreeNode markedNode;
         private Color prevMarkedColor;
 
-        private void markNode() {
+        public void markNode() {
             TreeNode treeNode = treeView1.SelectedNode;
             if (treeNode == null)
                 return;
@@ -707,6 +722,35 @@ namespace XMLFormEditor
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        public static string cutLastBracketIfExists(string str)
+        {
+            string result = str;
+            int lastBracket = result.LastIndexOf('[');
+            int lastSlash = result.LastIndexOf('/');
+            if (lastBracket > lastSlash)
+            {
+                result = result.Substring(0, lastBracket);
+            }
+            return result;
+        }
+
+
+        public static string between(string before, string str, string after)
+        {
+            int bl = before.Length;
+            int al = after.Length;
+            int sl = str.Length;
+
+
+            if (sl > (bl + al) &&
+                str.Substring(0, bl).ToLower() == before.ToLower() &&
+                str.Substring(sl - al, al).ToLower() == after.ToLower())
+            {
+                return str.Substring(bl, sl - (bl + al));
+            }
+            return "";
         }
 
     }
