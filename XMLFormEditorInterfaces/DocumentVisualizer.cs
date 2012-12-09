@@ -452,21 +452,27 @@ namespace XMLFormEditor
         }
 
         private void UpdateControl(XMLControl xmlControl) {
-            Control editControl = XMLControl2ControlDictionary[xmlControl];
-            editControl.Location = new Point(xmlControl.ClientRect.Location.X - ViewLocation.X, xmlControl.ClientRect.Location.Y - ViewLocation.Y);
-            editControl.Size = xmlControl.ClientRect.Size;
+            if (XMLControl2ControlDictionary.ContainsKey(xmlControl)) {
+                Control editControl = XMLControl2ControlDictionary[xmlControl];
+                editControl.Location = new Point(xmlControl.ClientRect.Location.X - ViewLocation.X, xmlControl.ClientRect.Location.Y - ViewLocation.Y);
+                editControl.Size = xmlControl.ClientRect.Size;
+            }
 
         }
 
         private void DeleteControl(XMLControl xmlControl)
         {
-            Control c = XMLControl2ControlDictionary[xmlControl];
+//            if ( XMLControl2ControlDictionary.ContainsKey(xmlControl) ){
+                Control c = XMLControl2ControlDictionary[xmlControl];            
             
-            XMLControl2ControlDictionary.Remove(xmlControl);
-            Control2XmlControlDictionary.Remove(c);
+                XMLControl2ControlDictionary.Remove(xmlControl);
+                Control2XmlControlDictionary.Remove(c);
 
-            c.Parent = null;
-            c.Dispose();
+                c.Parent = null;
+//                c.Dispose();
+
+            //}
+
         }
 
         protected bool updateVisibleControlsNeeded = false;
