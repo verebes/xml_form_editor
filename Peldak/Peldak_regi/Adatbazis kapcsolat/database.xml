@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<database>
+  <server>localhost</server>
+  <port>1234</port>
+  <database>mydatabase</database>
+  <username>dbadmin</username>
+  <password>passwd</password>
+</database>

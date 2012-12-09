@@ -1,0 +1,27 @@
+<lovasok xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="lovasok.xsd" selected="1">	
+	<lovas szam="1">
+		<nev>Jani</nev>
+		<email>janigmail.com</email>
+	</lovas>
+	<lovas szam="2">
+		<nev>Irma</nev>
+		<email>irma@gmail.com</email>		
+	</lovas>
+	<lovas szam="3">
+		<nev>Tóbiás</nev>
+		<email>tobias.tivadat@domain.freemail.hu</email>		
+	</lovas>
+	<lovas szam="45">
+		<nev>Tóbiás</nev>
+		<email>tobias.tivadat@domain.freemail.hu</email>		
+	</lovas>
+<lovas szam="4">
+	<nev>Kázmér</nev>
+	<email>kazi@freemail.hu</email>
+</lovas><lovas szam="5">
+	<nev>Tihamér</nev>
+	<email>kiss.tihamer@datanet.hu</email>
+</lovas><lovas szam="12">
+	<nev>Ottó</nev>
+	<email>otto@mail.com</email>
+</lovas></lovasok>

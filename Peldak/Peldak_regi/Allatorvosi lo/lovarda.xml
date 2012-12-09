@@ -1,0 +1,14 @@
+<lovarda xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="lovarda.xsd">
+	<lovak>
+		<lo szin="Fehér" labak="Négy">Ráró</lo>
+		<lo szin="Barna" labak="Négy">Csillag</lo>
+		<lo szin="Fekete" labak="Négy">Villám</lo>
+		<lo szin="Fekete" labak="Négy">Herceg</lo>
+		<lo szin="Fehér" labak="Négy">Tóbiás222</lo>
+	</lovak>
+	<adat lovas="3" lo="4" />
+	<leiras>Egy nagyon szép lovarda Budapesthez közel.
+
+Sok gyors ló található benne, kellemes időtöltés mindenkinek.
+</leiras>
+</lovarda>

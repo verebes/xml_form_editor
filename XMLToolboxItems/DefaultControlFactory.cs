@@ -16,8 +16,6 @@ namespace XMLFormEditor
                     return new XMLLabel();
                 case "StaticLabel":
                     return new StaticLabel();
-                case "Line":
-                    return new Line();
                 case "XMLCombo":
                     return new XMLCombo();
                 case "XMLGrid":

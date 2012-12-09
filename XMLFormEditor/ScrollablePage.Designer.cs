@@ -69,7 +69,7 @@ namespace XMLFormEditor
             this.documentForm.Cursor = System.Windows.Forms.Cursors.Default;
             this.documentForm.DocumentLayout = null;
             this.documentForm.DrawGrid = false;
-            this.documentForm.GridSize = 20;
+            this.documentForm.GridSize = 10;
             this.documentForm.Location = new System.Drawing.Point(0, 0);
             this.documentForm.Name = "documentForm";
             this.documentForm.Size = new System.Drawing.Size(388, 424);

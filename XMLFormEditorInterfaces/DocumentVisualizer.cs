@@ -93,7 +93,7 @@ namespace XMLFormEditor
             updateVisibleControls();
         }
 
-        private int gridSize = 20; 
+        private int gridSize = 10; 
         public virtual int GridSize
         {
             get { return gridSize; }
@@ -292,7 +292,8 @@ namespace XMLFormEditor
             e.Graphics.FillRectangle(Brushes.White, e.ClipRectangle);
 
             if (backgroundVisible && backgroundImage != null) {
-                e.Graphics.DrawImage(backgroundImage, LayoutPoint2ViewPoint(new Point(0, 0)));
+                Rectangle r = new Rectangle(LayoutPoint2ViewPoint(new Point(0, 0)), backgroundImage.Size);
+                e.Graphics.DrawImage(backgroundImage, r);
             }
 
             if (DrawGrid)

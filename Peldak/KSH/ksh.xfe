@@ -1,0 +1,935 @@
+<Document>
+  <source>options.xml</source>
+  <source>ksh_data.xml</source>
+  <Form Name="KSH 1" BackgroundImage="">
+    <Control Type="StaticLabel" X="21" Y="121" Width="738" Height="38">
+      <Text Color="0, 64, 0" Background="128, 255, 128" Font="Microsoft Sans Serif, 13.25pt" Alignment="MiddleCenter">A GYERMEK</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="11" Width="218" Height="49">
+      <Text Color="0, 64, 0" Background="128, 255, 128" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">KÖZPONTI STATISZTIKAI HIVATAL</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="60" Width="218" Height="59">
+      <Text Color="0, 64, 0" Background="128, 255, 128" Font="Microsoft Sans Serif, 11.25pt" Alignment="MiddleCenter">ÉLVESZÜLETÉSI LAP</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="161" Width="58" Height="38">
+      <Text Color="Black" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">01.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="201" Width="58" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">02.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="241" Width="58" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">03,</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="281" Width="58" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">04,</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="321" Width="58" Height="58">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">05,</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="161" Width="158" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Születési helye:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="201" Width="158" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Születési ideje:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="241" Width="158" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Neme:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="281" Width="158" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Állampolgársága:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="321" Width="38" Height="58">
+      <Text Color="WindowText" Background="128, 255, 128" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Születési neve:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="121" Y="321" Width="118" Height="28">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Születési családi neve:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="121" Y="351" Width="118" Height="28">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Születési utóneve(i):</Text>
+    </Control>
+    <Control Type="StaticLabel" X="260" Y="30" Width="200" Height="20">
+      <Text Color="WindowText" Background="" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleRight">Anyakönyvi azonosító (születési helye):</Text>
+    </Control>
+    <Control Type="StaticLabel" X="296" Y="59" Width="160" Height="20">
+      <Text Color="WindowText" Background="" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleRight">Kihelyezett anyakönyv jelzése:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="300" Y="80" Width="160" Height="30">
+      <Text Color="WindowText" Background="" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleRight">A születési anyakönyvi
+bejegyzés folyószáma, éve:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="381" Width="738" Height="8">
+      <Text Color="WindowText" Background="0, 64, 0" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">
+      </Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="391" Width="58" Height="78">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">06,</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="471" Width="58" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">07,</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="511" Width="58" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">08,</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="391" Width="158" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Az anya születési családi és utónve(i):</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="431" Width="158" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Az anya házassági családi és utónevei(i):</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="471" Width="158" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Az anya családi állapota:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="511" Width="158" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">A szülők házasságkötésének időpontja:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="551" Width="218" Height="28">
+      <Text Color="0, 64, 0" Background="128, 255, 128" Font="Microsoft Sans Serif, 12pt" Alignment="MiddleCenter">A SZÜLŐ EGYÉB ADATAI</Text>
+    </Control>
+    <Control Type="StaticLabel" X="241" Y="551" Width="258" Height="28">
+      <Text Color="0, 64, 0" Background="128, 255, 128" Font="Microsoft Sans Serif, 12pt" Alignment="MiddleCenter">AZ APA</Text>
+    </Control>
+    <Control Type="StaticLabel" X="501" Y="551" Width="258" Height="28">
+      <Text Color="0, 64, 0" Background="128, 255, 128" Font="Microsoft Sans Serif, 12pt" Alignment="MiddleCenter">AZ ANYA</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="581" Width="58" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">09.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="621" Width="58" Height="78">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">10,</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="701" Width="58" Height="78">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">11,</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="781" Width="58" Height="68">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">12.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="851" Width="58" Height="348">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">13.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="851" Width="158" Height="18">
+      <Text Color="WindowText" Background="128, 255, 128" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">Iskolai végzettség</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="871" Width="78" Height="238">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8pt" Alignment="MiddleLeft">a)  Az 
+elvégzett 
+legmagasabb 
+osztályok 
+iskolatípusonként:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="161" Y="871" Width="78" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleRight">általános (elemi) iskola:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="161" Y="911" Width="78" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleRight">polgári iskola:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="161" Y="951" Width="78" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleRight">szakmunkásképző iskola:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="161" Y="991" Width="78" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleRight">szakiskola:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="161" Y="1031" Width="78" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleRight">középiskola:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="161" Y="1071" Width="78" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleRight">főiskola, egyetem:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="1111" Width="158" Height="88">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">b) Az általános iskola 8. osztályánál magasabb szintű végzettségei közül a legmagasabb befejezett iskolai végzettség megnevezése:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="581" Width="158" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Születésének időpontja:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="621" Width="78" Height="78">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Lakóhelye:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="161" Y="621" Width="78" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">község, város</Text>
+    </Control>
+    <Control Type="StaticLabel" X="161" Y="661" Width="78" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">megye, kerület</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="781" Width="158" Height="68">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Állampolgárság:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="161" Y="701" Width="78" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">község, város</Text>
+    </Control>
+    <Control Type="StaticLabel" X="161" Y="741" Width="78" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">megye, kerület</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="701" Width="78" Height="78">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Tarttozkodási helye:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="250" Y="870" Width="139" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">egy osztályt sem végzett:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="250" Y="920" Width="99" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">osztályok száma:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="250" Y="960" Width="99" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">osztályok száma:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="250" Y="1000" Width="99" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">osztályok száma:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="250" Y="1040" Width="99" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">osztályok száma:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="250" Y="1080" Width="99" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">osztályok száma:</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="470" Y="30" Width="200" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="610" Y="60" Width="60" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="470" Y="90" Width="200" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="250" Y="170" Width="180" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/szuletesi_hely/kozseg_varos</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="530" Y="170" Width="70" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/szuletesi_hely/kerulet</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="670" Y="170" Width="80" Height="20">
+      <SourceDocument>
+      </SourceDocument>
+      <XPath>
+      </XPath>
+    </Control>
+    <Control Type="XMLLabel" X="660" Y="250" Width="89" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/neme</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="250" Y="210" Width="70" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/szuletesi_ido/ev</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="360" Y="210" Width="40" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/szuletesi_ido/ho</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="430" Y="210" Width="30" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/szuletesi_ido/nap</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="510" Y="210" Width="40" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/szuletesi_ido/ora</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="600" Y="210" Width="50" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/szuletesi_ido/perc</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="330" Y="201" Width="20" Height="38">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">év</Text>
+    </Control>
+    <Control Type="StaticLabel" X="400" Y="201" Width="20" Height="38">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">hó</Text>
+    </Control>
+    <Control Type="StaticLabel" X="470" Y="201" Width="30" Height="38">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">nap</Text>
+    </Control>
+    <Control Type="StaticLabel" X="560" Y="201" Width="30" Height="38">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">óra</Text>
+    </Control>
+    <Control Type="StaticLabel" X="660" Y="201" Width="30" Height="38">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">perc</Text>
+    </Control>
+    <Control Type="StaticLabel" X="440" Y="170" Width="80" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">község, város</Text>
+    </Control>
+    <Control Type="StaticLabel" X="610" Y="170" Width="50" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">kerület</Text>
+    </Control>
+    <Control Type="XMLCombo" X="250" Y="250" Width="160" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/neme</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/gyerek_neme/nem</XPath>
+        <CaptionXPath>.</CaptionXPath>
+        <ValueXPath>@id</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="250" Y="290" Width="310" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/allampolgarsag</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/allampolgarsag/allampolgarsag</XPath>
+        <CaptionXPath>.</CaptionXPath>
+        <ValueXPath>@id</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLLabel" X="660" Y="290" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/allampolgarsag</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="250" Y="326" Width="500" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/nev/csaladi</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="250" Y="355" Width="500" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/gyerek/nev/utonevek</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="250" Y="407" Width="500" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/anya/nev/csaladi</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="250" Y="437" Width="500" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/anya/nev/utonevek</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="254" Y="520" Width="70" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/anya/hazassagkotes_ideje/ev</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="364" Y="520" Width="40" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/anya/hazassagkotes_ideje/ho</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="434" Y="520" Width="30" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/anya/hazassagkotes_ideje/nap</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="334" Y="520" Width="20" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">év</Text>
+    </Control>
+    <Control Type="StaticLabel" X="404" Y="520" Width="20" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">hó</Text>
+    </Control>
+    <Control Type="StaticLabel" X="474" Y="520" Width="30" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">nap</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="249" Y="591" Width="70" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/szuletes/ev</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="359" Y="591" Width="40" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/szuletes/ho</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="429" Y="591" Width="30" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/szuletes/nap</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="329" Y="590" Width="20" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">év</Text>
+    </Control>
+    <Control Type="StaticLabel" X="399" Y="590" Width="20" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">hó</Text>
+    </Control>
+    <Control Type="StaticLabel" X="469" Y="590" Width="30" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">nap</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="250" Y="630" Width="230" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/lakohely/kozseg_varos</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="250" Y="670" Width="230" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/lakohely/megye_kerulet</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="250" Y="710" Width="230" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/tartozkodas/kozseg_varos</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="250" Y="750" Width="230" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/tartozkodas/megye_kerulet</XPath>
+    </Control>
+    <Control Type="XMLCombo" X="250" Y="790" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/allampolgarsag/@magyar</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/allampolgarsag2/allampolgarsag</XPath>
+        <CaptionXPath>.</CaptionXPath>
+        <ValueXPath>@id</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLTextBox" X="250" Y="820" Width="200" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/allampolgarsag</XPath>
+    </Control>
+    <Control Type="XMLCombo" X="390" Y="870" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/vegzettseg/elvegzett_osztalyok/egy_osztalyt_sem</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/igen_nem/eldontendo</XPath>
+        <CaptionXPath>.</CaptionXPath>
+        <ValueXPath>@id</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="360" Y="920" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/vegzettseg/elvegzett_osztalyok/polgari</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/szamok_1_9/szam</XPath>
+        <CaptionXPath>@nr</CaptionXPath>
+        <ValueXPath>@nr</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="360" Y="960" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/vegzettseg/elvegzett_osztalyok/szakmunkas</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/szamok_1_9/szam</XPath>
+        <CaptionXPath>@nr</CaptionXPath>
+        <ValueXPath>@nr</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="360" Y="1000" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/vegzettseg/elvegzett_osztalyok/szakiskola</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/szamok_1_9/szam</XPath>
+        <CaptionXPath>@nr</CaptionXPath>
+        <ValueXPath>@nr</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="360" Y="1040" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/vegzettseg/elvegzett_osztalyok/kozep</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/szamok_1_14/szam</XPath>
+        <CaptionXPath>@nr</CaptionXPath>
+        <ValueXPath>@nr</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="360" Y="1080" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/vegzettseg/elvegzett_osztalyok/foiskola_egyetem</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/szamok_1_9/szam</XPath>
+        <CaptionXPath>@nr</CaptionXPath>
+        <ValueXPath>@nr</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="StaticLabel" X="250" Y="1130" Width="190" Height="19">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Nappali tagozaton szerzett:</Text>
+    </Control>
+    <Control Type="XMLCombo" X="250" Y="1160" Width="230" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/apa/vegzettseg/legmagasabb</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/felsofok/felsofok</XPath>
+        <CaptionXPath>.</CaptionXPath>
+        <ValueXPath>@id</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="StaticLabel" X="510" Y="870" Width="139" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">egy osztályt sem végzett:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="510" Y="920" Width="99" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">osztályok száma:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="510" Y="960" Width="99" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">osztályok száma:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="510" Y="1000" Width="99" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">osztályok száma:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="510" Y="1040" Width="99" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">osztályok száma:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="510" Y="1080" Width="99" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">osztályok száma:</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="510" Y="590" Width="70" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/szuletes/ev</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="620" Y="590" Width="40" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/szuletes/ho</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="690" Y="590" Width="30" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/szuletes/nap</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="590" Y="590" Width="20" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">év</Text>
+    </Control>
+    <Control Type="StaticLabel" X="660" Y="590" Width="20" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">hó</Text>
+    </Control>
+    <Control Type="StaticLabel" X="720" Y="590" Width="30" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">nap</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="510" Y="630" Width="230" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/lakohely/kozseg_varos</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="510" Y="670" Width="230" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/lakohely/megye_kerulet</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="510" Y="710" Width="230" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/tartozkodas/kozseg_varos</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="510" Y="750" Width="230" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/tartozkodas/megye_kerulet</XPath>
+    </Control>
+    <Control Type="XMLCombo" X="510" Y="790" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/allampolgarsag/@magyar</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/allampolgarsag2/allampolgarsag</XPath>
+        <CaptionXPath>.</CaptionXPath>
+        <ValueXPath>@id</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLTextBox" X="510" Y="820" Width="200" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/allampolgarsag</XPath>
+    </Control>
+    <Control Type="XMLCombo" X="650" Y="870" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/vegzettseg/elvegzett_osztalyok/egy_osztalyt_sem</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/igen_nem/eldontendo</XPath>
+        <CaptionXPath>.</CaptionXPath>
+        <ValueXPath>@id</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="620" Y="920" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/vegzettseg/elvegzett_osztalyok/polgari</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/szamok_1_9/szam</XPath>
+        <CaptionXPath>@nr</CaptionXPath>
+        <ValueXPath>@nr</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="620" Y="960" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/vegzettseg/elvegzett_osztalyok/szakmunkas</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/szamok_1_9/szam</XPath>
+        <CaptionXPath>@nr</CaptionXPath>
+        <ValueXPath>@nr</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="620" Y="1000" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/vegzettseg/elvegzett_osztalyok/szakiskola</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/szamok_1_9/szam</XPath>
+        <CaptionXPath>@nr</CaptionXPath>
+        <ValueXPath>@nr</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="620" Y="1040" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/vegzettseg/elvegzett_osztalyok/kozep</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/szamok_1_14/szam</XPath>
+        <CaptionXPath>@nr</CaptionXPath>
+        <ValueXPath>@nr</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="620" Y="1080" Width="90" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/vegzettseg/elvegzett_osztalyok/foiskola_egyetem</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/szamok_1_9/szam</XPath>
+        <CaptionXPath>@nr</CaptionXPath>
+        <ValueXPath>@nr</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="StaticLabel" X="510" Y="1130" Width="190" Height="19">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Nappali tagozaton szerzett:</Text>
+    </Control>
+    <Control Type="XMLCombo" X="510" Y="1160" Width="230" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/szulok/anya/vegzettseg/legmagasabb</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/felsofok/felsofok</XPath>
+        <CaptionXPath>.</CaptionXPath>
+        <ValueXPath>@id</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="260" Y="480" Width="230" Height="20">
+      <SourceDocument>ksh_data.xml</SourceDocument>
+      <XPath>/document/anya/csaladi_allapot</XPath>
+      <List>
+        <SourceDocument>options.xml</SourceDocument>
+        <XPath>/document/no_csaladi_allapot/allapot</XPath>
+        <CaptionXPath>.</CaptionXPath>
+        <ValueXPath>@id</ValueXPath>
+      </List>
+    </Control>
+    <Junctions>
+      <Junction Type="True,True,True,True" X="80" Y="160" />
+      <Junction Type="True,True,True,True" X="80" Y="380" />
+      <Junction Type="True,True,True,True" X="240" Y="380" />
+      <Junction Type="True,True,True,True" X="240" Y="280" />
+      <Junction Type="True,True,True,True" X="240" Y="240" />
+      <Junction Type="True,True,True,True" X="240" Y="200" />
+      <Junction Type="True,True,True,True" X="240" Y="320" />
+      <Junction Type="True,True,True,True" X="80" Y="200" />
+      <Junction Type="True,True,True,True" X="80" Y="240" />
+      <Junction Type="True,True,True,True" X="80" Y="280" />
+      <Junction Type="True,True,True,True" X="80" Y="320" />
+      <Junction Type="True,False,True,True" X="240" Y="120" />
+      <Junction Type="False,True,True,True" X="240" Y="160" />
+      <Junction Type="True,True,False,True" X="120" Y="350" />
+      <Junction Type="False,True,True,True" X="120" Y="320" />
+      <Junction Type="True,False,True,True" X="120" Y="380" />
+      <Junction Type="True,True,True,True" X="240" Y="350" />
+      <Junction Type="True,True,True,False" X="760" Y="380" />
+      <Junction Type="True,True,True,False" X="760" Y="350" />
+      <Junction Type="True,True,True,True" X="80" Y="390" />
+      <Junction Type="True,True,True,True" X="240" Y="390" />
+      <Junction Type="True,True,True,True" X="80" Y="430" />
+      <Junction Type="True,True,True,True" X="240" Y="430" />
+      <Junction Type="True,True,True,False" X="760" Y="430" />
+      <Junction Type="True,True,True,True" X="80" Y="470" />
+      <Junction Type="True,True,True,True" X="240" Y="470" />
+      <Junction Type="True,True,True,True" X="80" Y="510" />
+      <Junction Type="True,True,True,True" X="240" Y="510" />
+      <Junction Type="True,True,True,True" X="240" Y="550" />
+      <Junction Type="True,True,True,True" X="240" Y="580" />
+      <Junction Type="False,True,True,True" X="500" Y="550" />
+      <Junction Type="True,True,True,True" X="500" Y="580" />
+      <Junction Type="True,False,True,True" X="80" Y="550" />
+      <Junction Type="True,True,True,True" X="240" Y="620" />
+      <Junction Type="True,True,True,True" X="240" Y="700" />
+      <Junction Type="True,True,True,True" X="240" Y="780" />
+      <Junction Type="True,True,True,True" X="500" Y="620" />
+      <Junction Type="True,True,True,True" X="500" Y="700" />
+      <Junction Type="True,True,True,True" X="500" Y="780" />
+      <Junction Type="False,True,True,True" X="80" Y="580" />
+      <Junction Type="True,True,True,True" X="80" Y="620" />
+      <Junction Type="True,True,True,True" X="80" Y="700" />
+      <Junction Type="True,True,True,True" X="80" Y="780" />
+      <Junction Type="True,True,True,True" X="80" Y="850" />
+      <Junction Type="True,True,True,True" X="240" Y="850" />
+      <Junction Type="True,True,True,True" X="500" Y="850" />
+      <Junction Type="True,False,True,True" X="80" Y="1200" />
+      <Junction Type="True,False,False,True" X="20" Y="1200" />
+      <Junction Type="True,False,True,True" X="240" Y="1200" />
+      <Junction Type="True,False,True,True" X="500" Y="1200" />
+      <Junction Type="True,False,True,False" X="760" Y="1200" />
+      <Junction Type="True,True,False,True" X="20" Y="850" />
+      <Junction Type="True,True,False,True" X="20" Y="780" />
+      <Junction Type="True,True,False,True" X="20" Y="700" />
+      <Junction Type="True,True,False,True" X="20" Y="620" />
+      <Junction Type="True,True,False,True" X="20" Y="580" />
+      <Junction Type="True,True,False,True" X="20" Y="550" />
+      <Junction Type="True,True,False,True" X="20" Y="510" />
+      <Junction Type="True,True,False,True" X="20" Y="470" />
+      <Junction Type="True,True,False,True" X="20" Y="390" />
+      <Junction Type="True,True,False,True" X="20" Y="380" />
+      <Junction Type="True,True,False,True" X="20" Y="320" />
+      <Junction Type="True,True,False,True" X="20" Y="280" />
+      <Junction Type="True,True,False,True" X="20" Y="240" />
+      <Junction Type="True,True,False,True" X="20" Y="200" />
+      <Junction Type="True,True,False,True" X="20" Y="160" />
+      <Junction Type="True,True,False,True" X="20" Y="120" />
+      <Junction Type="False,True,False,True" X="20" Y="10" />
+      <Junction Type="False,True,True,True" X="240" Y="10" />
+      <Junction Type="False,True,True,False" X="760" Y="10" />
+      <Junction Type="True,True,True,False" X="760" Y="120" />
+      <Junction Type="True,True,True,False" X="760" Y="160" />
+      <Junction Type="True,True,True,False" X="760" Y="200" />
+      <Junction Type="True,True,True,False" X="760" Y="240" />
+      <Junction Type="True,True,True,False" X="760" Y="280" />
+      <Junction Type="True,True,True,False" X="760" Y="320" />
+      <Junction Type="True,True,True,False" X="760" Y="390" />
+      <Junction Type="True,True,True,False" X="760" Y="510" />
+      <Junction Type="True,True,True,False" X="760" Y="470" />
+      <Junction Type="True,True,True,False" X="760" Y="550" />
+      <Junction Type="True,True,True,False" X="760" Y="580" />
+      <Junction Type="True,True,True,False" X="760" Y="620" />
+      <Junction Type="True,True,True,False" X="760" Y="700" />
+      <Junction Type="True,True,True,False" X="760" Y="780" />
+      <Junction Type="True,True,True,False" X="760" Y="850" />
+      <Junction Type="True,True,False,True" X="80" Y="870" />
+      <Junction Type="False,True,True,True" X="160" Y="870" />
+      <Junction Type="True,True,False,True" X="80" Y="1110" />
+      <Junction Type="True,True,False,True" X="160" Y="910" />
+      <Junction Type="True,True,False,True" X="160" Y="950" />
+      <Junction Type="True,True,False,True" X="160" Y="990" />
+      <Junction Type="True,True,False,True" X="160" Y="1030" />
+      <Junction Type="True,True,False,True" X="160" Y="1070" />
+      <Junction Type="True,True,True,True" X="240" Y="910" />
+      <Junction Type="True,True,True,True" X="240" Y="950" />
+      <Junction Type="True,True,True,True" X="240" Y="990" />
+      <Junction Type="True,True,True,True" X="240" Y="1030" />
+      <Junction Type="True,True,True,True" X="240" Y="1070" />
+      <Junction Type="True,True,True,True" X="500" Y="1110" />
+      <Junction Type="True,True,True,True" X="500" Y="1070" />
+      <Junction Type="True,True,True,True" X="500" Y="1030" />
+      <Junction Type="True,True,True,True" X="500" Y="990" />
+      <Junction Type="True,True,True,True" X="500" Y="950" />
+      <Junction Type="True,True,True,True" X="500" Y="910" />
+      <Junction Type="True,True,True,False" X="240" Y="870" />
+      <Junction Type="True,True,True,True" X="240" Y="1110" />
+      <Junction Type="True,False,True,True" X="160" Y="1110" />
+      <Junction Type="False,True,True,True" X="160" Y="620" />
+      <Junction Type="True,True,False,True" X="160" Y="660" />
+      <Junction Type="True,True,True,False" X="240" Y="660" />
+      <Junction Type="True,True,True,True" X="160" Y="700" />
+      <Junction Type="True,False,True,True" X="160" Y="780" />
+      <Junction Type="True,True,False,True" X="160" Y="740" />
+      <Junction Type="True,True,True,False" X="240" Y="740" />
+      <Junction Type="True,True,True,False" X="760" Y="1110" />
+      <Junction Type="True,True,True,False" X="760" Y="1070" />
+      <Junction Type="True,True,True,False" X="760" Y="1030" />
+      <Junction Type="True,True,True,False" X="760" Y="990" />
+      <Junction Type="True,True,True,False" X="760" Y="950" />
+      <Junction Type="True,True,True,False" X="760" Y="910" />
+    </Junctions>
+  </Form>
+  <Form Name="KSH 2" BackgroundImage="">
+    <Control Type="StaticLabel" X="21" Y="11" Width="218" Height="28">
+      <Text Color="0, 64, 0" Background="128, 255, 128" Font="Microsoft Sans Serif, 12pt" Alignment="MiddleCenter">A SZÜLŐ EGYÉB ADATAI</Text>
+    </Control>
+    <Control Type="StaticLabel" X="241" Y="11" Width="258" Height="28">
+      <Text Color="0, 64, 0" Background="128, 255, 128" Font="Microsoft Sans Serif, 12pt" Alignment="MiddleCenter">AZ APA</Text>
+    </Control>
+    <Control Type="StaticLabel" X="501" Y="11" Width="258" Height="28">
+      <Text Color="0, 64, 0" Background="128, 255, 128" Font="Microsoft Sans Serif, 12pt" Alignment="MiddleCenter">AZ ANYA</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="311" Width="738" Height="28">
+      <Text Color="0, 64, 0" Background="128, 255, 128" Font="Microsoft Sans Serif, 10.25pt" Alignment="MiddleCenter">AZ ANYÁRA ÉS AZ ÚJSZÜLÖTTRE VONTAKOZÓ ADATOK</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="41" Width="58" Height="108">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">14.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="151" Width="58" Height="68">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">15.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="221" Width="58" Height="88">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">16.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="341" Width="58" Height="58">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">17.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="401" Width="58" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">18.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="451" Width="58" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">19.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="501" Width="58" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">20.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="551" Width="58" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">21.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="601" Width="58" Height="68">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">22.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="671" Width="58" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">23.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="721" Width="58" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">24.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="21" Y="771" Width="58" Height="58">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleCenter">25.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="41" Width="158" Height="108">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Gazdasági aktivitása:
+
+(A 15-16. kérdések
+  - 04-07 válaszok esetén az érintett utolsó foglalkozása,
+  - 09-11 válaszok esetén az eltartóra vonatkoznak.)</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="151" Width="158" Height="68">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Foglalkozása, munkaköre:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="221" Width="158" Height="88">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Foglalkozási viszonya:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="341" Width="58" Height="58">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Többes szülés esetén: </Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="401" Width="158" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">A gyermek hanyadik terhességből származik:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="451" Width="158" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Az anyának hány gyermeke született élve (A jelenlegit is beleértve) :</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="501" Width="158" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Az anya jelenlegi terhességét megelőző:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="551" Width="158" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Egyéb szülészeti események száma:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="601" Width="158" Height="28">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">a) Hol történt a szülés:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="671" Width="158" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">A terhesség időtartama:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="721" Width="158" Height="48">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">A gyermek súlya, hossza, és 5 perces Apgár értéke:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="771" Width="158" Height="58">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Ha van a gyermeknek fejlődési rendellenessége, annak megnevezése:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="141" Y="341" Width="98" Height="28">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">a) hányas szülés</Text>
+    </Control>
+    <Control Type="StaticLabel" X="141" Y="371" Width="98" Height="28">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">b) hányadik szülött</Text>
+    </Control>
+    <Control Type="StaticLabel" X="500" Y="501" Width="259" Height="19">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">b) késői megzati halálozásának ideje:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="241" Y="501" Width="219" Height="19">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">a) élveszülésének ideje</Text>
+    </Control>
+    <Control Type="StaticLabel" X="81" Y="631" Width="158" Height="38">
+      <Text Color="WindowText" Background="196, 255, 196" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">b) A szülésnél ki segédkezett:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="241" Y="451" Width="99" Height="19">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">a) élete folyamán:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="241" Y="480" Width="129" Height="19">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">b) jelenlegi házasságából:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="510" Y="451" Width="50" Height="19">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">ebből él:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="510" Y="480" Width="50" Height="19">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">ebből él:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="370" Y="671" Width="389" Height="48">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">hét</Text>
+    </Control>
+    <Control Type="StaticLabel" X="330" Y="721" Width="40" Height="48">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">gramm</Text>
+    </Control>
+    <Control Type="StaticLabel" X="530" Y="721" Width="30" Height="48">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">cm</Text>
+    </Control>
+    <Control Type="StaticLabel" X="640" Y="721" Width="119" Height="48">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">5 perces Apgár érték</Text>
+    </Control>
+    <Control Type="StaticLabel" X="241" Y="721" Width="19" Height="48">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">a)</Text>
+    </Control>
+    <Control Type="StaticLabel" X="430" Y="721" Width="20" Height="48">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleRight">b)</Text>
+    </Control>
+    <Control Type="StaticLabel" X="560" Y="721" Width="20" Height="48">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleRight">c)</Text>
+    </Control>
+    <Control Type="StaticLabel" X="80" Y="850" Width="250" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">A kérdőív kitültésére fordított idő: 1. kitöltő esetén</Text>
+    </Control>
+    <Control Type="StaticLabel" X="400" Y="850" Width="30" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">perc</Text>
+    </Control>
+    <Control Type="StaticLabel" X="480" Y="850" Width="90" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">2. kitülrő esetén</Text>
+    </Control>
+    <Control Type="StaticLabel" X="680" Y="850" Width="80" Height="20">
+      <Text Color="WindowText" Background="Window" Font="Microsoft Sans Serif, 8.25pt" Alignment="MiddleLeft">Perc</Text>
+    </Control>
+    <Junctions>
+      <Junction Type="False,True,False,True" X="20" Y="10" />
+      <Junction Type="False,True,True,True" X="240" Y="10" />
+      <Junction Type="False,True,True,False" X="760" Y="10" />
+      <Junction Type="True,True,True,True" X="240" Y="40" />
+      <Junction Type="True,True,True,False" X="760" Y="40" />
+      <Junction Type="False,True,True,True" X="80" Y="40" />
+      <Junction Type="True,True,True,True" X="500" Y="40" />
+      <Junction Type="False,True,True,True" X="500" Y="10" />
+      <Junction Type="True,True,True,True" X="80" Y="150" />
+      <Junction Type="True,True,True,True" X="240" Y="150" />
+      <Junction Type="True,True,True,True" X="500" Y="150" />
+      <Junction Type="True,True,True,True" X="80" Y="220" />
+      <Junction Type="True,True,True,True" X="240" Y="220" />
+      <Junction Type="True,True,True,True" X="500" Y="220" />
+      <Junction Type="True,False,True,True" X="80" Y="310" />
+      <Junction Type="True,False,True,True" X="240" Y="310" />
+      <Junction Type="True,False,True,True" X="500" Y="310" />
+      <Junction Type="False,True,True,True" X="80" Y="340" />
+      <Junction Type="False,True,True,True" X="240" Y="340" />
+      <Junction Type="True,True,True,True" X="240" Y="400" />
+      <Junction Type="True,True,True,True" X="80" Y="400" />
+      <Junction Type="True,True,True,True" X="80" Y="450" />
+      <Junction Type="True,True,True,True" X="240" Y="450" />
+      <Junction Type="True,True,True,True" X="80" Y="500" />
+      <Junction Type="True,True,True,True" X="80" Y="550" />
+      <Junction Type="True,True,True,True" X="80" Y="600" />
+      <Junction Type="True,True,True,True" X="80" Y="670" />
+      <Junction Type="True,True,True,True" X="80" Y="720" />
+      <Junction Type="True,True,True,True" X="80" Y="770" />
+      <Junction Type="True,True,True,True" X="240" Y="500" />
+      <Junction Type="True,True,True,True" X="240" Y="550" />
+      <Junction Type="True,True,True,True" X="240" Y="600" />
+      <Junction Type="True,True,True,True" X="240" Y="670" />
+      <Junction Type="True,True,True,True" X="240" Y="720" />
+      <Junction Type="True,True,True,True" X="240" Y="770" />
+      <Junction Type="True,False,True,True" X="240" Y="830" />
+      <Junction Type="True,False,True,True" X="80" Y="830" />
+      <Junction Type="True,False,False,True" X="20" Y="830" />
+      <Junction Type="True,True,False,True" X="20" Y="770" />
+      <Junction Type="True,True,False,True" X="20" Y="720" />
+      <Junction Type="True,True,False,True" X="20" Y="670" />
+      <Junction Type="True,True,False,True" X="20" Y="600" />
+      <Junction Type="True,True,False,True" X="20" Y="550" />
+      <Junction Type="True,True,False,True" X="20" Y="500" />
+      <Junction Type="True,True,False,True" X="20" Y="450" />
+      <Junction Type="True,True,False,True" X="20" Y="400" />
+      <Junction Type="True,True,False,True" X="20" Y="340" />
+      <Junction Type="True,True,False,True" X="20" Y="310" />
+      <Junction Type="True,True,False,True" X="20" Y="220" />
+      <Junction Type="True,True,False,True" X="20" Y="150" />
+      <Junction Type="True,True,False,True" X="20" Y="40" />
+      <Junction Type="True,True,True,False" X="760" Y="150" />
+      <Junction Type="True,True,True,False" X="760" Y="220" />
+      <Junction Type="True,True,True,False" X="760" Y="310" />
+      <Junction Type="True,True,True,False" X="760" Y="340" />
+      <Junction Type="True,True,True,False" X="760" Y="400" />
+      <Junction Type="True,True,True,False" X="760" Y="450" />
+      <Junction Type="True,True,True,False" X="760" Y="500" />
+      <Junction Type="True,True,True,False" X="760" Y="550" />
+      <Junction Type="True,True,True,False" X="760" Y="600" />
+      <Junction Type="True,True,True,False" X="760" Y="670" />
+      <Junction Type="True,True,True,False" X="760" Y="720" />
+      <Junction Type="True,True,True,False" X="760" Y="770" />
+      <Junction Type="True,False,True,False" X="760" Y="830" />
+      <Junction Type="False,True,True,True" X="140" Y="340" />
+      <Junction Type="True,False,True,True" X="140" Y="400" />
+      <Junction Type="True,True,False,True" X="140" Y="370" />
+      <Junction Type="True,True,True,False" X="240" Y="370" />
+      <Junction Type="True,True,False,True" X="80" Y="630" />
+      <Junction Type="True,True,True,False" X="240" Y="630" />
+    </Junctions>
+  </Form>
+</Document>

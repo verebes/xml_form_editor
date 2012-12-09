@@ -352,13 +352,14 @@ namespace XMLFormEditor
 
         private void ResizingControls(MouseEventArgs e)
         {
-            if (e.X != _dragStartPos.X || e.Y != _dragStartPos.Y)
+            Point p = ViewPoint2LalyoutPoint(e.Location);
+            if (p != _dragStartPos)
             {
                 _moved = true;
             }
 
-            int deltaX = e.X - _dragStartPos.X;
-            int deltaY = e.Y - _dragStartPos.Y;
+            int deltaX = p.X - _dragStartPos.X;
+            int deltaY = p.Y - _dragStartPos.Y;
 
             List<Rectangle>.Enumerator it = positionList.GetEnumerator();
             foreach (XMLControl control in _documentLayout.SelectedControls())

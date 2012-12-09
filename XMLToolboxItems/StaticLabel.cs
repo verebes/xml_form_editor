@@ -155,10 +155,10 @@ namespace XMLFormEditor
         {
             StaticLabelPropertyControl wnd = new StaticLabelPropertyControl();
             wnd.Text = "Static label properties";
-            wnd.textBoxCaption.Text = _text;
-            wnd.textBoxCaption.Font = _font;
-            wnd.textBoxCaption.BackColor = _background;
-            wnd.textBoxCaption.ForeColor = _color;
+            wnd.textBoxCaption.Text = _text;            
+            wnd.setFont(_font);
+            wnd.setBackground(_background);
+            wnd.setColor(_color);
             wnd._alignment = _alignment;
             
             return wnd;

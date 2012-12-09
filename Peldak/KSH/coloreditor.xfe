@@ -1,0 +1,66 @@
+<Document>
+  <source>ksh.xfe</source>
+  <source>selected.xml</source>
+  <Form Name="Color" BackgroundImage="">
+    <Control Type="XMLList" X="20" Y="40" Width="220" Height="780">
+      <SourceDocument>ksh.xfe</SourceDocument>
+      <XPath>/Document/Form[1]/@selection</XPath>
+      <List>
+        <SourceDocument>ksh.xfe</SourceDocument>
+        <XPath>/Document/Form[1]/Control</XPath>
+        <CaptionXPath>concat( count(preceding::Control)+1,":   ", Text)</CaptionXPath>
+        <ValueXPath>count(preceding::Control)+1</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLLabel" X="280" Y="40" Width="200" Height="20">
+      <SourceDocument>ksh.xfe</SourceDocument>
+      <XPath>/Document/Form[1]/@selection</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="280" Y="80" Width="200" Height="20">
+      <SourceDocument>ksh.xfe</SourceDocument>
+      <XPath>/Document/Form[1]/Control[number(/Document/Form[1]/@selection)]/Text</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="280" Y="120" Width="200" Height="20">
+      <SourceDocument>ksh.xfe</SourceDocument>
+      <XPath>/Document/Form[1]/Control[number(/Document/Form[1]/@selection)]/Text/@Background</XPath>
+    </Control>
+    <Control Type="XMLPager" X="280" Y="160" Width="200" Height="20">
+      <SourceDocument>ksh.xfe</SourceDocument>
+      <XPath>/Document/Form[1]/@selection</XPath>
+      <PageCountDocument>ksh.xfe</PageCountDocument>
+      <PageCountXPath>count(/Document/Form[1]/Control)</PageCountXPath>
+    </Control>
+    <Junctions />
+  </Form>
+  <Form Name="Page2" BackgroundImage="">
+    <Control Type="XMLList" X="20" Y="40" Width="220" Height="780">
+      <SourceDocument>ksh.xfe</SourceDocument>
+      <XPath>/Document/Form[2]/@selection</XPath>
+      <List>
+        <SourceDocument>ksh.xfe</SourceDocument>
+        <XPath>/Document/Form[2]/Control</XPath>
+        <CaptionXPath>concat( count(preceding::Control)-63+1,":   ", Text)</CaptionXPath>
+        <ValueXPath>count(preceding::Control)+1-63</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLLabel" X="280" Y="40" Width="200" Height="20">
+      <SourceDocument>ksh.xfe</SourceDocument>
+      <XPath>/Document/Form[2]/@selection</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="280" Y="80" Width="200" Height="20">
+      <SourceDocument>ksh.xfe</SourceDocument>
+      <XPath>/Document/Form[2]/Control[number(/Document/Form[2]/@selection)]/Text</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="280" Y="120" Width="200" Height="20">
+      <SourceDocument>ksh.xfe</SourceDocument>
+      <XPath>/Document/Form[2]/Control[number(/Document/Form[2]/@selection)]/Text/@Background</XPath>
+    </Control>
+    <Control Type="XMLPager" X="280" Y="160" Width="200" Height="20">
+      <SourceDocument>ksh.xfe</SourceDocument>
+      <XPath>/Document/Form[2]/@selection</XPath>
+      <PageCountDocument>ksh.xfe</PageCountDocument>
+      <PageCountXPath>count(/Document/Form[2]/Control)</PageCountXPath>
+    </Control>
+    <Junctions />
+  </Form>
+</Document>

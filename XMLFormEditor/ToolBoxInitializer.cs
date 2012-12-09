@@ -14,8 +14,7 @@ namespace XMLFormEditor
 
         public void InitializeToolBox()
         {
-            _toolBox.AddItem(new StaticLabel());
-            _toolBox.AddItem(new Line());
+            _toolBox.AddItem(new StaticLabel());            
             _toolBox.AddItem(new XMLLabel());
             _toolBox.AddItem(new XMLTextBox());
             _toolBox.AddItem(new XMLCombo());

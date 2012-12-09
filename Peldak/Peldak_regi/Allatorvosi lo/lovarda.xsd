@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="lovarda">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="lovak" />
+				<xs:element ref="adat" />
+				<xs:element ref="leiras" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="lovak">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="lo" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="lo">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="szin" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Barna" />
+								<xs:enumeration value="Fekete" />
+								<xs:enumeration value="Fehér" />								
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="labak" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Négy" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="leiras" type="xs:string" />
+	<xs:element name="adat">
+		<xs:complexType>
+			<xs:attribute name="lovas" use="required" type="xs:byte" />
+			<xs:attribute name="lo" use="required" type="xs:byte" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

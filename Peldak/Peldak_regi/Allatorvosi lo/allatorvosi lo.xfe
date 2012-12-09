@@ -1,0 +1,290 @@
+<Document>
+  <source>lovarda.xml</source>
+  <source>lovasok.xml</source>
+  <source>lovarda.xsd</source>
+  <Form Name="Állatorvosi ló">
+    <Control Type="StaticLabel" X="60" Y="60" Width="133" Height="20">
+      <Text>Static label</Text>
+    </Control>
+    <Control Type="StaticLabel" X="380" Y="60" Width="300" Height="27">
+      <Text>Tetszőleges, statikus szöveget írhatunk ki segítségével,
+akár több sorban is.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="120" Width="137" Height="20">
+      <Text>XMLLabel</Text>
+    </Control>
+    <Control Type="XMLLabel" X="220" Y="120" Width="133" Height="20">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/lovak/lo[1]</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="380" Y="120" Width="294" Height="76">
+      <Text>A feliratot egy XML fileból választjuk ki egy XPath kifejezés segítségével
+
+Példa:
+/lovarda/lovak/lo[1]</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="220" Y="220" Width="136" Height="20">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/lovak/lo[last()]</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="220" Width="141" Height="20">
+      <Text>XMLTextBox</Text>
+    </Control>
+    <Control Type="StaticLabel" X="380" Y="220" Width="282" Height="118">
+      <Text>A beviteli mező értékét egy XML fileból választjuk ki egy XPath kifejezés segítségével.
+
+Ha módosítjuk a beviteli mező tartalmát, az értéket visszaírja az XML fileba.
+
+Példa:
+/lovarda/lovak/lo[last()]</Text>
+    </Control>
+    <Control Type="XMLCombo" X="220" Y="380" Width="142" Height="20">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/adat/@lovas</XPath>
+      <List>
+        <SourceDocument>lovasok.xml</SourceDocument>
+        <XPath>/lovasok/lovas</XPath>
+        <CaptionXPath>./nev</CaptionXPath>
+        <ValueXPath>@szam</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="380" Width="139" Height="20">
+      <Text>XMLCombo</Text>
+    </Control>
+    <Control Type="StaticLabel" X="380" Y="380" Width="317" Height="279">
+      <Text>A Combo boxban és a listában meg kell adni, hogy melyik dokumentum melyik node-jába kerüljön a kiválasztott érték.
+
+A lehetséges értékek listáját vehetjük azonos XML dokumentumból, de választhatunk másikat is.
+
+A listában megjelenő elemek nem feltétlenül azonosak azzal az értékkel, amit vissza szeretnénk írni az XML dokumentumba, ezért a felirat és a visszaírni kívánt érték relatív elérését is meg kell adni.
+
+Arra kell figyelni, hogy feliratnak és a beírt értéknek is egyedinek kell lennie az egyértelmű megfeleltetés érdekébren. 
+Ha két felirat azonos értékhez tartozik, akkor az aktuális értékhez tartozó elem kijelzése nem lehetséges.
+
+Az XMLList-re és az XMLCombo-ra további példa található az XMLInsertButton leírásánál.</Text>
+    </Control>
+    <Control Type="XMLList" X="220" Y="480" Width="137" Height="100">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/adat/@lovas</XPath>
+      <List>
+        <SourceDocument>lovasok.xml</SourceDocument>
+        <XPath>/lovasok/lovas</XPath>
+        <CaptionXPath>./nev</CaptionXPath>
+        <ValueXPath>@szam</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="480" Width="137" Height="20">
+      <Text>XMLList</Text>
+    </Control>
+    <Control Type="XMLLabel" X="220" Y="580" Width="141" Height="20">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/adat/@lovas</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="220" Y="420" Width="138" Height="20">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/adat/@lovas</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="120" Y="420" Width="93" Height="20">
+      <Text>Választott lovas:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="127" Y="580" Width="86" Height="20">
+      <Text>Választott lovas:</Text>
+    </Control>
+    <Control Type="XMLLargeTextBox" X="220" Y="680" Width="229" Height="125">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/leiras</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="680" Width="141" Height="20">
+      <Text>XMLLargeTextBox</Text>
+    </Control>
+    <Control Type="StaticLabel" X="500" Y="700" Width="196" Height="98">
+      <Text>Az XMLLargeTextBox segítségével több soros szövegeke vihetünk be egy XML node tartalmának.
+
+Ha a sokrok nem férnek ki, a gördítő csíkok megjelennek.</Text>
+    </Control>
+    <Control Type="XMLInsertButton" X="220" Y="840" Width="126" Height="20">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/lovak</XPath>
+      <InsertText>&lt;lo szin=''&gt;&lt;/lo&gt;</InsertText>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="840" Width="145" Height="20">
+      <Text>XMLInserButton</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="220" Y="1020" Width="139" Height="20">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/lovak/lo[ count(preceding::lo)  +1  = /lovarda/adat/@lo ]</XPath>
+    </Control>
+    <Control Type="XMLList" X="220" Y="920" Width="137" Height="100">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/adat/@lo</XPath>
+      <List>
+        <SourceDocument>lovarda.xml</SourceDocument>
+        <XPath>/lovarda/lovak/lo</XPath>
+        <CaptionXPath>concat( count(preceding::lo) +1 , ': ', .)</CaptionXPath>
+        <ValueXPath>count(preceding::lo) +1</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLCombo" X="220" Y="880" Width="142" Height="20">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/adat/@lo</XPath>
+      <List>
+        <SourceDocument>lovarda.xml</SourceDocument>
+        <XPath>/lovarda/lovak/lo</XPath>
+        <CaptionXPath>concat( count(preceding::lo) +1 , ': ', .)</CaptionXPath>
+        <ValueXPath>count(preceding::lo) +1</ValueXPath>
+      </List>
+    </Control>
+    <Control Type="XMLTextBox" X="220" Y="1060" Width="92" Height="20">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/lovak/lo[ count(preceding::lo)  +1  = /lovarda/adat/@lo ]/@szin</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="160" Y="1020" Width="40" Height="20">
+      <Text>Név:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="160" Y="1060" Width="42" Height="20">
+      <Text>Szín:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="380" Y="840" Width="311" Height="226">
+      <Text>Az XMLInserButton-nal új node-okat tudunk beszúrni a meglévő XML dokumentumunkba. 
+
+Meg kell adni a beszúrni kívánt node tartalmát szöveges formátumban.
+Például:
+&lt;lo szam=""&gt;&lt;/lo&gt;
+
+Ez lehet több szintű is és tartalmazhat attributumokat.
+
+Egy XPath kifejezéssel meg kell adni, hogy melyik node alá szeretnénk beszúrni a kívánt tartalmat.
+Például:
+/lovarda/lovak</Text>
+    </Control>
+    <Control Type="XMLPager" X="220" Y="1100" Width="110" Height="20">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <XPath>/lovarda/adat/@lo</XPath>
+      <PageCountDocument>lovarda.xml</PageCountDocument>
+      <PageCountXPath>count(//lo)</PageCountXPath>
+    </Control>
+    <Control Type="StaticLabel" X="380" Y="1100" Width="318" Height="100">
+      <Text>Az XML pager lapozásra szolgál.
+Egy kifejezéssel beállítható, hogy mennyi a rekordok száma, ez lesz a maximális érték, amit a pager felvehet.
+
+Ha állítjuk a pager értékét, akkor az egy másik XPath kifejezéssel meghatározott node-ba kerül.</Text>
+    </Control>
+    <Control Type="StaticLabel" X="62" Y="1100" Width="123" Height="20">
+      <Text>XMLPager</Text>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1220" Width="107" Height="20">
+      <Text>XMLSchemaControl</Text>
+    </Control>
+    <Control Type="XMLSchemaControl" X="220" Y="1220" Width="139" Height="21">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <SchemaFile>lovarda.xsd</SchemaFile>
+      <XPath>/lovarda/lovak/lo[ count(preceding::lo)  +1  = /lovarda/adat/@lo ]/@szin</XPath>
+    </Control>
+    <Control Type="XMLSchemaControl" X="220" Y="1260" Width="138" Height="21">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <SchemaFile>lovarda.xsd</SchemaFile>
+      <XPath>/lovarda/lovak/lo[ count(preceding::lo)  +1  = /lovarda/adat/@lo ]</XPath>
+    </Control>
+    <Control Type="XMLSchemaControl" X="220" Y="1300" Width="138" Height="21">
+      <SourceDocument>lovarda.xml</SourceDocument>
+      <SchemaFile>lovarda.xsd</SchemaFile>
+      <XPath>/lovarda/lovak/lo[ count(preceding::lo)  +1  = /lovarda/adat/@lo ]/@labak</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="380" Y="1220" Width="316" Height="279">
+      <Text>Az XMLSchemaControl-lal olyan XML dokumentumokat szerkeszthetünk, amelyeknek a szerkezetét schema file írja le. 
+
+A vezérlőnek meg kell adni paraméterként a szerkeszteni kívánt dokumentum egy node-ját, és a dokumentumhoz tartozó schema filet.
+
+Ha beállítottuk a paramétereket, a vezérlő automatikusan kitalálja a kijelölt node schema információjából az ideális megjelenést.
+
+Ha a node típusa a schema fileban felsorolási típus, a control legördülő menüként jelenik meg. 
+Ha egy egy elemű felsorolási típus (ahogy a konstans értéket lehet schemaban leírni), akkor egyszerű feliratként jelenik meg.
+Minden egyéb esetben a kiválasztott node tartalma szöveges beviteli mezőben szerkeszthető.</Text>
+    </Control>
+  </Form>
+  <Form Name="Lovasok">
+    <Control Type="XMLTextBox" X="40" Y="40" Width="200" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +1   ]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="40" Y="20" Width="90" Height="20">
+      <Text>Név:</Text>
+    </Control>
+    <Control Type="StaticLabel" X="260" Y="20" Width="97" Height="20">
+      <Text>Email:</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="260" Y="40" Width="200" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +1   ]/email</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="40" Y="80" Width="200" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +2   ]/nev</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="260" Y="80" Width="200" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +2   ]/email</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="40" Y="120" Width="200" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +3   ]/nev</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="260" Y="120" Width="200" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +3   ]/email</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="40" Y="160" Width="200" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +4   ]/nev</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="260" Y="160" Width="200" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +4 ]/email</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="40" Y="200" Width="200" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +5   ]/nev</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="260" Y="200" Width="200" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +5   ]/email</XPath>
+    </Control>
+    <Control Type="XMLPager" X="40" Y="240" Width="63" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/@selected</XPath>
+      <PageCountDocument>lovasok.xml</PageCountDocument>
+      <PageCountXPath>ceiling( count(/lovasok/lovas)  div 5  )</PageCountXPath>
+    </Control>
+    <Control Type="XMLInsertButton" X="120" Y="240" Width="77" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok</XPath>
+      <InsertText>&lt;lovas szam=""&gt;
+	&lt;nev&gt;&lt;/nev&gt;
+	&lt;email&gt;&lt;/email&gt;
+&lt;/lovas&gt;</InsertText>
+    </Control>
+    <Control Type="StaticLabel" X="500" Y="20" Width="200" Height="20">
+      <Text>Szám</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="500" Y="40" Width="39" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +1   ]/@szam</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="500" Y="80" Width="39" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +2   ]/@szam</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="500" Y="120" Width="39" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +3   ]/@szam</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="500" Y="160" Width="39" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +4 ]/@szam</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="500" Y="200" Width="39" Height="20">
+      <SourceDocument>lovasok.xml</SourceDocument>
+      <XPath>/lovasok/lovas[ position() =  (/lovasok/@selected  -1) *5 +5   ]/@szam</XPath>
+    </Control>
+  </Form>
+</Document>

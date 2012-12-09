@@ -101,7 +101,7 @@ namespace XMLFormEditor
             textBox.Height = _defaultHeight;
             textBox.Multiline = true;
             textBox.TextChanged += OnChange;
-            textBox.ScrollBars = ScrollBars.Both;
+            textBox.ScrollBars = ScrollBars.None;
             textBox.WordWrap = false;
             return textBox;
         }

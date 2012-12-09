@@ -44,8 +44,8 @@ namespace XMLFormEditor
             this.bFontSelect = new System.Windows.Forms.Button();
             this.numFontSize = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panelColor = new System.Windows.Forms.Panel();
             this.panelBackground = new System.Windows.Forms.Panel();
+            this.panelColor = new System.Windows.Forms.Panel();
             this.bReset = new System.Windows.Forms.Button();
             this.gbHorizontal.SuspendLayout();
             this.gbVerticalAlignment.SuspendLayout();
@@ -216,9 +216,25 @@ namespace XMLFormEditor
             // numFontSize
             // 
             this.numFontSize.Location = new System.Drawing.Point(59, 19);
+            this.numFontSize.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numFontSize.Minimum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
             this.numFontSize.Name = "numFontSize";
             this.numFontSize.Size = new System.Drawing.Size(48, 20);
             this.numFontSize.TabIndex = 14;
+            this.numFontSize.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.numFontSize.ValueChanged += new System.EventHandler(this.numFontSize_ValueChanged);
             // 
             // groupBox2
             // 
@@ -231,16 +247,6 @@ namespace XMLFormEditor
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Color";
             // 
-            // panelColor
-            // 
-            this.panelColor.BackColor = System.Drawing.SystemColors.ControlText;
-            this.panelColor.Location = new System.Drawing.Point(8, 19);
-            this.panelColor.Name = "panelColor";
-            this.panelColor.Size = new System.Drawing.Size(49, 32);
-            this.panelColor.TabIndex = 0;
-            this.panelColor.TabStop = true;
-            this.panelColor.Click += new System.EventHandler(this.panel1_Click);
-            // 
             // panelBackground
             // 
             this.panelBackground.BackColor = System.Drawing.SystemColors.Window;
@@ -251,6 +257,16 @@ namespace XMLFormEditor
             this.panelBackground.TabStop = true;
             this.panelBackground.Click += new System.EventHandler(this.panel1_Click);
             // 
+            // panelColor
+            // 
+            this.panelColor.BackColor = System.Drawing.SystemColors.ControlText;
+            this.panelColor.Location = new System.Drawing.Point(8, 19);
+            this.panelColor.Name = "panelColor";
+            this.panelColor.Size = new System.Drawing.Size(49, 32);
+            this.panelColor.TabIndex = 0;
+            this.panelColor.TabStop = true;
+            this.panelColor.Click += new System.EventHandler(this.panel1_Click);
+            // 
             // bReset
             // 
             this.bReset.Location = new System.Drawing.Point(7, 382);
@@ -259,6 +275,7 @@ namespace XMLFormEditor
             this.bReset.TabIndex = 16;
             this.bReset.Text = "Reset";
             this.bReset.UseVisualStyleBackColor = true;
+            this.bReset.Click += new System.EventHandler(this.bReset_Click);
             // 
             // StaticLabelPropertyControl
             // 

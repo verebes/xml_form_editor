@@ -64,7 +64,7 @@ namespace XMLFormEditor
             this.documentEditor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.documentEditor.Cursor = System.Windows.Forms.Cursors.Default;
             this.documentEditor.DocumentLayout = null;
-            this.documentEditor.GridSize = 20;
+            this.documentEditor.GridSize = 10;
             this.documentEditor.Location = new System.Drawing.Point(0, 0);
             this.documentEditor.Name = "documentEditor";
             this.documentEditor.PropertyWindowPlace = null;

@@ -579,7 +579,7 @@ namespace XMLFormEditor
             }            
         }
 
-        protected int gridSize = 20;
+        protected int gridSize = 10;
         public int GridSize {
             get {
                 return gridSize;

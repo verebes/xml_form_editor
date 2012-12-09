@@ -1,0 +1,33 @@
+<Document>
+  <source>database.xml</source>
+  <Form Name="Adatbátis kapcsolódás">
+    <Control Type="StaticLabel" X="20" Y="20" Width="90" Height="20">
+      <Text>Szerver</Text>
+    </Control>
+    <Control Type="StaticLabel" X="20" Y="50" Width="90" Height="20">
+      <Text>Adatbázis név</Text>
+    </Control>
+    <Control Type="StaticLabel" X="20" Y="80" Width="90" Height="20">
+      <Text>Felhasználói név</Text>
+    </Control>
+    <Control Type="StaticLabel" X="20" Y="110" Width="90" Height="20">
+      <Text>jelszó</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="150" Y="20" Width="200" Height="20">
+      <SourceDocument>database.xml</SourceDocument>
+      <XPath>*//server</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="150" Y="50" Width="200" Height="20">
+      <SourceDocument>database.xml</SourceDocument>
+      <XPath>*//database</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="150" Y="80" Width="200" Height="20">
+      <SourceDocument>database.xml</SourceDocument>
+      <XPath>*//username</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="150" Y="110" Width="200" Height="20">
+      <SourceDocument>database.xml</SourceDocument>
+      <XPath>*//password</XPath>
+    </Control>
+  </Form>
+</Document>

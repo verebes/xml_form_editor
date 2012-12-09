@@ -1,0 +1,58 @@
+<Document>
+  <source>csekk.xml</source>
+  <Form Name="Csekk" BackgroundImage="csekk.jpg">
+    <Control Type="XMLTextBox" X="20" Y="220" Width="200" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/befizeto/nev</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="20" Y="250" Width="200" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/befizeto/cim</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="20" Y="280" Width="95" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/befizeto/irsz</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="20" Y="30" Width="160" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/osszeg/szam</XPath>
+    </Control>
+    <Control Type="XMLLabel" X="270" Y="30" Width="140" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/osszeg/szam</XPath>
+    </Control>
+    <Control Type="XMLLabel" X="540" Y="210" Width="210" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/befizeto/nev</XPath>
+    </Control>
+    <Control Type="XMLLabel" X="540" Y="240" Width="210" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/befizeto/cim</XPath>
+    </Control>
+    <Control Type="XMLLabel" X="540" Y="270" Width="100" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/befizeto/irsz</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="600" Y="40" Width="150" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/befizeto/megjegyzes[1]</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="260" Y="160" Width="300" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/befizeto/azonosito</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="20" Y="70" Width="190" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/osszeg/szoveg</XPath>
+    </Control>
+    <Control Type="XMLLabel" X="270" Y="70" Width="280" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/osszeg/szoveg</XPath>
+    </Control>
+    <Control Type="XMLTextBox" X="600" Y="70" Width="150" Height="20">
+      <SourceDocument>csekk.xml</SourceDocument>
+      <XPath>/document/befizeto/megjegyzes[2]</XPath>
+    </Control>
+    <Junctions />
+  </Form>
+</Document>
