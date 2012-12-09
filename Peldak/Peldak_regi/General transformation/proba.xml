@@ -1,0 +1,82 @@
+<szemelyek selected="12" selected2="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="proba.xsd">
+  <szemely id="1">
+    <nev>Kis Ödön23456</nev>
+    <cim>123456798</cim>
+    <telefon>12342342</telefon>
+  </szemely>
+  <szemely id="2">
+    <nev>Verebes Gábor</nev>
+    <cim>Budapest</cim>
+    <telefon>12344342</telefon>
+  </szemely>
+  <szemely id="3">
+    <nev>Tóth József</nev>
+    <cim></cim>
+    <telefon>42342</telefon>
+  </szemely>
+  <szemely id="4">
+    <nev>Nagy</nev>
+    <cim>mashol</cim>
+    <telefon>1233</telefon>
+  </szemely>
+  <szemely>
+    <nev>Uj Valaki</nev>
+    <cim>Címe</cim>
+    <telefon>124342</telefon>
+  </szemely>
+  <szemely>
+    <nev>kovetkeyo</nev>
+    <cim>cim</cim>
+    <telefon>234423</telefon>
+  </szemely>
+  <szemely>
+    <nev>meg egz </nev>
+    <cim>valaki</cim>
+    <telefon>42342</telefon>
+  </szemely>
+  <szemely>
+    <nev>proba</nev>
+    <cim>meg valami</cim>
+    <telefon>42342</telefon>
+  </szemely>
+  <szemely>
+    <nev>34234242342</nev>
+    <cim>34234</cim>
+    <telefon>42342</telefon>
+  </szemely>
+  <szemely>
+    <nev>5324</nev>
+    <cim>5342</cim>
+    <telefon>45</telefon>
+  </szemely>
+  <szemely id="56435">
+    <nev>64563</nev>
+    <cim>645643</cim>
+    <telefon>64356</telefon>
+  </szemely>
+  <szemely id="132465">
+    <nev />
+    <cim />
+    <telefon />
+  </szemely>
+  <szemely id="">
+    <nev />
+    <cim />
+    <telefon />
+  </szemely>
+  <szemely id="">
+    <nev />
+    <cim />
+    <telefon />
+  </szemely>
+  <szemely id="">
+    <nev />
+    <cim />
+    <telefon />
+  </szemely>
+  <szemely id="">
+    <nev />
+    <cim />
+    <telefon />
+  </szemely>
+</szemelyek>

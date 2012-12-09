@@ -1,0 +1,341 @@
+﻿<Document>
+  <source>proba.xml</source>
+  <Form Name="Generated page">
+    <Control Type="StaticLabel" X="60" Y="0" Width="500" Height="20">
+      <Text>/szemelyek/szemely[1]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="25" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[1]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="50" Width="500" Height="20">
+      <Text>/szemelyek/szemely[1]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="75" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[1]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="100" Width="500" Height="20">
+      <Text>/szemelyek/szemely[1]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="125" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[1]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="150" Width="500" Height="20">
+      <Text>/szemelyek/szemely[2]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="175" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[2]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="200" Width="500" Height="20">
+      <Text>/szemelyek/szemely[2]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="225" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[2]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="250" Width="500" Height="20">
+      <Text>/szemelyek/szemely[2]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="275" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[2]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="300" Width="500" Height="20">
+      <Text>/szemelyek/szemely[3]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="325" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[3]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="350" Width="500" Height="20">
+      <Text>/szemelyek/szemely[3]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="375" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[3]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="400" Width="500" Height="20">
+      <Text>/szemelyek/szemely[3]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="425" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[3]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="450" Width="500" Height="20">
+      <Text>/szemelyek/szemely[4]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="475" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[4]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="500" Width="500" Height="20">
+      <Text>/szemelyek/szemely[4]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="525" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[4]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="550" Width="500" Height="20">
+      <Text>/szemelyek/szemely[4]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="575" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[4]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="600" Width="500" Height="20">
+      <Text>/szemelyek/szemely[5]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="625" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[5]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="650" Width="500" Height="20">
+      <Text>/szemelyek/szemely[5]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="675" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[5]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="700" Width="500" Height="20">
+      <Text>/szemelyek/szemely[5]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="725" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[5]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="750" Width="500" Height="20">
+      <Text>/szemelyek/szemely[6]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="775" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[6]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="800" Width="500" Height="20">
+      <Text>/szemelyek/szemely[6]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="825" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[6]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="850" Width="500" Height="20">
+      <Text>/szemelyek/szemely[6]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="875" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[6]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="900" Width="500" Height="20">
+      <Text>/szemelyek/szemely[7]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="925" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[7]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="950" Width="500" Height="20">
+      <Text>/szemelyek/szemely[7]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="975" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[7]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1000" Width="500" Height="20">
+      <Text>/szemelyek/szemely[7]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1025" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[7]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1050" Width="500" Height="20">
+      <Text>/szemelyek/szemely[8]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1075" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[8]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1100" Width="500" Height="20">
+      <Text>/szemelyek/szemely[8]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1125" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[8]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1150" Width="500" Height="20">
+      <Text>/szemelyek/szemely[8]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1175" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[8]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1200" Width="500" Height="20">
+      <Text>/szemelyek/szemely[9]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1225" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[9]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1250" Width="500" Height="20">
+      <Text>/szemelyek/szemely[9]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1275" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[9]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1300" Width="500" Height="20">
+      <Text>/szemelyek/szemely[9]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1325" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[9]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1350" Width="500" Height="20">
+      <Text>/szemelyek/szemely[10]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1375" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[10]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1400" Width="500" Height="20">
+      <Text>/szemelyek/szemely[10]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1425" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[10]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1450" Width="500" Height="20">
+      <Text>/szemelyek/szemely[10]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1475" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[10]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1500" Width="500" Height="20">
+      <Text>/szemelyek/szemely[11]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1525" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[11]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1550" Width="500" Height="20">
+      <Text>/szemelyek/szemely[11]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1575" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[11]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1600" Width="500" Height="20">
+      <Text>/szemelyek/szemely[11]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1625" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[11]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1650" Width="500" Height="20">
+      <Text>/szemelyek/szemely[12]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1675" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[12]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1700" Width="500" Height="20">
+      <Text>/szemelyek/szemely[12]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1725" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[12]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1750" Width="500" Height="20">
+      <Text>/szemelyek/szemely[12]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1775" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[12]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1800" Width="500" Height="20">
+      <Text>/szemelyek/szemely[13]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1825" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[13]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1850" Width="500" Height="20">
+      <Text>/szemelyek/szemely[13]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1875" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[13]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1900" Width="500" Height="20">
+      <Text>/szemelyek/szemely[13]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1925" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[13]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="1950" Width="500" Height="20">
+      <Text>/szemelyek/szemely[14]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="1975" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[14]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="2000" Width="500" Height="20">
+      <Text>/szemelyek/szemely[14]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="2025" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[14]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="2050" Width="500" Height="20">
+      <Text>/szemelyek/szemely[14]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="2075" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[14]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="2100" Width="500" Height="20">
+      <Text>/szemelyek/szemely[15]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="2125" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[15]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="2150" Width="500" Height="20">
+      <Text>/szemelyek/szemely[15]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="2175" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[15]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="2200" Width="500" Height="20">
+      <Text>/szemelyek/szemely[15]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="2225" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[15]/telefon</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="2250" Width="500" Height="20">
+      <Text>/szemelyek/szemely[16]/nev</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="2275" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[16]/nev</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="2300" Width="500" Height="20">
+      <Text>/szemelyek/szemely[16]/cim</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="2325" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[16]/cim</XPath>
+    </Control>
+    <Control Type="StaticLabel" X="60" Y="2350" Width="500" Height="20">
+      <Text>/szemelyek/szemely[16]/telefon</Text>
+    </Control>
+    <Control Type="XMLTextBox" X="60" Y="2375" Width="500" Height="20">
+      <SourceDocument>proba.xml</SourceDocument>
+      <XPath>/szemelyek/szemely[16]/telefon</XPath>
+    </Control>
+  </Form>
+</Document>
