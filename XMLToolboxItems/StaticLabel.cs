@@ -42,18 +42,18 @@ namespace XMLFormEditor
 
             XmlAttribute color = document.CreateAttribute("Color");
             ColorConverter converter = new ColorConverter();
-            color.Value = converter.ConvertToString(_color);
+            color.Value = converter.ConvertToString(null, System.Globalization.CultureInfo.InvariantCulture, _color);
             DocumentElement.Attributes.Append(color);
 
-            XmlAttribute background = document.CreateAttribute("Background");            
-            background.Value = converter.ConvertToString(_background);
+            XmlAttribute background = document.CreateAttribute("Background");
+            background.Value = converter.ConvertToString(null, System.Globalization.CultureInfo.InvariantCulture, _background);
             DocumentElement.Attributes.Append(background);
 
             if (_font != null)
             {
                 XmlAttribute font = document.CreateAttribute("Font");
                 FontConverter fontConverter = new FontConverter();
-                font.Value = fontConverter.ConvertToString(_font);
+                font.Value = fontConverter.ConvertToString(null, System.Globalization.CultureInfo.InvariantCulture, _font);                
                 DocumentElement.Attributes.Append(font);
             }
 
@@ -86,16 +86,18 @@ namespace XMLFormEditor
 
             FontConverter fontConverter = new FontConverter();
             ColorConverter colorConverter = new ColorConverter();
-            
 
-            if ( e.HasAttribute("Color") )
-                _color = (Color)colorConverter.ConvertFromString(e.Attributes["Color"].Value);
+            if (e.HasAttribute("Color")) {                
+                //_color = (Color)colorConverter.ConvertFromString(e.Attributes["Color"].Value);
+                _color  = (Color)colorConverter.ConvertFromString(null, System.Globalization.CultureInfo.InvariantCulture, e.Attributes["Color"].Value);
+            }
 
-            if (e.HasAttribute("Background") )
-                _background = (Color)colorConverter.ConvertFromString(e.Attributes["Background"].Value);
+            if (e.HasAttribute("Background") ) {                
+                _background = (Color)colorConverter.ConvertFromString(null,System.Globalization.CultureInfo.InvariantCulture, e.Attributes["Background"].Value);
+            }
 
             if (e.HasAttribute("Font")) {
-                _font = fontConverter.ConvertFromString(e.Attributes["Font"].Value) as Font;
+                _font = fontConverter.ConvertFromString(null, System.Globalization.CultureInfo.InvariantCulture, e.Attributes["Font"].Value ) as Font;
             } else {
                 _font = SystemFonts.DefaultFont;
             }
