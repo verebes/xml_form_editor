@@ -12,7 +12,7 @@
     <Position X="15.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>XMLControl.cs</FileName>
-      <HashCode>jAQAIAgEAAAQABMAAEAEAABCAAAAoAGAAADAAAECCCI=</HashCode>
+      <HashCode>jAQAIAkEAAAQABcAAEAEAABCAAAAooGAAADAAAECCCI=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="ParentLayout" />
@@ -29,7 +29,7 @@
     <Position X="8.75" Y="8.75" Width="2.25" />
     <TypeIdentifier>
       <FileName>DocumentVisualizer.cs</FileName>
-      <HashCode>AQCAEAAgACAAAAAQwgCACBACAAAAABAAAgAIAAIIAAA=</HashCode>
+      <HashCode>AQiAEgAwgOIQEGAQwgiASBASIAAAQBAAAgAIQAYIAEA=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="DocumentLayout" />
@@ -55,7 +55,7 @@
     <Position X="6.5" Y="10" Width="2" />
     <TypeIdentifier>
       <FileName>DocumentEditor.cs</FileName>
-      <HashCode>AACAEAAKAIhCAAQASkAAIBBCCAAAARBEAIAIDAgAAAA=</HashCode>
+      <HashCode>AAKCAABKAKJSkAQASkAAIBBCCAAAAhBEBIAIBA4gAAA=</HashCode>
     </TypeIdentifier>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -66,7 +66,7 @@
     <Position X="9.25" Y="10.25" Width="2" />
     <TypeIdentifier>
       <FileName>DocumentForm.cs</FileName>
-      <HashCode>AAAAEAAAAIAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -74,7 +74,7 @@
     <Position X="3.25" Y="10" Width="2" />
     <TypeIdentifier>
       <FileName>DocumentEditorOverlay.cs</FileName>
-      <HashCode>AQSAAAAAAAACABIDIAhICJKCATIEAAAAIgBwAIIKAAA=</HashCode>
+      <HashCode>QYaAAACAUAACgBIDIAhICLKCg3IEAAAAIhB4AIIKgAA=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="DocumentEditor" />
@@ -90,10 +90,11 @@
     <Position X="12.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>DocumentLayout.cs</FileName>
-      <HashCode>CEAAAiACSAABgAQAgAAAAABKIABCAgAAAAAkAACAAgA=</HashCode>
+      <HashCode>CEAAwiACSAABgARAgAAABABKJARCAgAAAAAkAACAAgA=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="controlFactory" />
+      <Property Name="LineDrawer" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Field Name="_xmlControlList" />
@@ -144,7 +145,7 @@
     <Position X="8.5" Y="4.25" Width="2.5" />
     <TypeIdentifier>
       <FileName>XMLEditorPropertyControl.cs</FileName>
-      <HashCode>AgAAAAAAACAAEBAAAICEAAgCAAAIAAAIAEAAAAAAAAE=</HashCode>
+      <HashCode>AgAAAAAAACAAEBIAAICEAAgCACAIAAAIAEAAAAAEAAE=</HashCode>
     </TypeIdentifier>
     <InheritanceLine Type="XMLFormEditor.XMLPropertyControlBase" FixedToPoint="true">
       <Path>
@@ -161,7 +162,7 @@
     <Position X="11.5" Y="3.75" Width="2.5" />
     <TypeIdentifier>
       <FileName>XmlSourceDocumentManager.cs</FileName>
-      <HashCode>AAQgAAAgAACCAAAAiAAAAAAEAABEAQAEYAEAgABABAE=</HashCode>
+      <HashCode>AAQgAAAgAACCAAAAiAAAAAAEAABEAQAEYAkAgABABAE=</HashCode>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Field Name="SourceDocuments" />
@@ -175,6 +176,44 @@
       <Field Name="xmlDocument2Filename" Hidden="true" />
       <Method Name="XmlSourceDocumentManager" Hidden="true" />
     </Members>
+  </Class>
+  <Class Name="XMLFormEditor.LineDrawer" Collapsed="true">
+    <Position X="15.5" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>LineDrawer.cs</FileName>
+      <HashCode>gAEAEAJQACEAACAABhAAgCBAAAAAQBBQAAAAAAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Public" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="XMLFormEditor.LineDrawer.Junction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>LineDrawer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="XMLFormEditor.LineDrawer.Vector2d" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>LineDrawer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="XMLFormEditor.LineDrawer.HalfSection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>LineDrawer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="XMLFormEditor.LineDrawer.Section" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>LineDrawer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="XMLFormEditor.LineDrawer.SectionPointDistanceComparer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>LineDrawer.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
   </Class>
   <Interface Name="XMLFormEditor.IToolBoxItem" Collapsed="true">
     <Position X="5.75" Y="5.75" Width="1.5" />
