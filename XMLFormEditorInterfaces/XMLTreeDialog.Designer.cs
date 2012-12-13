@@ -178,7 +178,7 @@ namespace XMLFormEditor
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "XMLTreeDialog";
+            this.Text = "XPath Selector";
             this.Shown += new System.EventHandler(this.XMLTreeDialog_Shown);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
