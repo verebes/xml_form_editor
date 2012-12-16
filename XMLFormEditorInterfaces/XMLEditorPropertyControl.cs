@@ -62,7 +62,6 @@ namespace XMLFormEditor
             if (openFileDialog.ShowDialog() != DialogResult.OK)
                 return;
 
-
             try {
                 Bitmap bitmap = new Bitmap(openFileDialog.FileName);
                 textBoxLeft.Text = "0";

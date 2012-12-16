@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 
+
 namespace XMLFormEditor
 {
     public partial class XMLTreeDialog : Form
@@ -493,7 +494,7 @@ namespace XMLFormEditor
             if (treeNode == null)
                 return;
 
-            XmlElement xmlElement = treeNode.Tag as XmlElement;
+            XmlNode xmlElement = treeNode.Tag as XmlNode;
             if (xmlElement == null)
                 return;
 
@@ -507,7 +508,15 @@ namespace XMLFormEditor
             if ( MessageBox.Show(question,caption, MessageBoxButtons.YesNo) == DialogResult.Yes )
             {
                 treeNode.Remove();
+                if ( xmlElement.NodeType == XmlNodeType.Attribute ) {
+                    XmlAttribute attr = xmlElement as XmlAttribute;
+                    if ( attr.OwnerElement.HasAttribute(attr.Name) )
+                        attr.OwnerElement.RemoveAttribute(attr.Name);
+                    return;
+                }
                 xmlElement.RemoveAll();
+                if (xmlElement.ParentNode == null)
+                    return;
                 xmlElement.ParentNode.RemoveChild(xmlElement);
             }            
         }
@@ -591,7 +600,15 @@ namespace XMLFormEditor
 
 
             if (xmlElement.NodeType == XmlNodeType.Element) {
-                XmlAttribute newAttribute = document.CreateAttribute("new");
+                
+                //attribute name should be unique
+                string attrName = "new";
+                int cnt = 0;
+                while ( xmlElement.HasAttribute(attrName) ) {
+                    ++cnt;
+                    attrName = "new_" + cnt.ToString();
+                }
+                XmlAttribute newAttribute = document.CreateAttribute(attrName);
                 xmlElement.Attributes.Append(newAttribute);                
 
                 TreeNode newTreeNode = treeNode.Nodes.Insert(0, newAttribute.Name);
@@ -621,6 +638,36 @@ namespace XMLFormEditor
                 return;
             }
 
+            bool invalidName = false;
+            char startChar = e.Label[0];
+            if ( !(
+                (startChar == ':') || 
+                (startChar == '_') || 
+                (startChar >='A'  && startChar <='Z') ||
+                (startChar >='a'  && startChar <='z') 
+                ))
+            {
+                invalidName = true;
+            }
+ 
+            //we start to loop from 1 since the firts char has been checked
+            for (int i = 1; !invalidName && i < e.Label.Length; ++i ) {
+                char currChar = e.Label[i];
+
+                if (!(
+                    (currChar  == ':') ||
+                    (currChar == '_') ||
+                    (currChar == '.') ||
+                    (currChar == '-') ||
+                    (currChar >= '0' && currChar <= '9') ||
+                    (currChar >= 'A' && currChar <= 'Z') ||
+                    (currChar >= 'a' && currChar <= 'z')
+                    ))
+                {
+                    invalidName = true;
+                }
+            }
+            
             XmlElement xmlElement = e.Node.Tag as XmlElement;
             
             if (xmlElement == null) {
@@ -628,7 +675,7 @@ namespace XMLFormEditor
                 XmlAttribute xmlAttribute = e.Node.Tag as XmlAttribute;                
                 if (xmlAttribute != null) {
                     //we edited an attributes's name
-                    if ( e.Label == xmlAttribute.Name ) {
+                    if ( invalidName || e.Label == xmlAttribute.Name ) {
                         // not really renamed
                         e.CancelEdit = true;
                         return;
@@ -658,12 +705,27 @@ namespace XMLFormEditor
                 e.CancelEdit = true;                
                 return;
             }
-            
-            XmlElement renamedElement = renameXmlElement(xmlElement,e.Label);
-            if (renamedElement.ParentNode == null) {
-                e.Node.Tag = document.FirstChild; // in case we edited the topmost node
-            } else {
-                e.Node.Tag = renamedElement;
+
+            if ( invalidName) {
+                e.CancelEdit = true;
+                return;
+            }
+
+
+            try
+            {
+                XmlElement renamedElement = renameXmlElement(xmlElement, e.Label);
+                if (renamedElement.ParentNode == null)
+                {
+                    e.Node.Tag = document.FirstChild; // in case we edited the topmost node
+                }
+                else
+                {
+                    e.Node.Tag = renamedElement;
+                }
+            } 
+            catch ( Exception  ) {
+                e.CancelEdit = true;
             }
         }
 

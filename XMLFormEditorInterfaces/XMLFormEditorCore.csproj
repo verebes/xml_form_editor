@@ -71,6 +71,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
+    <Compile Include="Misc.cs" />
     <Compile Include="ToolBoxControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
