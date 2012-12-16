@@ -18,11 +18,11 @@ namespace XMLFormEditor
             _toolBox.AddItem(new XMLLabel());
             _toolBox.AddItem(new XMLTextBox());
             _toolBox.AddItem(new XMLCombo());
-            _toolBox.AddItem(new XMLGrid());
+            //_toolBox.AddItem(new XMLGrid());
             _toolBox.AddItem(new XMLList());
             _toolBox.AddItem(new XMLLargeTextBox());
             _toolBox.AddItem(new XMLInsertButton());
-            _toolBox.AddItem(new XMLDeleteButton());
+            //_toolBox.AddItem(new XMLDeleteButton());
             _toolBox.AddItem(new XMLPager());
             _toolBox.AddItem(new XMLSchemaControl());
         }
