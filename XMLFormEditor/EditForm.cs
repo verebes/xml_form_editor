@@ -521,9 +521,6 @@ namespace XMLFormEditor
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!tabControl1.Focused)
-                return;
-
             clipboardDoc = new System.Xml.XmlDocument();
             clipboardDoc.AppendChild(documentLayouts[tabControl1.SelectedIndex].SerializeSelectedToXml(clipboardDoc));
             documentLayouts[tabControl1.SelectedIndex].RemoveSelectedControls();
