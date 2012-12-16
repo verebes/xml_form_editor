@@ -279,7 +279,7 @@ namespace XMLFormEditor
             {
                 try
                 {
-                    string relativeFileName = EvaluateRelativePath(documentLayouts.LayoutFileName, s);
+                    string relativeFileName = Misc.EvaluateRelativePath(documentLayouts.LayoutFileName, s);
 
                     XmlSourceDocumentManager.Instance().AddDocument(relativeFileName);
                     listBoxDocumentSources.Items.Add(relativeFileName);
@@ -324,7 +324,7 @@ namespace XMLFormEditor
 
             try
             {
-                string relativeFileName = EvaluateRelativePath(documentLayouts.LayoutFileName, dialog.FileName);
+                string relativeFileName = Misc.EvaluateRelativePath(documentLayouts.LayoutFileName, dialog.FileName);
                 
                 XmlSourceDocumentManager.Instance().NewDocument(relativeFileName);
                 listBoxDocumentSources.Items.Add(relativeFileName);
@@ -457,47 +457,7 @@ namespace XMLFormEditor
             NewXmlDocument();           
         }
 
-
-        private static string EvaluateRelativePath(string mainDirPath, string absoluteFilePath)
-        {
-
-            string[] firstPathParts = mainDirPath.Trim(System.IO.Path.DirectorySeparatorChar).Split(System.IO.Path.DirectorySeparatorChar);
-            string[] secondPathParts = absoluteFilePath.Trim(System.IO.Path.DirectorySeparatorChar).Split(System.IO.Path.DirectorySeparatorChar);
-
-            int sameCounter = 0;
-            for (int i = 0; i < Math.Min(firstPathParts.Length, secondPathParts.Length); i++)
-            {
-                if (!firstPathParts[i].ToLower().Equals(secondPathParts[i].ToLower()))
-                {
-                    break;
-                }
-                sameCounter++;
-            }
-
-            if (sameCounter == 0)
-            {
-                return absoluteFilePath;
-            }
-
-            string newPath = String.Empty;
-
-            for (int i = sameCounter; i < firstPathParts.Length-1; i++)
-            {
-                    newPath += "..";
-                    newPath += System.IO.Path.DirectorySeparatorChar;
-            }
-
-            for (int i = sameCounter; i < secondPathParts.Length-1; i++)
-            {
-                newPath += secondPathParts[i];
-                newPath += System.IO.Path.DirectorySeparatorChar;
-            }
-
-            newPath += secondPathParts[secondPathParts.Length-1];
-
-            return newPath;
-        }
-
+        
 
         private System.Xml.XmlDocument clipboardDoc = null;
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -663,7 +623,7 @@ namespace XMLFormEditor
 
                 XsltArgumentList args = new XsltArgumentList();
 
-                string relativeFileName = EvaluateRelativePath(saveDialog.FileName, openXMLDialog.FileName);
+                string relativeFileName = Misc.EvaluateRelativePath(saveDialog.FileName, openXMLDialog.FileName);
 
                 args.AddParam("InputXMLRelativeFileName", "",  relativeFileName);
                 args.AddParam("InputXMLAbslouteFileName", "", openXMLDialog.FileName);
